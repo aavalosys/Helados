@@ -115,7 +115,6 @@ public class MENU extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +166,7 @@ public class MENU extends javax.swing.JFrame {
         jButton23.setText("+");
 
         jButton24.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton24.setText("YOGOURT");
+        jButton24.setText("NUEVOS");
 
         jButton25.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton25.setText("PROMOCIÓN");
