@@ -12,7 +12,11 @@ public class MENU extends javax.swing.JFrame {
      */
     public MENU() {
         initComponents();
+        
     }
+    
+    String boton=null;
+    public String hola;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,21 +33,21 @@ public class MENU extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
+        btncancelar = new javax.swing.JButton();
+        btnquitarhelado = new javax.swing.JButton();
+        btnok = new javax.swing.JButton();
+        btnpaleta = new javax.swing.JButton();
+        btnbebidas = new javax.swing.JButton();
+        btnpcasa = new javax.swing.JButton();
+        btnpasteles = new javax.swing.JButton();
+        btnenvasados = new javax.swing.JButton();
+        btnconos = new javax.swing.JButton();
+        btnespeciales = new javax.swing.JButton();
+        btnyogourt = new javax.swing.JButton();
+        btnmas = new javax.swing.JButton();
+        btnyogourt2 = new javax.swing.JButton();
+        btnpromo = new javax.swing.JButton();
+        btnarmar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -68,6 +72,12 @@ public class MENU extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPane5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Pedido:"));
 
@@ -95,14 +105,19 @@ public class MENU extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        jButton14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton14.setText("CANCELAR");
+        btncancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btncancelar.setText("CANCELAR");
 
-        jButton15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton15.setText("QUITAR HELADO");
+        btnquitarhelado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnquitarhelado.setText("QUITAR HELADO");
+        btnquitarhelado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnquitarheladoActionPerformed(evt);
+            }
+        });
 
-        jButton27.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton27.setText("OK - FACTURAR");
+        btnok.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnok.setText("OK - FACTURAR");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -115,14 +130,13 @@ public class MENU extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
-                        .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnok, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38))))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(152, 152, 152)
-                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnquitarhelado, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -131,49 +145,69 @@ public class MENU extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnquitarhelado, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnok, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47))
         );
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton7.setText("PALETAS");
+        btnpaleta.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnpaleta.setText("PALETAS");
+        btnpaleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpaletaActionPerformed(evt);
+            }
+        });
 
-        jButton12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton12.setText("BEBIDAS");
+        btnbebidas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnbebidas.setText("BEBIDAS");
 
-        jButton16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton16.setText("PARA LA CASA");
+        btnpcasa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnpcasa.setText("PARA LA CASA");
 
-        jButton17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton17.setText("PASTELES");
+        btnpasteles.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnpasteles.setText("PASTELES");
+        btnpasteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpastelesActionPerformed(evt);
+            }
+        });
 
-        jButton19.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton19.setText("ENVASADO");
+        btnenvasados.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnenvasados.setText("ENVASADO");
+        btnenvasados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnenvasadosActionPerformed(evt);
+            }
+        });
 
-        jButton20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton20.setText("CONOS");
+        btnconos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnconos.setText("CONOS");
+        btnconos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnconosActionPerformed(evt);
+            }
+        });
 
-        jButton21.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton21.setText("ESPECIALES");
+        btnespeciales.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnespeciales.setText("ESPECIALES");
 
-        jButton22.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton22.setText("YOGOURT");
+        btnyogourt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnyogourt.setText("YOGOURT");
 
-        jButton23.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton23.setText("+");
+        btnmas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnmas.setText("+");
 
-        jButton24.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton24.setText("YOGOURT");
+        btnyogourt2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnyogourt2.setText("YOGOURT");
 
-        jButton25.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton25.setText("PROMOCIÓN");
+        btnpromo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnpromo.setText("PROMOCIÓN");
 
-        jButton26.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton26.setText("ARMAR");
+        btnarmar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnarmar.setText("ARMAR");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -245,20 +279,20 @@ public class MENU extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnpaleta, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnpasteles, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnbebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnpcasa, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnyogourt2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnpromo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnconos, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnenvasados, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnespeciales, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnyogourt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnmas, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnarmar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,28 +306,28 @@ public class MENU extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnpaleta, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnconos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnpasteles, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnenvasados, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnpcasa, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnespeciales, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnbebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnyogourt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnyogourt2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnarmar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnmas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnpromo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,6 +349,88 @@ public class MENU extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnpaletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpaletaActionPerformed
+                   
+        SABORES_HELADO obj = new SABORES_HELADO();
+        obj.setVisible(true);
+          btnpaleta.setEnabled(false);
+        btnconos.setEnabled(false);
+        btnpasteles.setEnabled(false);
+        btnenvasados.setEnabled(false);
+        btnpcasa.setEnabled(false);
+        btnespeciales.setEnabled(false);
+        btnbebidas.setEnabled(false);
+        btnyogourt.setEnabled(false);
+        btnyogourt2.setEnabled(false);
+        btnarmar.setEnabled(false);
+        btnpromo.setEnabled(false);
+        btnmas.setEnabled(false);
+        btnquitarhelado.setEnabled(false);
+        btncancelar.setEnabled(false);
+        btnok.setEnabled(false);
+         
+       
+    }//GEN-LAST:event_btnpaletaActionPerformed
+
+    public void activar(){
+        
+        btnpaleta.setEnabled(true);
+        btnconos.setEnabled(true);
+        btnpasteles.setEnabled(true);
+        btnenvasados.setEnabled(true);
+        btnpcasa.setEnabled(true);
+        btnespeciales.setEnabled(true);
+        btnbebidas.setEnabled(true);
+        btnyogourt.setEnabled(true);
+        btnyogourt2.setEnabled(true);
+        btnarmar.setEnabled(true);
+        btnpromo.setEnabled(true);
+        btnmas.setEnabled(true);
+        btnquitarhelado.setEnabled(true);
+        btncancelar.setEnabled(true);
+        btnok.setEnabled(true);
+        
+        
+    }
+    
+    
+    
+    
+    private void btnconosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconosActionPerformed
+        // TODO add your handling code here:
+        SABORES_HELADO obj = new SABORES_HELADO();
+        obj.setVisible(true);
+         
+        btnconos.setEnabled(false);
+    }//GEN-LAST:event_btnconosActionPerformed
+
+    private void btnpastelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpastelesActionPerformed
+        // TODO add your handling code here:
+        SABORES_HELADO obj = new SABORES_HELADO();
+        obj.setVisible(true);
+         
+        btnpasteles.setEnabled(false);
+    }//GEN-LAST:event_btnpastelesActionPerformed
+
+    private void btnenvasadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenvasadosActionPerformed
+        // TODO add your handling code here:
+        SABORES_HELADO obj = new SABORES_HELADO();
+        obj.setVisible(true);
+        btnenvasados.setEnabled(false);
+    }//GEN-LAST:event_btnenvasadosActionPerformed
+
+    private void btnquitarheladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitarheladoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnquitarheladoActionPerformed
+
+    
+   
+    
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        
+       
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -347,26 +463,27 @@ public class MENU extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MENU().setVisible(true);
+             
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btnarmar;
+    private javax.swing.JButton btnbebidas;
+    private javax.swing.JButton btncancelar;
+    private javax.swing.JButton btnconos;
+    private javax.swing.JButton btnenvasados;
+    private javax.swing.JButton btnespeciales;
+    private javax.swing.JButton btnmas;
+    private javax.swing.JButton btnok;
+    public javax.swing.JButton btnpaleta;
+    private javax.swing.JButton btnpasteles;
+    private javax.swing.JButton btnpcasa;
+    private javax.swing.JButton btnpromo;
+    private javax.swing.JButton btnquitarhelado;
+    private javax.swing.JButton btnyogourt;
+    private javax.swing.JButton btnyogourt2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

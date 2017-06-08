@@ -1,18 +1,45 @@
 
 package helados;
 
+
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
 public class SABORES_HELADO extends javax.swing.JFrame {
 
-    DefaultListModel modeloLista = new DefaultListModel();    
+    DefaultListModel modeloLista = new DefaultListModel(); 
+    DefaultListModel modeloLista2 = new DefaultListModel(); 
+    DefaultListModel modeloLista3 = new DefaultListModel();
+    public String des ;
     public SABORES_HELADO() {
         initComponents();
+        
+        modeloLista = new DefaultListModel();
+        listaproducto.setModel(modeloLista);
+        
+        modeloLista2 = new DefaultListModel();
+        listasabor.setModel(modeloLista2);
+        
+        modeloLista3 = new DefaultListModel();
+        listatamano.setModel(modeloLista3);
+        
+        
+       cargardatos();
+       buscardatos2("NO");
+       buscardatos3("NO");
+       
   
     }
     
+   
+    
+    int donde=0;// sirve para capturar donde estamos ingresando codigos
     
 
     @SuppressWarnings("unchecked")
@@ -23,13 +50,13 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton18 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        txttodo = new javax.swing.JTextArea();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
         varbolas = new javax.swing.JTextField();
         jButton22 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        listatamano = new javax.swing.JList();
         texto_producto = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -44,13 +71,12 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList();
+        listasabor = new javax.swing.JList();
         texto_tamano = new javax.swing.JTextField();
         texto_sabor = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         listaproducto = new javax.swing.JList();
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc\\Desktop\\HELADO\\IMAGENES\\descarga (1).jpg")); // NOI18N
         jButton6.setText("PALETA");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,12 +106,17 @@ public class SABORES_HELADO extends javax.swing.JFrame {
             }
         });
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        txttodo.setColumns(20);
+        txttodo.setRows(5);
+        jScrollPane4.setViewportView(txttodo);
 
         jButton19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton19.setText("QUITAR BOLA");
+        jButton19.setText("ATRAS");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
 
         jButton20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton20.setText("-HELADO");
@@ -150,13 +181,23 @@ public class SABORES_HELADO extends javax.swing.JFrame {
                 .addGap(105, 105, 105))
         );
 
-        jList1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        listatamano.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        listatamano.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        listatamano.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listatamanoMouseClicked(evt);
+            }
+        });
+        listatamano.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                listatamanoKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(listatamano);
 
         texto_producto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         texto_producto.setText("CODIGO DEL PRODUCTO");
@@ -165,41 +206,111 @@ public class SABORES_HELADO extends javax.swing.JFrame {
                 texto_productoFocusGained(evt);
             }
         });
+        texto_producto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                texto_productoMouseClicked(evt);
+            }
+        });
+        texto_producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                texto_productoActionPerformed(evt);
+            }
+        });
+        texto_producto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                texto_productoKeyPressed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Teclado en Pantalla"));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton2.setText("2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton3.setText("0");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton4.setText("5");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton5.setText("6");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton7.setText("7");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton8.setText("3");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton9.setText("4");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton10.setText("8");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jButton11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton11.setText(".");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton12.setText("9");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -249,25 +360,51 @@ public class SABORES_HELADO extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jList3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jList3.setModel(new javax.swing.AbstractListModel() {
+        listasabor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        listasabor.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList3);
+        listasabor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listasaborMouseClicked(evt);
+            }
+        });
+        listasabor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                listasaborKeyPressed(evt);
+            }
+        });
+        jScrollPane3.setViewportView(listasabor);
 
         texto_tamano.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         texto_tamano.setText("TAMAÑO");
+        texto_tamano.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                texto_tamanoMouseClicked(evt);
+            }
+        });
 
         texto_sabor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         texto_sabor.setText("SABOR ");
+        texto_sabor.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        texto_sabor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                texto_saborMouseClicked(evt);
+            }
+        });
+        texto_sabor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                texto_saborActionPerformed(evt);
+            }
+        });
 
         listaproducto.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        listaproducto.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "PELTAS", "PASTELES", "HELADOS", "ESPECIALIDADES", " " };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+        listaproducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaproductoMouseClicked(evt);
+            }
         });
         jScrollPane5.setViewportView(listaproducto);
 
@@ -356,9 +493,371 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
-    int a = Integer.valueOf(varbolas.getText());
+        int a = Integer.valueOf(varbolas.getText());
         varbolas.setText(String.valueOf(a-1));        // TODO add your handling code here:
     }//GEN-LAST:event_jButton20MouseClicked
+
+    private void texto_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_productoActionPerformed
+     
+      
+       
+        
+    }//GEN-LAST:event_texto_productoActionPerformed
+
+    
+    public void cargardatos(){
+    
+    
+        
+        Registrar a = new Registrar();
+        
+        String ssql="select * from productos";
+        ResultSet rs=a.mostrardetalle(ssql);
+        modeloLista.clear();
+        String producto,id;
+       try {
+           while(rs.next()){
+               producto=rs.getString("NombreProducto");
+               id=rs.getString("Id_Producto");
+               modeloLista.addElement(producto);       
+           }
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        
+    
+    
+    }
+    
+    
+    
+      public void buscardatos1(String id){
+    
+   Registrar a = new Registrar();
+        
+        String ssql="select * from productos where Id_Producto="+id;
+        ResultSet rs=a.mostrardetalle(ssql);
+        modeloLista.clear();
+       try {
+           while(rs.next()){
+               modeloLista.addElement(rs.getString("NombreProducto"));       
+           }
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       
+        
+    
+    
+    }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      public void buscardatos2(String id){
+    
+        
+         String ssql=null;
+        Registrar a = new Registrar();
+        if(id.equals("NO")){
+        ssql="select * from sabores";
+        }else{
+       ssql="select * from sabores where Id_Sabor="+id;
+        }
+        ResultSet rs=a.mostrardetalle(ssql);
+        modeloLista2.clear();
+       try {
+           while(rs.next()){
+               modeloLista2.addElement(rs.getString("NombreSabor"));       
+           }
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       
+        
+    
+    
+    }
+      
+      
+       public void buscardatos3(String id){
+    
+        
+         String ssql=null;
+        Registrar a = new Registrar();
+        if(id.equals("NO")){
+        ssql="select * from tamano";
+        }else{
+       ssql="select * from tamano where Id_Tamano="+id;
+        }
+        ResultSet rs=a.mostrardetalle(ssql);
+        modeloLista3.clear();
+       try {
+           while(rs.next()){
+               modeloLista3.addElement(rs.getString("Tamano"));       
+           }
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       
+        
+    
+    
+    }
+    
+    
+    
+  
+    
+    private void texto_productoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texto_productoMouseClicked
+       
+        donde=1;
+    }//GEN-LAST:event_texto_productoMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       
+        //comparaciones donde a que caja de texto van los datos
+        if(donde==1){
+        texto_producto.setText(texto_producto.getText()+"0");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+"0");
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+"0");
+        }
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void texto_saborMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texto_saborMouseClicked
+        texto_sabor.setText("");
+        donde=2;
+    }//GEN-LAST:event_texto_saborMouseClicked
+
+    private void texto_saborActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_saborActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_texto_saborActionPerformed
+
+    private void texto_tamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texto_tamanoMouseClicked
+        texto_tamano.setText("");
+        donde=3;
+    }//GEN-LAST:event_texto_tamanoMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       //comparaciones donde a que caja de texto van los datos
+        if(donde==1){
+        texto_producto.setText(texto_producto.getText()+"1");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+"1");
+         buscardatos2(texto_sabor.getText());
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+"1");
+         buscardatos3(texto_tamano.getText());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       //comparaciones donde a que caja de texto van los datos
+        if(donde==1){
+        texto_producto.setText(texto_producto.getText()+"2");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+"2");
+         buscardatos2(texto_sabor.getText());
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+"2");
+         buscardatos3(texto_tamano.getText());
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+         if(donde==1){
+        texto_producto.setText(texto_producto.getText()+"3");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+"3");
+         buscardatos2(texto_sabor.getText());
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+"3");
+         buscardatos3(texto_tamano.getText());
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+         if(donde==1){
+        texto_producto.setText(texto_producto.getText()+"4");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+"4");
+         buscardatos2(texto_sabor.getText());
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+"4");
+          buscardatos3(texto_tamano.getText());
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+          if(donde==1){
+        texto_producto.setText(texto_producto.getText()+"5");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+"5");
+         buscardatos2(texto_sabor.getText());
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+"5");
+         buscardatos3(texto_tamano.getText());
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+          if(donde==1){
+        texto_producto.setText(texto_producto.getText()+"6");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+"6");
+         buscardatos2(texto_sabor.getText());
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+"6");
+         buscardatos3(texto_tamano.getText());
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+          if(donde==1){
+        texto_producto.setText(texto_producto.getText()+"7");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+"7");
+         buscardatos2(texto_sabor.getText());
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+"7");
+         buscardatos3(texto_tamano.getText());
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+          if(donde==1){
+        texto_producto.setText(texto_producto.getText()+"8");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+"8");
+         buscardatos2(texto_sabor.getText());
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+"8");
+         buscardatos3(texto_tamano.getText());
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+         if(donde==1){
+        texto_producto.setText(texto_producto.getText()+"9");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+"9");
+         buscardatos2(texto_sabor.getText());
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+"9");
+         buscardatos3(texto_tamano.getText());
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    
+    
+    
+    
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+          if(donde==1){
+        texto_producto.setText(texto_producto.getText()+".");
+        buscardatos1(texto_producto.getText());
+        }
+        if(donde==2){
+         texto_sabor.setText(texto_sabor.getText()+".");
+         buscardatos2(texto_sabor.getText());
+        }
+        if(donde==3){
+         texto_tamano.setText(texto_tamano.getText()+".");
+         buscardatos3(texto_tamano.getText());
+        } 
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void texto_productoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_texto_productoKeyPressed
+       
+    }//GEN-LAST:event_texto_productoKeyPressed
+
+    private void listaproductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaproductoMouseClicked
+        
+       
+        
+        txttodo.setText(listaproducto.getSelectedValue().toString());
+        
+        
+        
+    }//GEN-LAST:event_listaproductoMouseClicked
+
+    private void listasaborKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listasaborKeyPressed
+        // TODO add your handling code here:
+        
+       
+        
+        
+    }//GEN-LAST:event_listasaborKeyPressed
+
+    private void listatamanoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listatamanoKeyPressed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_listatamanoKeyPressed
+
+    private void listasaborMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listasaborMouseClicked
+        // TODO add your handling code here:
+        
+         txttodo.setText(txttodo.getText()+"   "+listasabor.getSelectedValue().toString());
+    }//GEN-LAST:event_listasaborMouseClicked
+
+    private void listatamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listatamanoMouseClicked
+        // TODO add your handling code here:
+        txttodo.setText(txttodo.getText()+"   "+listatamano.getSelectedValue().toString());
+    }//GEN-LAST:event_listatamanoMouseClicked
+
+    
+    
+    
+    
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+       
+        
+    }//GEN-LAST:event_jButton19ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -412,19 +911,19 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTextArea4;
     private javax.swing.JList listaproducto;
+    private javax.swing.JList listasabor;
+    private javax.swing.JList listatamano;
     private javax.swing.JTextField texto_producto;
     private javax.swing.JTextField texto_sabor;
     private javax.swing.JTextField texto_tamano;
+    private javax.swing.JTextArea txttodo;
     private javax.swing.JTextField varbolas;
     // End of variables declaration//GEN-END:variables
 
