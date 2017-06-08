@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package helados;
 
 import com.mysql.jdbc.Connection;
@@ -28,23 +23,6 @@ public void MySQLConnection(String user, String pass, String db_name) throws Exc
             Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-public void getValues(String table_name) {
-        try {
-            String Query = "SELECT * FROM " + table_name;
-            Statement st = Conexion.createStatement();
-            java.sql.ResultSet resultSet;
-            resultSet = st.executeQuery(Query);
- 
-           while (resultSet.next()) {
-                System.out.println("ID: " + resultSet.getInt("edad") + " "
-                        + "Nombre: " + resultSet.getInt("id_alumno") + " " + resultSet.getString("nombre"));
-            }
- 
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR AL INTENTAR CONECTARSE A LA BASE DE DATOS");
         }
     }
     
