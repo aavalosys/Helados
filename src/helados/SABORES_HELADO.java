@@ -1,7 +1,4 @@
-
 package helados;
-
-
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,13 +28,11 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         
         
        cargardatos();
-       buscardatos2("NO");
-       buscardatos3("NO");
+      buscardatos2("NO");
+      buscardatos3("NO");
        
   
     }
-    
-   
     
     int donde=0;// sirve para capturar donde estamos ingresando codigos
     
@@ -507,18 +502,16 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     
     public void cargardatos(){
     
-    
-        
         Registrar a = new Registrar();
-        
-        String ssql="select * from productos";
+        String ssql="select * from venta_helados.tipo_producto";
         ResultSet rs=a.mostrardetalle(ssql);
         modeloLista.clear();
-        String producto,id;
+        String producto;
+        int id;
        try {
            while(rs.next()){
-               producto=rs.getString("NombreProducto");
-               id=rs.getString("Id_Producto");
+               producto=rs.getString("nombre");
+               id=rs.getInt("id_tipo_producto");
                modeloLista.addElement(producto);       
            }
            
@@ -527,91 +520,65 @@ public class SABORES_HELADO extends javax.swing.JFrame {
        }
         
     
-    
     }
     
     
     
       public void buscardatos1(String id){
-    
-   Registrar a = new Registrar();
-        
-        String ssql="select * from productos where Id_Producto="+id;
+        Registrar a = new Registrar();
+        String ssql="select * from venta_helados.tipo_producto where id_tipo_producto="+id;
         ResultSet rs=a.mostrardetalle(ssql);
         modeloLista.clear();
-       try {
+        try {
            while(rs.next()){
-               modeloLista.addElement(rs.getString("NombreProducto"));       
+               modeloLista.addElement(rs.getString("nombre"));       
            }
-           
        } catch (SQLException ex) {
            Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
        }
        
         
-    
-    
     }
-      
-      
-      
-      
-      
-      
-      
-      
-      
+     
       public void buscardatos2(String id){
-    
-        
-         String ssql=null;
+        String ssql;
         Registrar a = new Registrar();
         if(id.equals("NO")){
-        ssql="select * from sabores";
+        ssql="select * from venta_helados.sabor";
         }else{
-       ssql="select * from sabores where Id_Sabor="+id;
+        ssql="select * from venta_helados.sabor where id_sabor="+id;
         }
         ResultSet rs=a.mostrardetalle(ssql);
         modeloLista2.clear();
-       try {
+        try {
            while(rs.next()){
-               modeloLista2.addElement(rs.getString("NombreSabor"));       
+               modeloLista2.addElement(rs.getString("nombre_sabor"));       
            }
-           
        } catch (SQLException ex) {
            Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
        }
-       
-        
-    
-    
+
     }
       
       
+  
        public void buscardatos3(String id){
-    
-        
-         String ssql=null;
+        String ssql;
         Registrar a = new Registrar();
         if(id.equals("NO")){
-        ssql="select * from tamano";
+        ssql="select * from venta_helados.tamano";
         }else{
-       ssql="select * from tamano where Id_Tamano="+id;
+        ssql="select * from venta_helados.tamano where id_tamano="+id;
         }
         ResultSet rs=a.mostrardetalle(ssql);
         modeloLista3.clear();
-       try {
+        try {
            while(rs.next()){
-               modeloLista3.addElement(rs.getString("Tamano"));       
-           }
-           
+               modeloLista3.addElement(rs.getString("nombre_tamano"));       
+           }  
        } catch (SQLException ex) {
            Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
        }
-       
-        
-    
-    
     }
     
     
