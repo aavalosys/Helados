@@ -27,7 +27,7 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         listatamano.setModel(modeloLista3);
         
         
-       cargardatos();
+      cargardatos();
       buscardatos2("NO");
       buscardatos3("NO");
        
@@ -102,6 +102,7 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         });
 
         txttodo.setColumns(20);
+        txttodo.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txttodo.setRows(5);
         jScrollPane4.setViewportView(txttodo);
 
@@ -145,17 +146,16 @@ public class SABORES_HELADO extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 14, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(varbolas))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 14, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -171,9 +171,9 @@ public class SABORES_HELADO extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         listatamano.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -493,8 +493,6 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton20MouseClicked
 
     private void texto_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_productoActionPerformed
-     
-      
        
         
     }//GEN-LAST:event_texto_productoActionPerformed
@@ -518,11 +516,8 @@ public class SABORES_HELADO extends javax.swing.JFrame {
        } catch (SQLException ex) {
            Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
        }
-        
-    
+         
     }
-    
-    
     
       public void buscardatos1(String id){
         Registrar a = new Registrar();
@@ -561,7 +556,6 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }
       
       
-  
        public void buscardatos3(String id){
         String ssql;
         Registrar a = new Registrar();
@@ -581,10 +575,7 @@ public class SABORES_HELADO extends javax.swing.JFrame {
        }
     }
     
-    
-    
-  
-    
+      
     private void texto_productoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texto_productoMouseClicked
        
         donde=1;
