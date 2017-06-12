@@ -49,7 +49,6 @@ public class Registrar {
          
     }
  
-    
         public String obfecha(){
              Date date = new Date();
             DateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
@@ -85,11 +84,7 @@ public class Registrar {
          
         
          
-         
-          
-         
-        
-    
+      
      public ResultSet mostrardetalle(String ssql){
     ResultSet rs=null;
         try {

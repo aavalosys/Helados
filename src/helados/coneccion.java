@@ -1,28 +1,24 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package helados;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.JOptionPane.*;
 public class coneccion {
-   public Connection con;
-   public Statement stmt;
-   public String servername="localhost";
-   public String puerto = "3306";
-   public String nombreBD="helados";
-   public String usuario ="root";
-   public String contra ="";
-   public String Url="jdbc:mysql://localhost:3306/"+nombreBD;
+public Connection con;
+public Statement stmt;
+public String servername="localhost";
+public String puerto = "3306";
+public String nombreBD="helados";
+public String usuario ="root";
+public String contra ="";
+public String Url="jdbc:mysql://localhost:3306/"+nombreBD;
    
    
    public String errString;
 
    public coneccion(){
        
-   
    }
    public String getconeccionUrl(){
        return Url;
