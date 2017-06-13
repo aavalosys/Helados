@@ -88,7 +88,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton20" min="-2" pref="166" max="-2" attributes="0"/>
+                          <Component id="btnconos" min="-2" pref="166" max="-2" attributes="0"/>
                           <Component id="jButton19" min="-2" pref="166" max="-2" attributes="0"/>
                           <Component id="jButton21" min="-2" pref="166" max="-2" attributes="0"/>
                           <Component id="jButton22" min="-2" pref="166" max="-2" attributes="0"/>
@@ -119,7 +119,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jButton7" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Component id="jButton20" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="btnconos" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -342,7 +342,7 @@
                 <Property name="text" type="java.lang.String" value="ENVASADO"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton20">
+            <Component class="javax.swing.JButton" name="btnconos">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
@@ -350,7 +350,7 @@
                 <Property name="text" type="java.lang.String" value="CONOS"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton20ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnconosActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton21">

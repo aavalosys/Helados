@@ -502,14 +502,14 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     
         //despliegue de datos en la tabla de productos
         Registrar a = new Registrar();
-        String ssql="select * from venta_helados.tipo_producto";
+        String ssql="select * from venta_helados.producto";
         ResultSet rs=a.mostrardetalle(ssql);
         modeloLista.clear();
         String producto;
         int id;
        try {
            while(rs.next()){
-               producto=rs.getString("nombre");
+               producto=rs.getString("nombre_producto");
                id=rs.getInt("id_tipo_producto");
                modeloLista.addElement(producto);       
            }
