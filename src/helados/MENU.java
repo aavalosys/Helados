@@ -520,6 +520,11 @@ public class MENU extends javax.swing.JFrame {
         this.setEnabled(true);
     }//GEN-LAST:event_jButton20ActionPerformed
 
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+        this.setEnabled(true);
+    }//GEN-LAST:event_jButton20ActionPerformed
+
     /**
      * @param args the command line arguments
      */
