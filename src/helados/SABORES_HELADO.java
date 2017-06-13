@@ -16,7 +16,7 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     public String des ;
     public SABORES_HELADO() {
         initComponents();
-        
+        //instancia de las listas 
         modeloLista = new DefaultListModel();
         listaproducto.setModel(modeloLista);
         
@@ -28,13 +28,13 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         
         
       cargardatos();
-      buscardatos2("NO");
-      buscardatos3("NO");
+      buscardatos2("vacio");
+      buscardatos3("vacio");
        
   
     }
     
-    int donde=0;// sirve para capturar donde estamos ingresando codigos
+    int cajadetexto=0;// sirve para capturar donde estamos ingresando codigos
     
 
     @SuppressWarnings("unchecked")
@@ -500,6 +500,7 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     
     public void cargardatos(){
     
+        //despliegue de datos en la tabla de productos
         Registrar a = new Registrar();
         String ssql="select * from venta_helados.tipo_producto";
         ResultSet rs=a.mostrardetalle(ssql);
@@ -520,6 +521,7 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }
     
       public void buscardatos1(String id){
+          //busqueda y despliegue de datos sobre  jlist de producto
         Registrar a = new Registrar();
         String ssql="select * from venta_helados.tipo_producto where id_tipo_producto="+id;
         ResultSet rs=a.mostrardetalle(ssql);
@@ -536,11 +538,12 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }
      
       public void buscardatos2(String id){
+          //busqueda y despliegue de datos sobre  jlist sabores
         String ssql;
         Registrar a = new Registrar();
-        if(id.equals("NO")){
+        if(id.equals("vacio")){//cuando los datos esten vacios nos desplega la lista de todo
         ssql="select * from venta_helados.sabor";
-        }else{
+        }else{ // de lo contrario se filtra segun el codigo 
         ssql="select * from venta_helados.sabor where id_sabor="+id;
         }
         ResultSet rs=a.mostrardetalle(ssql);
@@ -557,11 +560,12 @@ public class SABORES_HELADO extends javax.swing.JFrame {
       
       
        public void buscardatos3(String id){
+           //busqueda y despliegue de datos sobre  jlist de tamano
         String ssql;
         Registrar a = new Registrar();
-        if(id.equals("NO")){
+        if(id.equals("vacio")){ //cuando los datos esten vacios nos desplega la lista de todo
         ssql="select * from venta_helados.tamano";
-        }else{
+        }else{// de lo contrario se filtra segun el codigo
         ssql="select * from venta_helados.tamano where id_tamano="+id;
         }
         ResultSet rs=a.mostrardetalle(ssql);
@@ -574,33 +578,43 @@ public class SABORES_HELADO extends javax.swing.JFrame {
            Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
        }
     }
+       
+       
+      private void capturardatos(String valor){
+      
+       //comprobamos de que caja de texto vienen los datos para poder hacer las busquedas
+        if(cajadetexto==1){
+        texto_producto.setText(texto_producto.getText()+valor);
+        buscardatos1(texto_producto.getText());
+        }
+        if(cajadetexto==2){
+         texto_sabor.setText(texto_sabor.getText()+valor);
+         buscardatos2(texto_sabor.getText());
+        }
+        if(cajadetexto==3){
+         texto_tamano.setText(texto_tamano.getText()+valor);
+         buscardatos3(texto_tamano.getText());
+        }
+      
+      }
     
       
     private void texto_productoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texto_productoMouseClicked
-       
-        donde=1;
+      //limpiamos y le decimos en que caja de texto estamos escribiendo
+        cajadetexto=1;
     }//GEN-LAST:event_texto_productoMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
-        //comparaciones donde a que caja de texto van los datos
-        if(donde==1){
-        texto_producto.setText(texto_producto.getText()+"0");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+"0");
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+"0");
-        }
-        
+       //llamamos al metodo capturardatos y le decimos el numero que el usuario esta pulsando
+        capturardatos("0");
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void texto_saborMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texto_saborMouseClicked
+        //limpiamos y le decimos en que caja de texto estamos escribiendo
         texto_sabor.setText("");
-        donde=2;
+        cajadetexto=2;
+       
     }//GEN-LAST:event_texto_saborMouseClicked
 
     private void texto_saborActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_saborActionPerformed
@@ -608,145 +622,56 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }//GEN-LAST:event_texto_saborActionPerformed
 
     private void texto_tamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texto_tamanoMouseClicked
+        //limpiamos y le decimos en que caja de texto estamos escribiendo
         texto_tamano.setText("");
-        donde=3;
+        cajadetexto=3;
     }//GEN-LAST:event_texto_tamanoMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       //comparaciones donde a que caja de texto van los datos
-        if(donde==1){
-        texto_producto.setText(texto_producto.getText()+"1");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+"1");
-         buscardatos2(texto_sabor.getText());
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+"1");
-         buscardatos3(texto_tamano.getText());
-        }
+      //llamamos al metodo capturardatos y le decimos el numero que el usuario esta pulsando
+       
+        capturardatos("1");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       //comparaciones donde a que caja de texto van los datos
-        if(donde==1){
-        texto_producto.setText(texto_producto.getText()+"2");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+"2");
-         buscardatos2(texto_sabor.getText());
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+"2");
-         buscardatos3(texto_tamano.getText());
-        }
+      //llamamos al metodo capturardatos y le decimos el numero que el usuario esta pulsando
+        capturardatos("2");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-         if(donde==1){
-        texto_producto.setText(texto_producto.getText()+"3");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+"3");
-         buscardatos2(texto_sabor.getText());
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+"3");
-         buscardatos3(texto_tamano.getText());
-        }
+       //llamamos al metodo capturardatos y le decimos el numero que el usuario esta pulsando
+       
+        capturardatos("3");
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-         if(donde==1){
-        texto_producto.setText(texto_producto.getText()+"4");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+"4");
-         buscardatos2(texto_sabor.getText());
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+"4");
-          buscardatos3(texto_tamano.getText());
-        }
+       //llamamos al metodo capturardatos y le decimos el numero que el usuario esta pulsando
+       
+        capturardatos("4");
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-          if(donde==1){
-        texto_producto.setText(texto_producto.getText()+"5");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+"5");
-         buscardatos2(texto_sabor.getText());
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+"5");
-         buscardatos3(texto_tamano.getText());
-        }
+       capturardatos("5");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-          if(donde==1){
-        texto_producto.setText(texto_producto.getText()+"6");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+"6");
-         buscardatos2(texto_sabor.getText());
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+"6");
-         buscardatos3(texto_tamano.getText());
-        }
+          //llamamos al metodo capturardatos y le decimos el numero que el usuario esta pulsando
+       capturardatos("6");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-          if(donde==1){
-        texto_producto.setText(texto_producto.getText()+"7");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+"7");
-         buscardatos2(texto_sabor.getText());
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+"7");
-         buscardatos3(texto_tamano.getText());
-        }
+          //llamamos al metodo capturardatos y le decimos el numero que el usuario esta pulsando
+       capturardatos("7");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-          if(donde==1){
-        texto_producto.setText(texto_producto.getText()+"8");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+"8");
-         buscardatos2(texto_sabor.getText());
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+"8");
-         buscardatos3(texto_tamano.getText());
-        }
+        //llamamos al metodo capturardatos y le decimos el numero que el usuario esta pulsando
+        capturardatos("8");
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-         if(donde==1){
-        texto_producto.setText(texto_producto.getText()+"9");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+"9");
-         buscardatos2(texto_sabor.getText());
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+"9");
-         buscardatos3(texto_tamano.getText());
-        }
+         //llamamos al metodo capturardatos y le decimos el numero que el usuario esta pulsando
+       capturardatos("9");
     }//GEN-LAST:event_jButton12ActionPerformed
 
     
@@ -754,18 +679,8 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     
     
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-          if(donde==1){
-        texto_producto.setText(texto_producto.getText()+".");
-        buscardatos1(texto_producto.getText());
-        }
-        if(donde==2){
-         texto_sabor.setText(texto_sabor.getText()+".");
-         buscardatos2(texto_sabor.getText());
-        }
-        if(donde==3){
-         texto_tamano.setText(texto_tamano.getText()+".");
-         buscardatos3(texto_tamano.getText());
-        } 
+      //llamamos al metodo capturardatos y le decimos el numero que el usuario esta pulsando
+        capturardatos("."); 
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void texto_productoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_texto_productoKeyPressed
@@ -773,12 +688,8 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }//GEN-LAST:event_texto_productoKeyPressed
 
     private void listaproductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaproductoMouseClicked
-        
-       
-        
+        //seleccion de producto y envio al campo de texto correspondiente
         txttodo.setText(listaproducto.getSelectedValue().toString());
-        
-        
         
     }//GEN-LAST:event_listaproductoMouseClicked
 
@@ -797,13 +708,13 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }//GEN-LAST:event_listatamanoKeyPressed
 
     private void listasaborMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listasaborMouseClicked
-        // TODO add your handling code here:
         
+        //seleccion de sabor y envio al campo de texto correspondiente
          txttodo.setText(txttodo.getText()+"   "+listasabor.getSelectedValue().toString());
     }//GEN-LAST:event_listasaborMouseClicked
 
     private void listatamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listatamanoMouseClicked
-        // TODO add your handling code here:
+        //seleccion de tamano y envio al campo de texto correspondiente
         txttodo.setText(txttodo.getText()+"   "+listatamano.getSelectedValue().toString());
     }//GEN-LAST:event_listatamanoMouseClicked
 
