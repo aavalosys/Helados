@@ -21,11 +21,12 @@ public class MENU extends javax.swing.JFrame {
         tipo();
         //Guardo el Item Seleccionado de mi comboBox llamado tipoProducto.
         this.tipo = tipoProducto.getSelectedItem().toString();
+        jButton5.setEnabled(false);
        
     }
     
     //Los Tipos de Productos quedaron Quemados a Codigo deacuerdo a los Requerimientos. 
-    public void tipo(){
+   public void tipo(){
         // se Agregagon los Tipos de productos al ComboBox y aplica el evento itemstatechanged para cargar datos cada vez que se tena un cambio 
         
     tipoProducto.addItemListener(new ItemListener() {
@@ -388,6 +389,11 @@ public class MENU extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable2);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -530,7 +536,7 @@ public class MENU extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void cargardatos2(String opcion,String busqueda){
+     public void cargardatos2(String opcion,String busqueda){
         String ssql=null;
        jTable2.removeAll();
         //despliegue de datos en la tabla de productos
@@ -607,10 +613,7 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_txtbusquedaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Agregar_Catalogos NuevoCat = new Agregar_Catalogos();
-        NuevoCat.setVisible(true);
-        this.dispose();
+       
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -661,16 +664,33 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_txtbusquedaMouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-      int row=jTable2.getSelectedRow();
+
+        int row=jTable2.getSelectedRow();
         String id=(String) jTable2.getValueAt(row, 0);
-      
+        String ssql=null;
+        System.out.println(id);
+       if(id!=null){
         Registrar registrar= new Registrar();
-        String ssql="DELETE FROM tipo_producto WHERE id_tipo_producto="+id;
+        if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
+        ssql="DELETE FROM tipo_producto WHERE id_tipo_producto="+id;}
+        if(tipoProducto.getSelectedItem().toString().equals("Marca")){
+        ssql="DELETE FROM marca WHERE id_marcar="+id;
+        }
        String hola= registrar.Elimina(ssql);
        System.out.println(hola);
         cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
         cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+        jButton5.setEnabled(false);
+        
+        
+        }
+        
+        
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+       jButton5.setEnabled(true);
+    }//GEN-LAST:event_jTable2MouseClicked
 
     /**
      * @param args the command line arguments
