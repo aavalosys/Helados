@@ -1,11 +1,14 @@
 
 package helados;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 public class MENU extends javax.swing.JFrame {
   
@@ -13,6 +16,7 @@ public class MENU extends javax.swing.JFrame {
     
     public MENU() {
         initComponents();
+         
         tipoProducto.removeAllItems();
         tipo();
         //Guardo el Item Seleccionado de mi comboBox llamado tipoProducto.
@@ -22,10 +26,21 @@ public class MENU extends javax.swing.JFrame {
     
     //Los Tipos de Productos quedaron Quemados a Codigo deacuerdo a los Requerimientos. 
     public void tipo(){
-        // se Agregagon los Tipos de productos al ComboBox       
-                tipoProducto.addItem("PALETA");
-                tipoProducto.addItem("PASTEL");
-                tipoProducto.addItem("ENVASADO");
+        // se Agregagon los Tipos de productos al ComboBox y aplica el evento itemstatechanged para cargar datos cada vez que se tena un cambio 
+        
+    tipoProducto.addItemListener(new ItemListener() {
+    @Override
+    public void itemStateChanged(ItemEvent ie) {
+        cargardatos(tipoProducto.getSelectedItem().toString(),"");
+        cargardatos2(tipoProducto.getSelectedItem().toString(),"");
+        
+    }
+       });
+        
+                tipoProducto.addItem("Opciones");
+                tipoProducto.addItem("Tipo Producto");
+                tipoProducto.addItem("Tamaño");
+                tipoProducto.addItem("Marca");
            
           }
 
@@ -68,12 +83,13 @@ public class MENU extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtbusqueda = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         tipoProducto = new javax.swing.JComboBox<>();
+        lblprueba = new javax.swing.JLabel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
 
         jInternalFrame1.setVisible(true);
@@ -382,11 +398,21 @@ public class MENU extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField1.setText("... INGRESE PRODUCTO A BUSCAR ....");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtbusqueda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
+        txtbusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtbusquedaMouseClicked(evt);
+            }
+        });
+        txtbusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtbusquedaActionPerformed(evt);
+            }
+        });
+        txtbusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbusquedaKeyPressed(evt);
             }
         });
 
@@ -395,6 +421,11 @@ public class MENU extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton5.setText("ELIMINAR");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton6.setText("GUARDAR");
@@ -409,6 +440,11 @@ public class MENU extends javax.swing.JFrame {
         tipoProducto.setAutoscrolls(true);
         tipoProducto.setBorder(null);
         tipoProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tipoProducto.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                tipoProductoItemStateChanged(evt);
+            }
+        });
         tipoProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tipoProductoMouseClicked(evt);
@@ -419,6 +455,8 @@ public class MENU extends javax.swing.JFrame {
                 tipoProductoActionPerformed(evt);
             }
         });
+
+        lblprueba.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -443,8 +481,12 @@ public class MENU extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1)))
+                        .addComponent(txtbusqueda)))
                 .addGap(40, 40, 40))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(lblprueba)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,7 +495,7 @@ public class MENU extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtbusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
@@ -464,7 +506,9 @@ public class MENU extends javax.swing.JFrame {
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
+                .addGap(29, 29, 29)
+                .addComponent(lblprueba)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(372, Short.MAX_VALUE))
         );
@@ -486,6 +530,69 @@ public class MENU extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void cargardatos2(String opcion,String busqueda){
+        String ssql=null;
+       jTable2.removeAll();
+        //despliegue de datos en la tabla de productos
+        if(opcion.equals("Marca")){
+             DefaultTableModel modelotabla = new DefaultTableModel();
+       
+       jTable2.setModel(modelotabla);
+        modelotabla.addColumn("Codigo");
+        modelotabla.addColumn("Nombre");
+        modelotabla.addColumn("Descripcion");
+        ssql="select * from venta_helados.marca where nombre_marca LIKE '"+busqueda+"%' ";
+        
+        
+        Registrar a = new Registrar();
+        ResultSet rs=a.mostrardetalle(ssql);
+        
+       
+       try {
+           while(rs.next()){
+             
+             modelotabla.addRow(new Object[]{rs.getString("id_marcar"),rs.getString("nombre_marca"),rs.getString("descripcion_marca")});
+           }
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        }
+    
+   
+    }
+    
+    
+    
+     public void cargardatos(String opcion,String busqueda){
+        String ssql=null;
+        jTable2.removeAll();
+        //despliegue de datos en la tabla de productos
+        if(opcion.equals("Tipo Producto")){
+         DefaultTableModel modelotabla = new DefaultTableModel();
+       
+       jTable2.setModel(modelotabla);  
+        modelotabla.addColumn("Codigo");
+        modelotabla.addColumn("Nombre");
+        modelotabla.addColumn("Descripcion");
+        ssql="select * from venta_helados.tipo_producto where nombre_producto LIKE '"+busqueda+"%' ";
+        Registrar a = new Registrar();
+        ResultSet rs=a.mostrardetalle(ssql);
+       
+       try {
+           while(rs.next()){
+      modelotabla.addRow(new Object[]{rs.getString("id_tipo_producto"),rs.getString("nombre_producto"),rs.getString("descripcion_producto")});
+           }
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        }
+    
+   
+    }
+    
+    
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         
@@ -493,9 +600,11 @@ public class MENU extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtbusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbusquedaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+      
+        
+    }//GEN-LAST:event_txtbusquedaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -506,12 +615,19 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoProductoActionPerformed
-        // TODO add your handling code here:
+        // TODO add your andling code here:
+       
+        
          
     }//GEN-LAST:event_tipoProductoActionPerformed
 
+    
+  
+    
     private void tipoProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipoProductoMouseClicked
         // TODO add your handling code here:
+        
+       
         
     }//GEN-LAST:event_tipoProductoMouseClicked
 
@@ -523,6 +639,38 @@ public class MENU extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setEnabled(true);
     }//GEN-LAST:event_btnconosActionPerformed
+        
+  
+    
+    
+    private void tipoProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tipoProductoItemStateChanged
+        
+      
+        
+    }//GEN-LAST:event_tipoProductoItemStateChanged
+        
+          
+    private void txtbusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyPressed
+        
+         cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+          cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+    }//GEN-LAST:event_txtbusquedaKeyPressed
+
+    private void txtbusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusquedaMouseClicked
+       
+    }//GEN-LAST:event_txtbusquedaMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+      int row=jTable2.getSelectedRow();
+        String id=(String) jTable2.getValueAt(row, 0);
+      
+        Registrar registrar= new Registrar();
+        String ssql="DELETE FROM tipo_producto WHERE id_tipo_producto="+id;
+       String hola= registrar.Elimina(ssql);
+       System.out.println(hola);
+        cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+        cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -599,7 +747,8 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblprueba;
     private javax.swing.JComboBox<String> tipoProducto;
+    private javax.swing.JTextField txtbusqueda;
     // End of variables declaration//GEN-END:variables
 }
