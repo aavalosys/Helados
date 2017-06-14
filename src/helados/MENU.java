@@ -674,7 +674,7 @@ public class MENU extends javax.swing.JFrame {
         if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
         ssql="DELETE FROM tipo_producto WHERE id_tipo_producto="+id;}
         if(tipoProducto.getSelectedItem().toString().equals("Marca")){
-        ssql="DELETE FROM marca WHERE id_marcar="+id;
+        ssql="DELETE FROM `marca` WHERE id_marcar="+id;
         }
        String hola= registrar.Elimina(ssql);
        System.out.println(hola);
