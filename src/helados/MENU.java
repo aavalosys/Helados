@@ -13,12 +13,14 @@ import javax.swing.table.DefaultTableModel;
 public class MENU extends javax.swing.JFrame {
   
     String tipo;
-    
+   
+       
     public MENU() {
         initComponents();
          
         tipoProducto.removeAllItems();
         tipo();
+        
         //Guardo el Item Seleccionado de mi comboBox llamado tipoProducto.
         this.tipo = tipoProducto.getSelectedItem().toString();
         jButton5.setEnabled(false);
@@ -83,12 +85,12 @@ public class MENU extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        btnnuevo = new javax.swing.JButton();
         txtbusqueda = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnguardar = new javax.swing.JButton();
+        btncancelar = new javax.swing.JButton();
         tipoProducto = new javax.swing.JComboBox<>();
         lblprueba = new javax.swing.JLabel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
@@ -396,11 +398,11 @@ public class MENU extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable2);
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("NUEVO");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnnuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnnuevo.setText("NUEVO");
+        btnnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnnuevoActionPerformed(evt);
             }
         });
 
@@ -433,18 +435,27 @@ public class MENU extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton6.setText("GUARDAR");
+        btnguardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnguardar.setText("GUARDAR");
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardarActionPerformed(evt);
+            }
+        });
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton8.setText("CANCELAR");
+        btncancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btncancelar.setText("CANCELAR");
+        btncancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncancelarActionPerformed(evt);
+            }
+        });
 
         tipoProducto.setBackground(new java.awt.Color(240, 240, 240));
         tipoProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo" }));
         tipoProducto.setToolTipText("");
         tipoProducto.setAutoscrolls(true);
-        tipoProducto.setBorder(null);
         tipoProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tipoProducto.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -470,13 +481,13 @@ public class MENU extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(302, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
@@ -508,10 +519,10 @@ public class MENU extends javax.swing.JFrame {
                         .addComponent(tipoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnnuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(lblprueba)
                 .addGap(12, 12, 12)
@@ -571,13 +582,13 @@ public class MENU extends javax.swing.JFrame {
     
     
      public void cargardatos(String opcion,String busqueda){
-        String ssql=null;
+        
+         String ssql=null;
         jTable2.removeAll();
         //despliegue de datos en la tabla de productos
         if(opcion.equals("Tipo Producto")){
-         DefaultTableModel modelotabla = new DefaultTableModel();
-       
-       jTable2.setModel(modelotabla);  
+        DefaultTableModel modelotabla = new DefaultTableModel();
+        jTable2.setModel(modelotabla);  
         modelotabla.addColumn("Codigo");
         modelotabla.addColumn("Nombre");
         modelotabla.addColumn("Descripcion");
@@ -601,8 +612,8 @@ public class MENU extends javax.swing.JFrame {
     
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        
-     
+       
+       
         
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -612,10 +623,10 @@ public class MENU extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtbusquedaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
        
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnnuevoActionPerformed
 
     private void tipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoProductoActionPerformed
         // TODO add your andling code here:
@@ -655,8 +666,9 @@ public class MENU extends javax.swing.JFrame {
           
     private void txtbusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyPressed
         
-         cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
-          cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+         cargardatos(tipoProducto.getSelectedItem().toString(),"");
+          cargardatos2(tipoProducto.getSelectedItem().toString(),"");
+          
     }//GEN-LAST:event_txtbusquedaKeyPressed
 
     private void txtbusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusquedaMouseClicked
@@ -668,8 +680,8 @@ public class MENU extends javax.swing.JFrame {
         int row=jTable2.getSelectedRow();
         String id=(String) jTable2.getValueAt(row, 0);
         String ssql=null;
-        System.out.println(id);
-       if(id!=null){
+        
+        if(id!=null){
         Registrar registrar= new Registrar();
         if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
         ssql="DELETE FROM tipo_producto WHERE id_tipo_producto="+id;}
@@ -681,8 +693,6 @@ public class MENU extends javax.swing.JFrame {
         cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
         cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
         jButton5.setEnabled(false);
-        
-        
         }
         
         
@@ -691,6 +701,33 @@ public class MENU extends javax.swing.JFrame {
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
        jButton5.setEnabled(true);
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
+        txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
+        
+        cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+        cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+        
+    }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+        // TODO add your handling code here:
+        
+        int row=jTable2.getSelectedRow();
+        String id=(String) jTable2.getValueAt(row, 0);
+        String nombre=(String) jTable2.getValueAt(row, 1);
+        String descripcion=(String) jTable2.getValueAt(row, 2);
+        String ssql=null;
+        Registrar registrar= new Registrar();
+        if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
+        ssql="UPDATE `tipo_producto` SET nombre_producto='"+nombre+"', descripcion_producto='"+descripcion+"' WHERE id_tipo_producto="+id;}
+        if(tipoProducto.getSelectedItem().toString().equals("Marca")){
+        ssql="UPDATE marca SET  nombre_marca='"+nombre+"', descripcion_marca='"+descripcion+"' WHERE id_marcar="+id;
+        }
+        String er=registrar.Modificando(ssql);
+        System.out.println(er);
+        
+    }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -728,14 +765,16 @@ public class MENU extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnconos;
+    private javax.swing.JButton btnguardar;
+    private javax.swing.JButton btnnuevo;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
@@ -745,9 +784,7 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
