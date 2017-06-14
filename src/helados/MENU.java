@@ -64,11 +64,7 @@ public class MENU extends javax.swing.JFrame {
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
-<<<<<<< HEAD
         btnconos = new javax.swing.JButton();
-=======
-        Conos = new javax.swing.JButton();
->>>>>>> 01f19b8bebd21302e0caa76491d3aa40053a2d4f
         jButton21 = new javax.swing.JButton();
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
@@ -207,19 +203,11 @@ public class MENU extends javax.swing.JFrame {
         jButton19.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton19.setText("ENVASADO");
 
-<<<<<<< HEAD
         btnconos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnconos.setText("CONOS");
         btnconos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnconosActionPerformed(evt);
-=======
-        Conos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        Conos.setText("CONOS");
-        Conos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConosActionPerformed(evt);
->>>>>>> 01f19b8bebd21302e0caa76491d3aa40053a2d4f
             }
         });
 
@@ -330,11 +318,7 @@ public class MENU extends javax.swing.JFrame {
                     .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
                     .addComponent(btnconos, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
-                    .addComponent(Conos, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> 01f19b8bebd21302e0caa76491d3aa40053a2d4f
                     .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,11 +343,7 @@ public class MENU extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
                             .addComponent(btnconos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-=======
-                            .addComponent(Conos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
->>>>>>> 01f19b8bebd21302e0caa76491d3aa40053a2d4f
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -652,7 +632,6 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_tipoProductoMouseClicked
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {                                          
-<<<<<<< HEAD
 
     }                                         
 
@@ -692,16 +671,6 @@ public class MENU extends javax.swing.JFrame {
         cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
         cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
     }//GEN-LAST:event_jButton5ActionPerformed
-=======
-        // TODO add your handling code here:
-        this.setEnabled(true);
-    }                                         
-
-    private void ConosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConosActionPerformed
-        // TODO add your handling code here:
-        this.setEnabled(true);
-    }//GEN-LAST:event_ConosActionPerformed
->>>>>>> 01f19b8bebd21302e0caa76491d3aa40053a2d4f
 
     /**
      * @param args the command line arguments
@@ -739,11 +708,7 @@ public class MENU extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
     private javax.swing.JButton btnconos;
-=======
-    private javax.swing.JButton Conos;
->>>>>>> 01f19b8bebd21302e0caa76491d3aa40053a2d4f
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
