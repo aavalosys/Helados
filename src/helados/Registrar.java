@@ -39,6 +39,7 @@ public class Registrar {
         String error = null; 
         try{
                consulta.executeUpdate(Insertar);
+               error="Datos Guardados Con Exito";
             } catch(Exception e){
                 error=String.valueOf(e);
                  
@@ -121,7 +122,7 @@ public class Registrar {
       try {
           
           consulta.executeUpdate(SQL);
-          error="datos insertados";
+          error="Datos Modificados";
           
       } catch (SQLException ex) {
           error=String.valueOf(ex);
