@@ -51,6 +51,7 @@ public class MENU extends javax.swing.JFrame {
     public void itemStateChanged(ItemEvent ie) {
         cargardatos(tipoProducto.getSelectedItem().toString(),"");
         cargardatos2(tipoProducto.getSelectedItem().toString(),"");
+        txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
         jButton5.setEnabled(false);
         btnguardar.setEnabled(false);
     }
@@ -431,6 +432,11 @@ public class MENU extends javax.swing.JFrame {
 
         txtbusqueda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
+        txtbusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtbusquedaFocusGained(evt);
+            }
+        });
         txtbusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtbusquedaMouseClicked(evt);
@@ -901,6 +907,12 @@ public class MENU extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_txtbusquedaKeyReleased
+
+    private void txtbusquedaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbusquedaFocusGained
+       
+       txtbusqueda.setText("");
+        
+    }//GEN-LAST:event_txtbusquedaFocusGained
 
     /**
      * @param args the command line arguments
