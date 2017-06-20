@@ -36,6 +36,7 @@ public class MENU extends javax.swing.JFrame {
         
         //Guardo el Item Seleccionado de mi comboBox llamado tipoProducto.
         this.tipo = tipoProducto.getSelectedItem().toString();
+        txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
         jButton5.setEnabled(false);
         btnguardar.setEnabled(false);
        
@@ -444,6 +445,9 @@ public class MENU extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbusquedaKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbusquedaKeyReleased(evt);
+            }
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -786,14 +790,15 @@ public class MENU extends javax.swing.JFrame {
         
           
     private void txtbusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyPressed
-        
-          cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
-          cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+           
           
     }//GEN-LAST:event_txtbusquedaKeyPressed
 
     private void txtbusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusquedaMouseClicked
        
+        
+       
+        
     }//GEN-LAST:event_txtbusquedaMouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -887,6 +892,15 @@ public class MENU extends javax.swing.JFrame {
         btnguardar.setEnabled(false);
         
     }//GEN-LAST:event_btnguardarActionPerformed
+
+    private void txtbusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyReleased
+        // TODO add your handling code here:
+        
+          cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+          cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+        
+        
+    }//GEN-LAST:event_txtbusquedaKeyReleased
 
     /**
      * @param args the command line arguments
