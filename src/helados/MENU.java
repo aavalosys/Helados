@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import helados.Catalogo;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
 
@@ -36,6 +37,7 @@ public class MENU extends javax.swing.JFrame {
         //Guardo el Item Seleccionado de mi comboBox llamado tipoProducto.
         this.tipo = tipoProducto.getSelectedItem().toString();
         jButton5.setEnabled(false);
+        btnguardar.setEnabled(false);
        
     }
     
@@ -48,7 +50,8 @@ public class MENU extends javax.swing.JFrame {
     public void itemStateChanged(ItemEvent ie) {
         cargardatos(tipoProducto.getSelectedItem().toString(),"");
         cargardatos2(tipoProducto.getSelectedItem().toString(),"");
-        
+        jButton5.setEnabled(false);
+        btnguardar.setEnabled(false);
     }
        });
         
@@ -391,23 +394,31 @@ public class MENU extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("VENTAS", jPanel1);
 
+        jTable2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo", "Nombre", "Detalle"
             }
         ));
+        jTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable2.setRowHeight(26);
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable2MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(350);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(350);
+        }
 
         btnnuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnnuevo.setText("NUEVO");
@@ -555,11 +566,22 @@ public class MENU extends javax.swing.JFrame {
        jTable2.removeAll();
         //despliegue de datos en la tabla de productos
         if(opcion.equals("Marca")){
-        DefaultTableModel modelotabla = new DefaultTableModel();
+        DefaultTableModel modelotabla = new DefaultTableModel(){
+    public boolean isCellEditable(int rowIndex,int columnIndex){
+        return columnIndex!=0;
+    
+    
+    }
+};
         jTable2.setModel(modelotabla);  
         modelotabla.addColumn("Codigo");
         modelotabla.addColumn("Nombre");
         modelotabla.addColumn("Descripcion");
+        TableColumnModel columnModel = jTable2.getColumnModel();
+
+        columnModel.getColumn(0).setPreferredWidth(75);
+        columnModel.getColumn(1).setPreferredWidth(250);
+        columnModel.getColumn(2).setPreferredWidth(460);
         ssql="select * from venta_helados.marca where nombre_marca LIKE '"+busqueda+"%' ";
         Registrar a = new Registrar();
         ResultSet rs=a.mostrardetalle(ssql);
@@ -588,12 +610,23 @@ public class MENU extends javax.swing.JFrame {
        jTable2.removeAll();
         //despliegue de datos en la tabla de productos
         if(opcion.equals("Marca")){
-        DefaultTableModel modelotabla = new DefaultTableModel();
+          DefaultTableModel modelotabla = new DefaultTableModel(){
+    public boolean isCellEditable(int rowIndex,int columnIndex){
+        return columnIndex!=0;
+    
+    
+    }
+};
     
         jTable2.setModel(modelotabla);  
         modelotabla.addColumn("Codigo");
         modelotabla.addColumn("Nombre");
         modelotabla.addColumn("Descripcion");
+        TableColumnModel columnModel = jTable2.getColumnModel();
+
+        columnModel.getColumn(0).setPreferredWidth(75);
+        columnModel.getColumn(1).setPreferredWidth(250);
+        columnModel.getColumn(2).setPreferredWidth(460);
         ssql="select * from venta_helados.marca where nombre_marca LIKE '"+busqueda+"%' ";
         Registrar a = new Registrar();
         ResultSet rs=a.mostrardetalle(ssql);
@@ -622,11 +655,22 @@ public class MENU extends javax.swing.JFrame {
         jTable2.removeAll();
         //despliegue de datos en la tabla de productos
         if(opcion.equals("Tipo Producto")){
-        DefaultTableModel modelotabla = new DefaultTableModel();
+          DefaultTableModel modelotabla = new DefaultTableModel(){
+    public boolean isCellEditable(int rowIndex,int columnIndex){
+        return columnIndex!=0;
+    
+    
+    }
+};
         jTable2.setModel(modelotabla);  
         modelotabla.addColumn("Codigo");
         modelotabla.addColumn("Nombre");
         modelotabla.addColumn("Descripcion");
+        TableColumnModel columnModel = jTable2.getColumnModel();
+
+        columnModel.getColumn(0).setPreferredWidth(75);
+        columnModel.getColumn(1).setPreferredWidth(250);
+        columnModel.getColumn(2).setPreferredWidth(460);
         ssql="select * from venta_helados.tipo_producto where nombre_producto LIKE '"+busqueda+"%' ";
         Registrar a = new Registrar();
         ResultSet rs=a.mostrardetalle(ssql);
@@ -650,11 +694,22 @@ public class MENU extends javax.swing.JFrame {
         jTable2.removeAll();
         //despliegue de datos en la tabla de productos
         if(opcion.equals("Tipo Producto")){
-        DefaultTableModel modelotabla = new DefaultTableModel();
+          DefaultTableModel modelotabla = new DefaultTableModel(){
+    public boolean isCellEditable(int rowIndex,int columnIndex){
+        return columnIndex!=0;
+    
+    
+    }
+};
         jTable2.setModel(modelotabla);  
         modelotabla.addColumn("Codigo");
         modelotabla.addColumn("Nombre");
         modelotabla.addColumn("Descripcion");
+        TableColumnModel columnModel = jTable2.getColumnModel();
+
+        columnModel.getColumn(0).setPreferredWidth(75);
+        columnModel.getColumn(1).setPreferredWidth(250);
+        columnModel.getColumn(2).setPreferredWidth(460);
         ssql="select * from venta_helados.tipo_producto where nombre_producto LIKE '"+busqueda+"%' ";
         Registrar a = new Registrar();
         ResultSet rs=a.mostrardetalle(ssql);
@@ -690,6 +745,8 @@ public class MENU extends javax.swing.JFrame {
         nuevo2(tipoProducto.getSelectedItem().toString(),"");
         nuevo3(tipoProducto.getSelectedItem().toString(),"");
         hacer="Nuevo";
+        jButton5.setEnabled(false);
+        
     }//GEN-LAST:event_btnnuevoActionPerformed
 
     private void tipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoProductoActionPerformed
@@ -730,8 +787,8 @@ public class MENU extends javax.swing.JFrame {
           
     private void txtbusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyPressed
         
-         cargardatos(tipoProducto.getSelectedItem().toString(),"");
-          cargardatos2(tipoProducto.getSelectedItem().toString(),"");
+          cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+          cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
           
     }//GEN-LAST:event_txtbusquedaKeyPressed
 
@@ -744,7 +801,8 @@ public class MENU extends javax.swing.JFrame {
         int row=jTable2.getSelectedRow();
         String id=(String) jTable2.getValueAt(row, 0);
         String ssql=null;
-        
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Eliminar El dato Seleccionado?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
         if(id!=null){
         Registrar registrar= new Registrar();
         if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
@@ -752,19 +810,23 @@ public class MENU extends javax.swing.JFrame {
         if(tipoProducto.getSelectedItem().toString().equals("Marca")){
         ssql="DELETE FROM `marca` WHERE id_marcar="+id;
         }
-       String hola= registrar.Elimina(ssql);
+       String resultado= registrar.Elimina(ssql);
+       JOptionPane.showMessageDialog(null, resultado);
       
         cargardatos(tipoProducto.getSelectedItem().toString(),"");
         cargardatos2(tipoProducto.getSelectedItem().toString(),"");
         txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
         jButton5.setEnabled(false);
+        btnguardar.setEnabled(false);
+        
         }
         
-        
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
        jButton5.setEnabled(true);
+       btnguardar.setEnabled(true);
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
@@ -772,6 +834,7 @@ public class MENU extends javax.swing.JFrame {
         cargardatos(tipoProducto.getSelectedItem().toString(),"");
         cargardatos2(tipoProducto.getSelectedItem().toString(),"");
         jButton5.setEnabled(false);
+        btnguardar.setEnabled(false);
         hacer="Modificar";
         
     }//GEN-LAST:event_btncancelarActionPerformed
@@ -818,7 +881,10 @@ public class MENU extends javax.swing.JFrame {
            
         } 
         JOptionPane.showMessageDialog(null, resultado);
-        
+        cargardatos(tipoProducto.getSelectedItem().toString(),"");
+        cargardatos2(tipoProducto.getSelectedItem().toString(),"");
+        jButton5.setEnabled(false);
+        btnguardar.setEnabled(false);
         
     }//GEN-LAST:event_btnguardarActionPerformed
 

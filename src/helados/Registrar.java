@@ -106,6 +106,7 @@ public class Registrar {
        try{
            
            consulta.executeUpdate(ssql);
+           err="Dato Eliminado Con exito ";
        }
            catch(Exception ex){
            err=String.valueOf(ex);
