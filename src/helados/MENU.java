@@ -12,6 +12,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import helados.Catalogo;
 import java.util.List;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
@@ -21,6 +23,7 @@ public class MENU extends javax.swing.JFrame {
   
     String tipo;
     String hacer="Modificar";
+    String hacer2="Modificar";
    private List<Catalogo> catalogo;
    private CatalogoTabla modelo;
    
@@ -38,7 +41,10 @@ public class MENU extends javax.swing.JFrame {
         this.tipo = tipoProducto.getSelectedItem().toString();
         txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
         jButton5.setEnabled(false);
+        btneliminarp.setEnabled(false);
         btnguardar.setEnabled(false);
+        btnguardarp.setEnabled(false);
+        cargardatosproducto("");
        
     }
     
@@ -110,6 +116,15 @@ public class MENU extends javax.swing.JFrame {
         btncancelar = new javax.swing.JButton();
         tipoProducto = new javax.swing.JComboBox<>();
         jTabbedPane4 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtproductos = new javax.swing.JTable();
+        btneliminarp = new javax.swing.JButton();
+        btnguardarp = new javax.swing.JButton();
+        btncancelarp = new javax.swing.JButton();
+        btnnuevop2 = new javax.swing.JButton();
+        lblbuscarp = new javax.swing.JLabel();
+        txtbusquedap = new javax.swing.JTextField();
 
         jInternalFrame1.setVisible(true);
 
@@ -557,6 +572,132 @@ public class MENU extends javax.swing.JFrame {
         jTabbedPane5.addTab("BODEGA", jPanel7);
         jTabbedPane5.addTab("PRECIOS", jTabbedPane4);
 
+        jtproductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Nombre", "Descripcion", "Tipo", "Marca"
+            }
+        ));
+        jtproductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtproductosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jtproductos);
+        if (jtproductos.getColumnModel().getColumnCount() > 0) {
+            jtproductos.getColumnModel().getColumn(0).setPreferredWidth(10);
+        }
+
+        btneliminarp.setText("ELIMINAR");
+        btneliminarp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarpActionPerformed(evt);
+            }
+        });
+
+        btnguardarp.setText("GUARDAR");
+        btnguardarp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardarpActionPerformed(evt);
+            }
+        });
+
+        btncancelarp.setText("CANCELAR");
+        btncancelarp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncancelarpActionPerformed(evt);
+            }
+        });
+
+        btnnuevop2.setText("NUEVO");
+        btnnuevop2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnuevop2ActionPerformed(evt);
+            }
+        });
+
+        lblbuscarp.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblbuscarp.setText(" BUSCAR:");
+
+        txtbusquedap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtbusquedap.setText("... INGRESE PRODUCTO A BUSCAR ....");
+        txtbusquedap.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtbusquedapFocusGained(evt);
+            }
+        });
+        txtbusquedap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtbusquedapMouseClicked(evt);
+            }
+        });
+        txtbusquedap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbusquedapActionPerformed(evt);
+            }
+        });
+        txtbusquedap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbusquedapKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbusquedapKeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1053, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addComponent(btnnuevop2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(75, 75, 75)
+                                .addComponent(btneliminarp, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)
+                                .addComponent(btnguardarp, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(87, 87, 87)
+                                .addComponent(btncancelarp, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(lblbuscarp, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtbusquedap)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtbusquedap, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblbuscarp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btneliminarp, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnguardarp, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btncancelarp, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnnuevop2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
+        );
+
+        jTabbedPane5.addTab("PRODUCTOS", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -570,6 +711,256 @@ public class MENU extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoProductoActionPerformed
+        // TODO add your andling code here:
+    }//GEN-LAST:event_tipoProductoActionPerformed
+
+    private void tipoProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipoProductoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoProductoMouseClicked
+
+    private void tipoProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tipoProductoItemStateChanged
+
+    }//GEN-LAST:event_tipoProductoItemStateChanged
+
+    private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
+        txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
+        cargardatos(tipoProducto.getSelectedItem().toString(),"");
+        cargardatos2(tipoProducto.getSelectedItem().toString(),"");
+        jButton5.setEnabled(false);
+        btnguardar.setEnabled(false);
+        btnnuevo.setEnabled(true);
+        hacer="Modificar";
+    }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+        // TODO add your handling code here:
+        String resultado = null;
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Guardar Los Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            Registrar registrar= new Registrar();
+            String ssql=null;
+            int row=0;
+            if(hacer.equals("Modificar")){
+                row=jTable2.getSelectedRow();}else{
+                row=0;
+            }
+
+            String id=(String) jTable2.getValueAt(row, 0);
+            String nombre=(String) jTable2.getValueAt(row, 1);
+            String descripcion=(String) jTable2.getValueAt(row, 2);
+            if(hacer.equals("Modificar")){
+                if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
+                    ssql="UPDATE `tipo_producto` SET nombre_producto='"+nombre+"', descripcion_producto='"+descripcion+"' WHERE id_tipo_producto="+id;}
+                if(tipoProducto.getSelectedItem().toString().equals("Marca")){
+                    ssql="UPDATE marca SET  nombre_marca='"+nombre+"', descripcion_marca='"+descripcion+"' WHERE id_marcar="+id;
+                }
+                resultado=registrar.Modificando(ssql);
+            }
+            else{
+
+                if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
+                    ssql="INSERT INTO `tipo_producto`(`nombre_producto`, `descripcion_producto`) VALUES ('"+nombre+"','"+descripcion+"')";
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Marca")){
+                    ssql="INSERT INTO `marca`(`nombre_marca`, `descripcion_marca`) VALUES ('"+nombre+"','"+descripcion+"')";
+                }
+                resultado=registrar.R_Categoria(ssql);
+                hacer="Modificar";
+            }
+
+        }
+        else {
+
+        }
+       
+        JOptionPane.showMessageDialog(null, resultado);
+        cargardatos(tipoProducto.getSelectedItem().toString(),"");
+        cargardatos2(tipoProducto.getSelectedItem().toString(),"");
+        jButton5.setEnabled(false);
+        btnguardar.setEnabled(false);
+        btnnuevo.setEnabled(true);
+    }//GEN-LAST:event_btnguardarActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+        int row=jTable2.getSelectedRow();
+        String id=(String) jTable2.getValueAt(row, 0);
+        String ssql=null;
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Eliminar El dato Seleccionado?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            if(id!=null){
+                Registrar registrar= new Registrar();
+                if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
+                    ssql="DELETE FROM tipo_producto WHERE id_tipo_producto="+id;}
+                if(tipoProducto.getSelectedItem().toString().equals("Marca")){
+                    ssql="DELETE FROM `marca` WHERE id_marcar="+id;
+                }
+                String resultado= registrar.Elimina(ssql);
+                JOptionPane.showMessageDialog(null, resultado);
+
+                cargardatos(tipoProducto.getSelectedItem().toString(),"");
+                cargardatos2(tipoProducto.getSelectedItem().toString(),"");
+                txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
+                jButton5.setEnabled(false);
+                btnguardar.setEnabled(false);
+
+            }
+
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void txtbusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyReleased
+        // TODO add your handling code here:
+
+        cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+        cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
+    }//GEN-LAST:event_txtbusquedaKeyReleased
+
+    private void txtbusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyPressed
+
+    }//GEN-LAST:event_txtbusquedaKeyPressed
+
+    private void txtbusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusquedaActionPerformed
+
+    private void txtbusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusquedaMouseClicked
+
+    }//GEN-LAST:event_txtbusquedaMouseClicked
+
+    private void txtbusquedaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbusquedaFocusGained
+
+        txtbusqueda.setText("");
+    }//GEN-LAST:event_txtbusquedaFocusGained
+
+    private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
+        nuevo2(tipoProducto.getSelectedItem().toString(),"");
+        nuevo3(tipoProducto.getSelectedItem().toString(),"");
+        hacer="Nuevo";
+        jButton5.setEnabled(false);
+        btnnuevo.setEnabled(false);
+    }//GEN-LAST:event_btnnuevoActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        jButton5.setEnabled(true);
+        btnguardar.setEnabled(true);
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void btnconosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconosActionPerformed
+        // TODO add your handling code here:
+        this.setEnabled(true);
+    }//GEN-LAST:event_btnconosActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void btneliminarpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarpActionPerformed
+        
+        
+        int row=jtproductos.getSelectedRow();
+        String id=(String) jtproductos.getValueAt(row, 0);
+        String ssql=null;
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Eliminar El dato Seleccionado?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            if(id!=null){
+                Registrar registrar= new Registrar();
+                 ssql="DELETE FROM producto WHERE id_producto="+id;    
+                 String resultado= registrar.Elimina(ssql);
+                JOptionPane.showMessageDialog(null, resultado);
+                txtbusquedap.setText("... INGRESE PRODUCTO A BUSCAR ....");
+                cargardatosproducto("");
+                btneliminarp.setEnabled(false);
+                btnguardar.setEnabled(false);
+            }}
+        
+        
+    }//GEN-LAST:event_btneliminarpActionPerformed
+
+    private void btnguardarpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarpActionPerformed
+       
+       
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Guardar Los Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+        int row=jtproductos.getSelectedRow();
+        String id=(String) jtproductos.getValueAt(row, 0);
+        String nombre=(String) jtproductos.getValueAt(row, 1);
+        String descripcion=(String) jtproductos.getValueAt(row, 2);
+        Catalogo tipo=(Catalogo) jtproductos.getValueAt(row, 3);
+        Catalogo marca=(Catalogo) jtproductos.getValueAt(row, 4);
+        String ssql;
+        String resultado = null;
+      Registrar registrar=new Registrar();
+            
+            if(hacer2.equals("Modificar")){
+       ssql="UPDATE `producto` SET `nombre_producto`='"+nombre+"',`descripcion_producto`='"+descripcion+"',`id_marcar`="+marca.getId()+",`id_tipo_producto`="+tipo.getId()+" WHERE id_producto="+id;
+       resultado=registrar.Modificando(ssql);     
+            }else{
+           ssql="INSERT INTO `producto`( `nombre_producto`, `descripcion_producto`, `id_marcar`, `id_tipo_producto`) VALUES ('"+nombre+"','"+descripcion+"',"+marca.getId()+","+tipo.getId()+")";     
+            resultado=registrar.R_Categoria(ssql);
+            }
+        
+            JOptionPane.showMessageDialog(null, resultado);
+            cargardatosproducto("");
+            btneliminarp.setEnabled(false);
+            
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_btnguardarpActionPerformed
+
+    private void btncancelarpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarpActionPerformed
+       
+        
+       cargardatosproducto("");
+       txtbusquedap.setText("... INGRESE PRODUCTO A BUSCAR ....");
+       btneliminarp.setEnabled(false);
+       btnguardarp.setEnabled(false);
+       btnnuevop2.setEnabled(true);
+      
+        
+        
+    }//GEN-LAST:event_btncancelarpActionPerformed
+
+    private void btnnuevop2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevop2ActionPerformed
+        cargardatosproductoN("");
+        hacer2="Nuevo";
+        btnnuevop2.setEnabled(false);
+        btneliminarp.setEnabled(false);
+    }//GEN-LAST:event_btnnuevop2ActionPerformed
+
+    private void txtbusquedapFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbusquedapFocusGained
+        txtbusquedap.setText("");
+    }//GEN-LAST:event_txtbusquedapFocusGained
+
+    private void txtbusquedapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusquedapMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusquedapMouseClicked
+
+    private void txtbusquedapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbusquedapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusquedapActionPerformed
+
+    private void txtbusquedapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedapKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusquedapKeyPressed
+
+    private void txtbusquedapKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedapKeyReleased
+       cargardatosproducto(txtbusquedap.getText());
+    }//GEN-LAST:event_txtbusquedapKeyReleased
+
+    private void jtproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtproductosMouseClicked
+        
+        
+        btneliminarp.setEnabled(true);
+        btnguardarp.setEnabled(true);
+        
+        
+    }//GEN-LAST:event_jtproductosMouseClicked
 
      public void cargardatos2(String opcion,String busqueda){
         String ssql=null;
@@ -736,184 +1127,159 @@ public class MENU extends javax.swing.JFrame {
     
    
     }
-    
-    
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-       
-       
+     
+     
+     
+     public void cargardatosproducto(String busqueda){
         
-    }//GEN-LAST:event_jButton7ActionPerformed
+         String ssql=null;
+        jtproductos.removeAll();
+        //despliegue de datos en la tabla de productos
+        
+          DefaultTableModel modelotablap = new DefaultTableModel(){
+    public boolean isCellEditable(int rowIndex,int columnIndex){
+        return columnIndex!=0;
+    
+    
+    }
+};
+        jtproductos.setModel(modelotablap);  
+        modelotablap.addColumn("Codigo");
+        modelotablap.addColumn("Nombre");
+        modelotablap.addColumn("Descripcion");
+        modelotablap.addColumn("Tipo");
+        modelotablap.addColumn("Marca");
+        TableColumnModel columnModelp = jtproductos.getColumnModel();
+        
 
-    private void txtbusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbusquedaActionPerformed
-        // TODO add your handling code here:
+        columnModelp.getColumn(0).setPreferredWidth(75);
+        columnModelp.getColumn(1).setPreferredWidth(250);
+        columnModelp.getColumn(2).setPreferredWidth(350);
+        ssql="SELECT producto.id_producto,producto.nombre_producto, producto.descripcion_producto,tipo_producto.id_tipo_producto, tipo_producto.nombre_producto, marca.nombre_marca, marca.id_marcar FROM producto, tipo_producto, marca WHERE producto.id_tipo_producto=tipo_producto.id_tipo_producto AND marca.id_marcar=producto.id_marcar and producto.nombre_producto LIKE '"+busqueda+"%' ";
+        Registrar a = new Registrar();
+        ResultSet rs=a.mostrardetalle(ssql);
+       
+       try {
+           while(rs.next()){
+           Catalogo datos= new Catalogo(rs.getInt("tipo_producto.id_tipo_producto"),rs.getString("tipo_producto.nombre_producto"),"");    
+           Catalogo datos2= new Catalogo(rs.getInt("marca.id_marcar"),rs.getString("marca.nombre_marca"),""); 
+           modelotablap.addRow(new Object[]{rs.getString("id_producto"),rs.getString("nombre_producto"),rs.getString("descripcion_producto"), datos,datos2});
+        
       
+           }
+           columnModelp.getColumn(3).setCellEditor(new DefaultCellEditor(generateBox()));
+      columnModelp.getColumn(4).setCellEditor(new DefaultCellEditor(generateBoxm()));
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
+       }
         
-    }//GEN-LAST:event_txtbusquedaActionPerformed
-
-    private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
-        nuevo2(tipoProducto.getSelectedItem().toString(),"");
-        nuevo3(tipoProducto.getSelectedItem().toString(),"");
-        hacer="Nuevo";
-        jButton5.setEnabled(false);
-        
-    }//GEN-LAST:event_btnnuevoActionPerformed
-
-    private void tipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoProductoActionPerformed
-        // TODO add your andling code here:
-       
-        
-         
-    }//GEN-LAST:event_tipoProductoActionPerformed
-
     
+   
+    }
+    
+    public void cargardatosproductoN(String busqueda){
+        
+         String ssql=null;
+        jtproductos.removeAll();
+        //despliegue de datos en la tabla de productos
+        
+          DefaultTableModel modelotablap = new DefaultTableModel(){
+    public boolean isCellEditable(int rowIndex,int columnIndex){
+        return columnIndex!=0;
+    
+    
+    }
+};
+        jtproductos.setModel(modelotablap);  
+        modelotablap.addColumn("Codigo");
+        modelotablap.addColumn("Nombre");
+        modelotablap.addColumn("Descripcion");
+        modelotablap.addColumn("Tipo");
+        modelotablap.addColumn("Marca");
+        TableColumnModel columnModelp = jtproductos.getColumnModel();
+        columnModelp.getColumn(0).setPreferredWidth(75);
+        columnModelp.getColumn(1).setPreferredWidth(250);
+        columnModelp.getColumn(2).setPreferredWidth(350);
+        ssql="SELECT producto.id_producto,producto.nombre_producto, producto.descripcion_producto,tipo_producto.id_tipo_producto, tipo_producto.nombre_producto, marca.nombre_marca, marca.id_marcar FROM producto, tipo_producto, marca WHERE producto.id_tipo_producto=tipo_producto.id_tipo_producto AND marca.id_marcar=producto.id_marcar and producto.nombre_producto LIKE '"+busqueda+"%' ";
+        Registrar a = new Registrar();
+        ResultSet rs=a.mostrardetalle(ssql);
+        Catalogo datos= new Catalogo(0,"","");    
+        Catalogo datos2;
+        modelotablap.addRow(new Object[]{"","","",datos,null});
+       try {
+           while(rs.next()){
+           datos= new Catalogo(rs.getInt("tipo_producto.id_tipo_producto"),rs.getString("tipo_producto.nombre_producto"),"");    
+           datos2= new Catalogo(rs.getInt("marca.id_marcar"),rs.getString("marca.nombre_marca"),"");    
+           
+           modelotablap.addRow(new Object[]{rs.getString("id_producto"),rs.getString("nombre_producto"),rs.getString("descripcion_producto"), datos,datos2});
+      
+           }
+           columnModelp.getColumn(3).setCellEditor(new DefaultCellEditor(generateBox()));
+      columnModelp.getColumn(4).setCellEditor(new DefaultCellEditor(generateBoxm()));
+       } catch (SQLException ex) {
+           Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        
+    
+   
+    }
+     
+     private JComboBox generateBox()
+ {
+     JComboBox bx=null;
+    
+     try
+     {
+         String ssql="select * from tipo_producto";
+        Registrar a = new Registrar();
+        ResultSet rs=a.mostrardetalle(ssql);
+        bx=new JComboBox();
+         while(rs.next()){
+             Catalogo datos= new Catalogo(rs.getInt("id_tipo_producto"),rs.getString("nombre_producto"),"");
+             bx.addItem(datos);
+         }
+       
+     }catch(Exception x)
+     {
+         System.out.println(x.getMessage());
+     }
+             return bx;
+
+ }
+    
+      private JComboBox generateBoxm()
+ {
+     JComboBox bx=null;
+    
+     try
+     {
+         String ssql="select * from marca";
+        Registrar a = new Registrar();
+        ResultSet rs=a.mostrardetalle(ssql);
+        bx=new JComboBox();
+         while(rs.next()){
+             Catalogo datos= new Catalogo(rs.getInt("id_marcar"),rs.getString("nombre_marca"),"");
+             bx.addItem(datos);
+         }
+       
+     }catch(Exception x)
+     {
+         System.out.println(x.getMessage());
+     }
+             return bx;
+
+ }
   
     
-    private void tipoProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipoProductoMouseClicked
-        // TODO add your handling code here:
-        
-       
-        
-    }//GEN-LAST:event_tipoProductoMouseClicked
-
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {                                          
 
     }                                         
-
-    private void btnconosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconosActionPerformed
-        // TODO add your handling code here:
-        this.setEnabled(true);
-    }//GEN-LAST:event_btnconosActionPerformed
         
   
     
-    
-    private void tipoProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tipoProductoItemStateChanged
-        
-      
-        
-    }//GEN-LAST:event_tipoProductoItemStateChanged
-        
+            
           
-    private void txtbusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyPressed
-           
-          
-    }//GEN-LAST:event_txtbusquedaKeyPressed
-
-    private void txtbusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusquedaMouseClicked
-       
-        
-       
-        
-    }//GEN-LAST:event_txtbusquedaMouseClicked
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
-        int row=jTable2.getSelectedRow();
-        String id=(String) jTable2.getValueAt(row, 0);
-        String ssql=null;
-        int reply = JOptionPane.showConfirmDialog(null, "Desea Eliminar El dato Seleccionado?", "Advertencia", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-        if(id!=null){
-        Registrar registrar= new Registrar();
-        if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
-        ssql="DELETE FROM tipo_producto WHERE id_tipo_producto="+id;}
-        if(tipoProducto.getSelectedItem().toString().equals("Marca")){
-        ssql="DELETE FROM `marca` WHERE id_marcar="+id;
-        }
-       String resultado= registrar.Elimina(ssql);
-       JOptionPane.showMessageDialog(null, resultado);
-      
-        cargardatos(tipoProducto.getSelectedItem().toString(),"");
-        cargardatos2(tipoProducto.getSelectedItem().toString(),"");
-        txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
-        jButton5.setEnabled(false);
-        btnguardar.setEnabled(false);
-        
-        }
-        
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-       jButton5.setEnabled(true);
-       btnguardar.setEnabled(true);
-    }//GEN-LAST:event_jTable2MouseClicked
-
-    private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
-        txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
-        cargardatos(tipoProducto.getSelectedItem().toString(),"");
-        cargardatos2(tipoProducto.getSelectedItem().toString(),"");
-        jButton5.setEnabled(false);
-        btnguardar.setEnabled(false);
-        hacer="Modificar";
-        
-    }//GEN-LAST:event_btncancelarActionPerformed
-
-    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-        // TODO add your handling code here:
-        String resultado = null;
-        int reply = JOptionPane.showConfirmDialog(null, "Desea Guardar Los Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-        Registrar registrar= new Registrar();
-        String ssql=null;
-        int row=0;
-        if(hacer.equals("Modificar")){
-        row=jTable2.getSelectedRow();}else{
-        row=0;
-        }
-        
-        String id=(String) jTable2.getValueAt(row, 0);
-        String nombre=(String) jTable2.getValueAt(row, 1);
-        String descripcion=(String) jTable2.getValueAt(row, 2);
-        if(hacer.equals("Modificar")){
-        if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
-        ssql="UPDATE `tipo_producto` SET nombre_producto='"+nombre+"', descripcion_producto='"+descripcion+"' WHERE id_tipo_producto="+id;}
-        if(tipoProducto.getSelectedItem().toString().equals("Marca")){
-        ssql="UPDATE marca SET  nombre_marca='"+nombre+"', descripcion_marca='"+descripcion+"' WHERE id_marcar="+id;
-        }
-        resultado=registrar.Modificando(ssql);
-        }
-        else{
-           
-        if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
-        ssql="INSERT INTO `tipo_producto`(`nombre_producto`, `descripcion_producto`) VALUES ('"+nombre+"','"+descripcion+"')";
-        }
-        if(tipoProducto.getSelectedItem().toString().equals("Marca")){
-        ssql="INSERT INTO `marca`(`nombre_marca`, `descripcion_marca`) VALUES ('"+nombre+"','"+descripcion+"')";    
-        }
-        resultado=registrar.R_Categoria(ssql);
-        hacer="Modificar";
-        }
-        
-         }
-        else {
-          
-           
-        } 
-        JOptionPane.showMessageDialog(null, resultado);
-        cargardatos(tipoProducto.getSelectedItem().toString(),"");
-        cargardatos2(tipoProducto.getSelectedItem().toString(),"");
-        jButton5.setEnabled(false);
-        btnguardar.setEnabled(false);
-        
-    }//GEN-LAST:event_btnguardarActionPerformed
-
-    private void txtbusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyReleased
-        // TODO add your handling code here:
-        
-          cargardatos(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
-          cargardatos2(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText());
-        
-        
-    }//GEN-LAST:event_txtbusquedaKeyReleased
-
-    private void txtbusquedaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbusquedaFocusGained
-       
-       txtbusqueda.setText("");
-        
-    }//GEN-LAST:event_txtbusquedaFocusGained
-
     /**
      * @param args the command line arguments
      */
@@ -951,9 +1317,13 @@ public class MENU extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancelar;
+    private javax.swing.JButton btncancelarp;
     private javax.swing.JButton btnconos;
+    private javax.swing.JButton btneliminarp;
     private javax.swing.JButton btnguardar;
+    private javax.swing.JButton btnguardarp;
     private javax.swing.JButton btnnuevo;
+    private javax.swing.JButton btnnuevop2;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -980,16 +1350,21 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jtproductos;
+    private javax.swing.JLabel lblbuscarp;
     private javax.swing.JComboBox<String> tipoProducto;
     private javax.swing.JTextField txtbusqueda;
+    private javax.swing.JTextField txtbusquedap;
     // End of variables declaration//GEN-END:variables
 }

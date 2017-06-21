@@ -29,6 +29,7 @@ public class Registrar {
         conex = con.conectar();
         try {
             consulta = conex.createStatement();
+          
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,6 +41,7 @@ public class Registrar {
         try{
                consulta.executeUpdate(Insertar);
                error="Datos Guardados Con Exito";
+               
             } catch(Exception e){
                 error=String.valueOf(e);
                  
@@ -93,6 +95,7 @@ public class Registrar {
             Connection cn = sql.conectar();
             Statement st= cn.createStatement();
             rs = st.executeQuery(ssql);
+            
         } catch (SQLException ex) {
             Logger.getLogger(coneccion.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -107,10 +110,12 @@ public class Registrar {
            
            consulta.executeUpdate(ssql);
            err="Dato Eliminado Con exito ";
+           
        }
            catch(Exception ex){
            err=String.valueOf(ex);
            }
+       
        return err;
            }
       
@@ -124,6 +129,7 @@ public class Registrar {
           
           consulta.executeUpdate(SQL);
           error="Datos Modificados";
+         
           
       } catch (SQLException ex) {
           error=String.valueOf(ex);

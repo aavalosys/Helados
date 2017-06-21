@@ -15,12 +15,14 @@ public class Catalogo {
    
     
   public  Catalogo(int id, String nombre, String detalle){
-      
       this.id=id;
       this.nombre=nombre;
       this.detalle=detalle;
+      
          
     }
+
+   
 /**
      * @return the id
      */
@@ -64,7 +66,10 @@ public class Catalogo {
     }
     
     
-       
+    public String toString()
+    {
+     return nombre;
+    }   
     
     
     
