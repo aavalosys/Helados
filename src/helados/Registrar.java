@@ -1,9 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package helados;
-import java.io.File;
 import helados.coneccion;
 import java.sql.*;
 import java.text.DateFormat;
@@ -53,7 +48,7 @@ public class Registrar {
     }
  
         public String obfecha(){
-             Date date = new Date();
+            Date date = new Date();
             DateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
             System.out.println("Hora y fecha: "+hourdateFormat.format(date));
             String fecha=null;
