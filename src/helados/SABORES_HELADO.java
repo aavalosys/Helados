@@ -14,6 +14,10 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     DefaultListModel modeloLista2 = new DefaultListModel(); 
     DefaultListModel modeloLista3 = new DefaultListModel();
     public String des ;
+      MENU menu= new MENU();
+     int v=MENU.valor;
+     
+     
     public SABORES_HELADO() {
         initComponents();
         //instancia de las listas 
@@ -26,10 +30,9 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         modeloLista3 = new DefaultListModel();
         listatamano.setModel(modeloLista3);
         
-        
-      cargardatos();
-      buscardatos2("vacio");
-      buscardatos3("vacio");
+        txttodo.setEditable(false);
+      buscardatos1("vacio");
+      
        
   
     }
@@ -46,10 +49,10 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         jButton18 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         txttodo = new javax.swing.JTextArea();
-        jButton19 = new javax.swing.JButton();
+        btncance = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
         varbolas = new javax.swing.JTextField();
-        jButton22 = new javax.swing.JButton();
+        btnaceptar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listatamano = new javax.swing.JList();
@@ -75,7 +78,7 @@ public class SABORES_HELADO extends javax.swing.JFrame {
 
         jButton6.setText("PALETA");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
@@ -107,11 +110,11 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         txttodo.setRows(5);
         jScrollPane4.setViewportView(txttodo);
 
-        jButton19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton19.setText("CANCELAR");
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
+        btncance.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btncance.setText("CANCELAR");
+        btncance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                btncanceActionPerformed(evt);
             }
         });
 
@@ -135,8 +138,13 @@ public class SABORES_HELADO extends javax.swing.JFrame {
             }
         });
 
-        jButton22.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton22.setText("OK - REGRESAR");
+        btnaceptar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnaceptar.setText("OK - REGRESAR");
+        btnaceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -163,8 +171,8 @@ public class SABORES_HELADO extends javax.swing.JFrame {
                         .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(varbolas, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
-                    .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btncance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnaceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -180,9 +188,9 @@ public class SABORES_HELADO extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btncance, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -495,7 +503,7 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }//GEN-LAST:event_texto_productoFocusGained
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-    varbolas.setText("0");        // TODO add your handling code here:
+    varbolas.setText("1");        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
@@ -509,20 +517,25 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }//GEN-LAST:event_texto_productoActionPerformed
 
     
-    public void cargardatos(){
+    public void buscardatos1(String id2){
     
         //despliegue de datos en la tabla de productos
         Registrar a = new Registrar();
-        String ssql="select * from venta_helados.producto";
+        String ssql;
+        if(id2.equals("vacio")){
+       ssql="SELECT * FROM `registro_producto`,producto WHERE registro_producto.id_producto=producto.id_producto AND producto.id_tipo_producto="+v+" GROUP BY producto.id_producto";}
+        else{
+         ssql="SELECT * FROM `registro_producto`,producto WHERE registro_producto.id_producto=producto.id_producto AND producto.id_tipo_producto="+v+" and producto.id_producto="+id2+" GROUP BY producto.id_producto";
+        }
         ResultSet rs=a.mostrardetalle(ssql);
         modeloLista.clear();
         String producto;
         int id;
        try {
            while(rs.next()){
-               producto=rs.getString("nombre_producto");
-               id=rs.getInt("id_producto");
-               modeloLista.addElement(id+" - "+producto);       
+               Rproductos datos= new Rproductos(rs.getInt("id_producto"),rs.getString("producto.nombre_producto"));
+             
+               modeloLista.addElement(datos);       
            }
            
        } catch (SQLException ex) {
@@ -531,37 +544,29 @@ public class SABORES_HELADO extends javax.swing.JFrame {
          
     }
     
-      public void buscardatos1(String id){
-          //busqueda y despliegue de datos sobre  jlist de producto
-        Registrar a = new Registrar();
-        String ssql="select * from venta_helados.tipo_producto where id_tipo_producto="+id;
-        ResultSet rs=a.mostrardetalle(ssql);
-        modeloLista.clear();
-        try {
-           while(rs.next()){
-               modeloLista.addElement(rs.getString("nombre"));       
-           }
-       } catch (SQLException ex) {
-           Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       
-        
-    }
+      
      
-      public void buscardatos2(String id){
+      public void buscardatos2(String id,String idt){
           //busqueda y despliegue de datos sobre  jlist sabores
         String ssql;
         Registrar a = new Registrar();
-        if(id.equals("vacio")){//cuando los datos esten vacios nos desplega la lista de todo
-        ssql="select * from venta_helados.sabor";
-        }else{ // de lo contrario se filtra segun el codigo 
-        ssql="select * from venta_helados.sabor where id_sabor="+id;
-        }
+        ssql="select * from venta_helados.registro_producto where id_producto="+id;
+        
         ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs2;
         modeloLista2.clear();
         try {
+            String ssql2;
+            
            while(rs.next()){
-               modeloLista2.addElement(rs.getString("nombre_sabor"));       
+              if(idt.equals("vacio")){
+               ssql2="select * from atributo where num_atributo=1 and id_atributo="+rs.getInt("id_atributo");
+              }else{
+              ssql2="select * from atributo where num_atributo=1 and id_atributo="+rs.getInt("id_atributo")+" and id_atributo="+idt;
+              }
+               rs2=a.mostrardetalle(ssql2);
+               if(rs2.next()){
+              modeloLista2.addElement(rs2.getString("id_atributo")+" - "+rs2.getString("descripcion_atributo"));}       
            }
        } catch (SQLException ex) {
            Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
@@ -570,25 +575,36 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }
       
       
-       public void buscardatos3(String id){
-           //busqueda y despliegue de datos sobre  jlist de tamano
+      public void buscardatos3(String id,String idt){
+          //busqueda y despliegue de datos sobre  jlist sabores
         String ssql;
         Registrar a = new Registrar();
-        if(id.equals("vacio")){ //cuando los datos esten vacios nos desplega la lista de todo
-        ssql="select * from venta_helados.tamano";
-        }else{// de lo contrario se filtra segun el codigo
-        ssql="select * from venta_helados.tamano where id_tamano="+id;
-        }
+        ssql="select * from venta_helados.registro_producto where id_producto="+id;
+        
         ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs2;
         modeloLista3.clear();
         try {
+            String ssql2;
+            
            while(rs.next()){
-               modeloLista3.addElement(rs.getString("nombre_tamano"));       
-           }  
+              if(idt.equals("vacio")){
+               ssql2="select * from atributo where num_atributo=2 and id_atributo="+rs.getInt("id_atributo");
+              }else{
+              ssql2="select * from atributo where num_atributo=2 and id_atributo="+rs.getInt("id_atributo")+" and id_atributo="+idt;
+              }
+               rs2=a.mostrardetalle(ssql2);
+               if(rs2.next()){
+              modeloLista3.addElement(rs2.getString("id_atributo")+" - "+rs2.getString("descripcion_atributo"));}       
+           }
        } catch (SQLException ex) {
            Logger.getLogger(SABORES_HELADO.class.getName()).log(Level.SEVERE, null, ex);
        }
+
     }
+      
+      
+       
        
        
       private void capturardatos(String valor){
@@ -600,11 +616,16 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         }
         if(cajadetexto==2){
          texto_sabor.setText(texto_sabor.getText()+valor);
-         buscardatos2(texto_sabor.getText());
+         Rproductos dato=(Rproductos) listaproducto.getSelectedValue();
+      
+        buscardatos2(String.valueOf(dato.getId()),texto_sabor.getText());
+        
         }
         if(cajadetexto==3){
          texto_tamano.setText(texto_tamano.getText()+valor);
-         buscardatos3(texto_tamano.getText());
+         Rproductos dato=(Rproductos) listaproducto.getSelectedValue();
+         buscardatos3(String.valueOf(dato.getId()),texto_tamano.getText());
+         
         }
       
       }
@@ -623,8 +644,11 @@ public class SABORES_HELADO extends javax.swing.JFrame {
 
     private void texto_saborMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texto_saborMouseClicked
         //limpiamos y le decimos en que caja de texto estamos escribiendo
+        
         texto_sabor.setText("");
         cajadetexto=2;
+        Rproductos dato=(Rproductos) listaproducto.getSelectedValue();
+        buscardatos2(String.valueOf(dato.getId()),"vacio");
        
     }//GEN-LAST:event_texto_saborMouseClicked
 
@@ -694,7 +718,10 @@ public class SABORES_HELADO extends javax.swing.JFrame {
 
     private void listaproductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaproductoMouseClicked
         //seleccion de producto y envio al campo de texto correspondiente
-        txttodo.setText(listaproducto.getSelectedValue().toString());
+       Rproductos dato=(Rproductos) listaproducto.getSelectedValue();
+      
+       buscardatos2(String.valueOf(dato.getId()),"vacio");
+       buscardatos3(String.valueOf(dato.getId()),"vacio");
         
     }//GEN-LAST:event_listaproductoMouseClicked
 
@@ -716,11 +743,13 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     
     
     
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+    private void btncanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncanceActionPerformed
         // TODO add your handling code here:
-       
+       menu.setVisible(true);
+       menu.setEnabled(true);
+       this.dispose();
         
-    }//GEN-LAST:event_jButton19ActionPerformed
+    }//GEN-LAST:event_btncanceActionPerformed
 
     private void listatamanoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listatamanoKeyPressed
         // TODO add your handling code here:
@@ -737,6 +766,12 @@ public class SABORES_HELADO extends javax.swing.JFrame {
         texto_tamano.setText("");
         cajadetexto=3;
     }//GEN-LAST:event_texto_tamanoMouseClicked
+
+    private void btnaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaceptarActionPerformed
+      menu.setVisible(true);
+       menu.setEnabled(true);
+       this.dispose();
+    }//GEN-LAST:event_btnaceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -774,15 +809,15 @@ public class SABORES_HELADO extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnaceptar;
+    private javax.swing.JButton btncance;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

@@ -26,6 +26,7 @@ public class MENU extends javax.swing.JFrame {
     String hacer2="Modificar";
    private List<Catalogo> catalogo;
    private CatalogoTabla modelo;
+   public static int valor=0;
    
    
    
@@ -81,11 +82,11 @@ public class MENU extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
+        btnpaletas = new javax.swing.JButton();
+        btnbebidas = new javax.swing.JButton();
+        btncasa = new javax.swing.JButton();
+        btnpasteles = new javax.swing.JButton();
+        btnenvasados = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -133,7 +134,7 @@ public class MENU extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        tipoProducto = new javax.swing.JComboBox<String>();
+        tipoProducto = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         txtbusqueda = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -160,25 +161,45 @@ public class MENU extends javax.swing.JFrame {
 
         jTabbedPane5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton7.setText("PALETAS");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnpaletas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnpaletas.setText("PALETAS");
+        btnpaletas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnpaletasActionPerformed(evt);
             }
         });
 
-        jButton12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton12.setText("BEBIDAS");
+        btnbebidas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnbebidas.setText("BEBIDAS");
+        btnbebidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbebidasActionPerformed(evt);
+            }
+        });
 
-        jButton16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton16.setText("PARA LA CASA");
+        btncasa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btncasa.setText("PARA LA CASA");
+        btncasa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncasaActionPerformed(evt);
+            }
+        });
 
-        jButton17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton17.setText("PASTELES");
+        btnpasteles.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnpasteles.setText("PASTELES");
+        btnpasteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpastelesActionPerformed(evt);
+            }
+        });
 
-        jButton19.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton19.setText("ENVASADO");
+        btnenvasados.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnenvasados.setText("ENVASADO");
+        btnenvasados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnenvasadosActionPerformed(evt);
+            }
+        });
 
         jButton25.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton25.setText("PROMOCIÓN");
@@ -388,12 +409,12 @@ public class MENU extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnpaletas, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnpasteles, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnbebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btncasa, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnenvasados, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
@@ -426,20 +447,20 @@ public class MENU extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnpaletas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnconos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnpasteles, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(13, 13, 13)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btncasa, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnbebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(23, 23, 23)
-                                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnenvasados, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -808,7 +829,7 @@ public class MENU extends javax.swing.JFrame {
 
         tipoProducto.setBackground(new java.awt.Color(240, 240, 240));
         tipoProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tipoProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo" }));
+        tipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo" }));
         tipoProducto.setToolTipText("");
         tipoProducto.setAutoscrolls(true);
         tipoProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1038,15 +1059,17 @@ public class MENU extends javax.swing.JFrame {
                     ssql="UPDATE roll SET  tag_rol='"+nombre+"', descripcion_rol='"+descripcion+"' WHERE id_rol="+id;
                 }
                 if(tipoProducto.getSelectedItem().toString().equals("Atributos")){
-                    ssql="UPDATE atributo SET  nombre_atributo='"+nombre+"', descripcion_atributo='"+descripcion+"' WHERE id_atributo="+id;
+                    String tag=(String) jTable2.getValueAt(row, 3);
+                    ssql="UPDATE atributo SET  nombre_atributo='"+nombre+"', descripcion_atributo='"+descripcion+"', num_atributo='"+tag+"' WHERE id_atributo="+id;
                 }
                 if(tipoProducto.getSelectedItem().toString().equals("Tipo Documento")){
                     String tag=(String) jTable2.getValueAt(row, 3);
-                    ssql="UPDATE tipo SET  tipo='"+nombre+"', describe_tipo='"+descripcion+"', tag_tipo='"+tag+"' WHERE id_atributo="+id;
+                    ssql="UPDATE tipo SET  tipo='"+nombre+"', describe_tipo='"+descripcion+"', tag_tipo='"+tag+"' WHERE id_tipo="+id;
                 }
                 if(tipoProducto.getSelectedItem().toString().equals("Clases")){
                     String tag=(String) jTable2.getValueAt(row, 3);
-                    ssql="UPDATE clase SET  tag_clase='"+nombre+"', descripción_clase='"+descripcion+"', porciento_clase='"+tag+"' WHERE id_clase="+id;
+                    String por=(String) jTable2.getValueAt(row, 4);
+                    ssql="UPDATE clase SET  tag_clase='"+nombre+"', clase='"+descripcion+"', descripción_clase='"+tag+"', porciento_clase='"+por+"' WHERE id_clase="+id;
                 }
                 resultado=registrar.Modificando(ssql);
             }
@@ -1062,7 +1085,8 @@ public class MENU extends javax.swing.JFrame {
                     ssql="INSERT INTO `roll`(`tag_rol`, `descripcion_rol`) VALUES ('"+nombre+"','"+descripcion+"')";
                 }
                 if(tipoProducto.getSelectedItem().toString().equals("Atributos")){
-                    ssql="INSERT INTO `atributo`(`nombre_atributo`, `descripcion_atributo`) VALUES ('"+nombre+"','"+descripcion+"')";
+                    String tag=(String) jTable2.getValueAt(row, 3);
+                    ssql="INSERT INTO `atributo`(`nombre_atributo`, `descripcion_atributo`,num_atributo) VALUES ('"+nombre+"','"+descripcion+"','"+tag+"')";
                 }
                 if(tipoProducto.getSelectedItem().toString().equals("Tipo Documento")){
                     String tag=(String) jTable2.getValueAt(row, 3);
@@ -1070,7 +1094,8 @@ public class MENU extends javax.swing.JFrame {
                 }
                 if(tipoProducto.getSelectedItem().toString().equals("Clases")){
                     String tag=(String) jTable2.getValueAt(row, 3);
-                    ssql="INSERT INTO `clase`(`tag_clase`, `descripción_clase`, `porciento_clase`) VALUES ('"+nombre+"','"+descripcion+"','"+tag+"')";
+                    String por=(String) jTable2.getValueAt(row, 4);
+                    ssql="INSERT INTO `clase`(`tag_clase`, clase ,`descripción_clase`, `porciento_clase`) VALUES ('"+nombre+"','"+descripcion+"','"+tag+"','"+por+"')";
                 }
                 resultado=registrar.R_Categoria(ssql);
                 hacer="Modificar";
@@ -1164,9 +1189,12 @@ public class MENU extends javax.swing.JFrame {
         this.setEnabled(true);
     }//GEN-LAST:event_btnconosActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void btnpaletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpaletasActionPerformed
+       valor=1; 
+       SABORES_HELADO ventana= new SABORES_HELADO();
+       ventana.setVisible(true);
+       this.setEnabled(false);
+    }//GEN-LAST:event_btnpaletasActionPerformed
 
     private void txtbusquedapFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbusquedapFocusGained
         txtbusquedap.setText("");
@@ -1262,6 +1290,34 @@ public class MENU extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btncancelarp2ActionPerformed
 
+    private void btnpastelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpastelesActionPerformed
+       valor=2; 
+       SABORES_HELADO ventana= new SABORES_HELADO();
+       ventana.setVisible(true);
+       this.setEnabled(false);
+    }//GEN-LAST:event_btnpastelesActionPerformed
+
+    private void btncasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncasaActionPerformed
+      valor=3; 
+       SABORES_HELADO ventana= new SABORES_HELADO();
+       ventana.setVisible(true);
+       this.setEnabled(false);
+    }//GEN-LAST:event_btncasaActionPerformed
+
+    private void btnbebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbebidasActionPerformed
+        valor=5; 
+       SABORES_HELADO ventana= new SABORES_HELADO();
+       ventana.setVisible(true);
+       this.setEnabled(false);
+    }//GEN-LAST:event_btnbebidasActionPerformed
+
+    private void btnenvasadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenvasadosActionPerformed
+       valor=4; 
+       SABORES_HELADO ventana= new SABORES_HELADO();
+       ventana.setVisible(true);
+       this.setEnabled(false);
+    }//GEN-LAST:event_btnenvasadosActionPerformed
+
     
     private void llamada(String opcion,String busqueda,String M){
         datosTipoP(opcion,busqueda,M);
@@ -1332,22 +1388,20 @@ public class MENU extends javax.swing.JFrame {
 };
         jTable2.setModel(modelotabla);  
         modelotabla.addColumn("Codigo");
-        modelotabla.addColumn("Tag");
+        modelotabla.addColumn("tag");
+        modelotabla.addColumn("clase");
         modelotabla.addColumn("Descripcion");
         modelotabla.addColumn("Porcentaje");
         TableColumnModel columnModel = jTable2.getColumnModel();
 
-        columnModel.getColumn(0).setPreferredWidth(75);
-        columnModel.getColumn(1).setPreferredWidth(250);
-        columnModel.getColumn(2).setPreferredWidth(460);
         ssql="select * from venta_helados.clase where tag_clase LIKE '"+busqueda+"%' ";
         Registrar a = new Registrar();
         ResultSet rs=a.mostrardetalle(ssql);
       if(M.equals("Nuevo")){
-        modelotabla.addRow(new Object[]{"","","",""});}
+        modelotabla.addRow(new Object[]{"","","","",""});}
        try {
            while(rs.next()){
-    modelotabla.addRow(new Object[]{rs.getString("id_clase"),rs.getString("tag_clase"),rs.getString("descripcion_clase"),rs.getString("porciento_clase")});
+    modelotabla.addRow(new Object[]{rs.getString("id_clase"),rs.getString("tag_clase"),rs.getString("clase"),rs.getString("descripción_clase"),rs.getString("porciento_clase")});
           
            }
           
@@ -1426,6 +1480,7 @@ public class MENU extends javax.swing.JFrame {
         modelotabla.addColumn("Codigo");
         modelotabla.addColumn("Forma");
         modelotabla.addColumn("Descripcion");
+        modelotabla.addColumn("Tipo");
         TableColumnModel columnModel = jTable2.getColumnModel();
 
         columnModel.getColumn(0).setPreferredWidth(75);
@@ -1435,10 +1490,10 @@ public class MENU extends javax.swing.JFrame {
         Registrar a = new Registrar();
         ResultSet rs=a.mostrardetalle(ssql);
       if(M.equals("Nuevo")){
-        modelotabla.addRow(new Object[]{"","",""});}
+        modelotabla.addRow(new Object[]{"","","",""});}
        try {
            while(rs.next()){
-    modelotabla.addRow(new Object[]{rs.getString("id_atributo"),rs.getString("nombre_atributo"),rs.getString("descripcion_atributo")});
+    modelotabla.addRow(new Object[]{rs.getString("id_atributo"),rs.getString("nombre_atributo"),rs.getString("descripcion_atributo"),rs.getString("num_atributo")});
           
            }
           
@@ -1731,23 +1786,24 @@ public class MENU extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnbebidas;
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btncancelarp1;
     private javax.swing.JButton btncancelarp2;
+    private javax.swing.JButton btncasa;
     private javax.swing.JButton btnconos;
     private javax.swing.JButton btneliminarp1;
     private javax.swing.JButton btneliminarp2;
+    private javax.swing.JButton btnenvasados;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnguardarp1;
     private javax.swing.JButton btnguardarp2;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnnuevop3;
     private javax.swing.JButton btnnuevop4;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
+    private javax.swing.JButton btnpaletas;
+    private javax.swing.JButton btnpasteles;
     private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton24;
@@ -1755,7 +1811,6 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
