@@ -1,14 +1,12 @@
 package helados;
-import helados.coneccion;
+
 import java.sql.*;
-import java.text.DateFormat;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javax.print.attribute.Size2DSyntax.MM;
-import javax.swing.JOptionPane;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
