@@ -46,6 +46,8 @@ public class MENU extends javax.swing.JFrame {
     DefaultListModel modeloLista = new DefaultListModel(); 
     DefaultListModel modeloLista2 = new DefaultListModel(); 
     DefaultListModel modeloLista3 = new DefaultListModel();
+    DefaultListModel modeloLista4 = new DefaultListModel();
+    DefaultListModel modeloLista5 = new DefaultListModel();
     DefaultTableModel m;
     boolean c=true;
     boolean c2=true;
@@ -71,8 +73,12 @@ public class MENU extends javax.swing.JFrame {
       //  btneliminarp.setEnabled(false);
         btnguardar.setEnabled(false);
       //  btnguardarp.setEnabled(false);
-        cargardatosproducto("");
+       cargardatosproducto("","Mostrar");
        recibirdatos();
+       Lmarca();
+       Ltipo();
+       Lclase();
+       cerrar();
        
         modeloLista = new DefaultListModel();
         listaproducto.setModel(modeloLista);
@@ -82,6 +88,12 @@ public class MENU extends javax.swing.JFrame {
         
         modeloLista3 = new DefaultListModel();
         listatamano.setModel(modeloLista3);
+        
+        modeloLista4 = new DefaultListModel();
+        jLsaborr.setModel(modeloLista4);
+        
+        modeloLista5 = new DefaultListModel();
+        jLtamanoo.setModel(modeloLista5);
         
         txttodo.setEditable(false);
         
@@ -146,10 +158,15 @@ public class MENU extends javax.swing.JFrame {
       jButton29.setIcon(new ImageIcon("src/icon/icons8-Casilla de verificación marcada-50.png"));
       jButton31.setIcon(new ImageIcon("src/icon/icons8-Contactos-50.png"));
       jButton30.setIcon(new ImageIcon("src/icon/icons8-Guardar-50.png"));
+      btnnuevo1.setIcon(new ImageIcon("src/icon/icons8-Guardar-50.png"));
       btnnuevo.setIcon(new ImageIcon("src/icon/icons8-Guardar-50.png"));
+      btnelimina1.setIcon(new ImageIcon("src/icon/icons8-Basura-50.png"));
       jButton5.setIcon(new ImageIcon("src/icon/icons8-Basura-50.png"));
+      btnguardar1.setIcon(new ImageIcon("src/icon/icons8-Guardar-50.png"));
       btnguardar.setIcon(new ImageIcon("src/icon/icons8-Guardar-50.png"));
+      btncancelar1.setIcon(new ImageIcon("src/icon/icons8-Cancelar-50.png"));
       btncancelar.setIcon(new ImageIcon("src/icon/icons8-Cancelar-50.png"));
+      btnsalir1.setIcon(new ImageIcon("src/icon/icons8-Puerta abierta-50.png"));
       btnsalir.setIcon(new ImageIcon("src/icon/icons8-Puerta abierta-50.png"));
       }
 
@@ -179,6 +196,62 @@ public class MENU extends javax.swing.JFrame {
            
           }
 
+    public void Lmarca(){
+        // se Agregagon los Tipos de productos al ComboBox y aplica el evento itemstatechanged para cargar datos cada vez que se tena un cambio 
+                
+                String ssql="SELECT * FROM `marca`";
+                Registrar registrar= new Registrar();
+                ResultSet rs= registrar.mostrardetalle(ssql);
+        try {
+            
+            while(rs.next()){
+                Catalogo cata=new Catalogo(rs.getInt("id_marcar"),rs.getString("nombre_marca"),rs.getString("descripcion_marca"));
+                jCmarca.addItem(cata);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+          }
+    
+    public void Lclase(){
+        
+    
+        
+               String ssql="SELECT * FROM `clase`";
+                Registrar registrar= new Registrar();
+                ResultSet rs= registrar.mostrardetalle(ssql);
+        try {
+            while(rs.next()){
+                Catalogo cata2=new Catalogo(rs.getInt("id_clase"),rs.getString("descripción_clase"),rs.getString("clase"));
+                jCclase.addItem(cata2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+           
+          }
+    
+    
+    public void Ltipo(){
+       
+        
+                 String ssql="SELECT * FROM `tipo_producto`";
+                Registrar registrar= new Registrar();
+                ResultSet rs= registrar.mostrardetalle(ssql);
+        try {
+            while(rs.next()){
+                Catalogo cata2=new Catalogo(rs.getInt("id_tipo_producto"),rs.getString("nombre_producto"),"");
+                jCtipop.addItem(cata2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+           
+          }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -249,7 +322,7 @@ public class MENU extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        tipoProducto = new javax.swing.JComboBox<String>();
+        tipoProducto = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         txtbusqueda = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -266,21 +339,21 @@ public class MENU extends javax.swing.JFrame {
         txtbusquedap = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
+        jCmarca = new javax.swing.JComboBox();
+        jCtipop = new javax.swing.JComboBox();
+        jCclase = new javax.swing.JComboBox();
         jPanel16 = new javax.swing.JPanel();
         btnnuevo1 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        btnelimina1 = new javax.swing.JButton();
         btnguardar1 = new javax.swing.JButton();
         btncancelar1 = new javax.swing.JButton();
         btnsalir1 = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
+        jLtamanoo = new javax.swing.JList();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jLsaborr = new javax.swing.JList();
 
         texto_producto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         texto_producto.setText("CODIGO DEL PRODUCTO");
@@ -1086,7 +1159,7 @@ public class MENU extends javax.swing.JFrame {
 
         tipoProducto.setBackground(new java.awt.Color(240, 240, 240));
         tipoProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tipoProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo" }));
+        tipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo" }));
         tipoProducto.setToolTipText("");
         tipoProducto.setAutoscrolls(true);
         tipoProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1340,11 +1413,11 @@ public class MENU extends javax.swing.JFrame {
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del procuto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Marca", "Item 2", "Item 3", "Item 4" }));
+        jCmarca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Marca" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo de Producto", "Item 2", "Item 3", "Item 4" }));
+        jCtipop.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo de Producto" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clase", "Item 2", "Item 3", "Item 4" }));
+        jCclase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clase" }));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1353,18 +1426,18 @@ public class MENU extends javax.swing.JFrame {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, 0, 401, Short.MAX_VALUE)
-                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jCmarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCtipop, 0, 401, Short.MAX_VALUE)
+                    .addComponent(jCclase, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCtipop, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCclase, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1378,11 +1451,11 @@ public class MENU extends javax.swing.JFrame {
             }
         });
 
-        jButton13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton13.setText("Eliminar");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        btnelimina1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnelimina1.setText("Eliminar");
+        btnelimina1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                btnelimina1ActionPerformed(evt);
             }
         });
 
@@ -1418,7 +1491,7 @@ public class MENU extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnnuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton13)
+                .addComponent(btnelimina1)
                 .addGap(18, 18, 18)
                 .addComponent(btnguardar1)
                 .addGap(18, 18, 18)
@@ -1433,7 +1506,7 @@ public class MENU extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnnuevo1)
-                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnelimina1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnguardar1)
                     .addComponent(btncancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnsalir1))
@@ -1442,12 +1515,7 @@ public class MENU extends javax.swing.JFrame {
 
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tamaños del Producto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane8.setViewportView(jList2);
+        jScrollPane8.setViewportView(jLtamanoo);
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -1462,12 +1530,7 @@ public class MENU extends javax.swing.JFrame {
 
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sabores del Producto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(jList1);
+        jScrollPane4.setViewportView(jLsaborr);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -1757,15 +1820,14 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_txtbusquedapKeyPressed
 
     private void txtbusquedapKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedapKeyReleased
-       cargardatosproducto(txtbusquedap.getText());
+       cargardatosproducto(txtbusquedap.getText(),"Mostrar");
     }//GEN-LAST:event_txtbusquedapKeyReleased
 
     private void jtproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtproductosMouseClicked
-        
-        
-       // btneliminarp.setEnabled(true);
-      //  btnguardarp.setEnabled(true);
-        
+         int row= jtproductos.getSelectedRow();
+       // Catalogo dato=(Catalogo) jtproductos.getValueAt(row, 1);
+       datosatributos();
+       datosatributos2();
         
     }//GEN-LAST:event_jtproductosMouseClicked
 
@@ -2126,12 +2188,12 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void btnnuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevo1ActionPerformed
-        // TODO add your handling code here:
+        cargardatosproducto("","Nuevo");
     }//GEN-LAST:event_btnnuevo1ActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void btnelimina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnelimina1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_btnelimina1ActionPerformed
 
     private void btnguardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardar1ActionPerformed
         // TODO add your handling code here:
@@ -2461,7 +2523,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
      
      
      
-     public void cargardatosproducto(String busqueda){
+     public void cargardatosproducto(String busqueda,String N){
         
          String ssql=null;
         jtproductos.removeAll();
@@ -2476,30 +2538,36 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
 };
         jtproductos.setModel(modelotablap);  
         modelotablap.addColumn("Codigo");
-        modelotablap.addColumn("Nombre");
+        modelotablap.addColumn("Nombre De Producto");
         modelotablap.addColumn("Descripcion");
-        modelotablap.addColumn("Tipo");
-        modelotablap.addColumn("Marca");
+        modelotablap.addColumn("Nump");
+        modelotablap.addColumn("TextP");
+        modelotablap.addColumn("Codigo Interno");
+        modelotablap.addColumn("Activo/Bloqueado");
         TableColumnModel columnModelp = jtproductos.getColumnModel();
         
 
-        columnModelp.getColumn(0).setPreferredWidth(75);
+        columnModelp.getColumn(0).setPreferredWidth(50);
         columnModelp.getColumn(1).setPreferredWidth(250);
         columnModelp.getColumn(2).setPreferredWidth(350);
-        ssql="SELECT producto.id_producto,producto.nombre_producto, producto.descripcion_producto,tipo_producto.id_tipo_producto, tipo_producto.nombre_producto, marca.nombre_marca, marca.id_marcar FROM producto, tipo_producto, marca WHERE producto.id_tipo_producto=tipo_producto.id_tipo_producto AND marca.id_marcar=producto.id_marcar and producto.nombre_producto LIKE '"+busqueda+"%' order by producto.id_producto DESC  ";
+        columnModelp.getColumn(3).setPreferredWidth(100);
+        columnModelp.getColumn(4).setPreferredWidth(100);
+        columnModelp.getColumn(5).setPreferredWidth(100);
+        columnModelp.getColumn(6).setPreferredWidth(100);
+        if(N.equals("Nuevo")){
+        modelotablap.addRow(new Object[]{"","","","","","",""});
+        }
+        ssql="SELECT producto.id_producto,producto.nombre_producto, producto.descripcion_producto, producto.num_producto, producto.text_producto,producto.codigo_producto, producto.producto_activo,tipo_producto.id_tipo_producto, tipo_producto.nombre_producto, marca.nombre_marca, marca.id_marcar FROM producto, tipo_producto, marca WHERE producto.id_tipo_producto=tipo_producto.id_tipo_producto AND marca.id_marcar=producto.id_marcar and producto.nombre_producto LIKE '"+busqueda+"%' order by producto.id_producto DESC  ";
         Registrar a = new Registrar();
         ResultSet rs=a.mostrardetalle(ssql);
        
        try {
            while(rs.next()){
-           Catalogo datos= new Catalogo(rs.getInt("tipo_producto.id_tipo_producto"),rs.getString("tipo_producto.nombre_producto"),"");    
-           Catalogo datos2= new Catalogo(rs.getInt("marca.id_marcar"),rs.getString("marca.nombre_marca"),""); 
-           modelotablap.addRow(new Object[]{rs.getString("id_producto"),rs.getString("nombre_producto"),rs.getString("descripcion_producto"), datos,datos2});
+          modelotablap.addRow(new Object[]{rs.getString("id_producto"),rs.getString("nombre_producto"),rs.getString("descripcion_producto"),rs.getString("num_producto"),rs.getString("text_producto"),rs.getString("codigo_producto"),rs.getString("producto_activo"),""});
         
       
            }
-           columnModelp.getColumn(3).setCellEditor(new DefaultCellEditor(generateBox()));
-      columnModelp.getColumn(4).setCellEditor(new DefaultCellEditor(generateBoxm()));
+          
            
        } catch (SQLException ex) {
            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
@@ -2509,52 +2577,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
    
     }
     
-    public void cargardatosproductoN(String busqueda){
-        
-         String ssql=null;
-        jtproductos.removeAll();
-        //despliegue de datos en la tabla de productos
-        
-          DefaultTableModel modelotablap = new DefaultTableModel(){
-    public boolean isCellEditable(int rowIndex,int columnIndex){
-        return columnIndex!=0;
     
-    
-    }
-};
-        jtproductos.setModel(modelotablap);  
-        modelotablap.addColumn("Codigo");
-        modelotablap.addColumn("Nombre");
-        modelotablap.addColumn("Descripcion");
-        modelotablap.addColumn("Tipo");
-        modelotablap.addColumn("Marca");
-        TableColumnModel columnModelp = jtproductos.getColumnModel();
-        columnModelp.getColumn(0).setPreferredWidth(75);
-        columnModelp.getColumn(1).setPreferredWidth(250);
-        columnModelp.getColumn(2).setPreferredWidth(350);
-        ssql="SELECT producto.id_producto,producto.nombre_producto, producto.descripcion_producto,tipo_producto.id_tipo_producto, tipo_producto.nombre_producto, marca.nombre_marca, marca.id_marcar FROM producto, tipo_producto, marca WHERE producto.id_tipo_producto=tipo_producto.id_tipo_producto AND marca.id_marcar=producto.id_marcar and producto.nombre_producto LIKE '"+busqueda+"%' order by producto.id_producto DESC  ";
-        Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
-        Catalogo datos= new Catalogo(0,"","");    
-        Catalogo datos2;
-        modelotablap.addRow(new Object[]{"","","",datos,null});
-       try {
-           while(rs.next()){
-           datos= new Catalogo(rs.getInt("tipo_producto.id_tipo_producto"),rs.getString("tipo_producto.nombre_producto"),"");    
-           datos2= new Catalogo(rs.getInt("marca.id_marcar"),rs.getString("marca.nombre_marca"),"");    
-           
-           modelotablap.addRow(new Object[]{rs.getString("id_producto"),rs.getString("nombre_producto"),rs.getString("descripcion_producto"), datos,datos2});
-      
-           }
-           columnModelp.getColumn(3).setCellEditor(new DefaultCellEditor(generateBox()));
-      columnModelp.getColumn(4).setCellEditor(new DefaultCellEditor(generateBoxm()));
-       } catch (SQLException ex) {
-           Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
-       }
-        
-    
-   
-    }
      
      private JComboBox generateBox()
  {
@@ -2743,7 +2766,53 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
       }
     
       
+      public void datosatributos(){
     
+        //despliegue de datos en la tabla de productos
+        Registrar a = new Registrar();
+        String ssql;
+       
+       ssql="SELECT * FROM atributo where num_atributo=1";
+       ResultSet rs=a.mostrardetalle(ssql);
+        modeloLista4.clear();
+       
+        int id;
+       try {
+           while(rs.next()){
+               Productos po= new Productos(rs.getInt("id_atributo"),rs.getString("descripcion_atributo"));
+               
+               modeloLista4.addElement(po);       
+           }
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+       }
+         
+    }
+      
+     public void datosatributos2(){
+    
+        //despliegue de datos en la tabla de productos
+        Registrar a = new Registrar();
+        String ssql;
+       
+       ssql="SELECT * FROM atributo where num_atributo=2";
+       ResultSet rs=a.mostrardetalle(ssql);
+        modeloLista5.clear();
+       
+        int id;
+       try {
+           while(rs.next()){
+               Productos po= new Productos(rs.getInt("id_atributo"),rs.getString("descripcion_atributo"));
+               
+               modeloLista5.addElement(po);       
+           }
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+       }
+         
+    }
             
           
     /**
@@ -2789,6 +2858,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private javax.swing.JButton btncancelar1;
     private javax.swing.JButton btncasa;
     private javax.swing.JButton btnconos;
+    private javax.swing.JButton btnelimina1;
     private javax.swing.JButton btnenvasados;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnguardar1;
@@ -2802,7 +2872,6 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
@@ -2822,9 +2891,9 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jCclase;
+    private javax.swing.JComboBox jCmarca;
+    private javax.swing.JComboBox jCtipop;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -2834,8 +2903,8 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
+    private javax.swing.JList jLsaborr;
+    private javax.swing.JList jLtamanoo;
     public javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;
