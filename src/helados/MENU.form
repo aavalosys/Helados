@@ -1863,6 +1863,9 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLsaborrMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

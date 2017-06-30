@@ -19,6 +19,7 @@ import java.util.List;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -31,6 +32,7 @@ public class MENU extends javax.swing.JFrame {
     String tipo;
     String hacer="Modificar";
     String hacer2="Modificar";
+    String hacer3="Mostrar";
     int p;
     
    private List<Catalogo> catalogo;
@@ -96,6 +98,9 @@ public class MENU extends javax.swing.JFrame {
         jLtamanoo.setModel(modeloLista5);
         
         txttodo.setEditable(false);
+        
+        btnelimina1.setEnabled(false);
+        btnguardar1.setEnabled(false);
         
         
        
@@ -1530,6 +1535,11 @@ public class MENU extends javax.swing.JFrame {
 
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sabores del Producto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
+        jLsaborr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLsaborrMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jLsaborr);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -1728,6 +1738,7 @@ public class MENU extends javax.swing.JFrame {
                 if(tipoProducto.getSelectedItem().toString().equals("Roll")){
                     ssql="DELETE FROM `roll` WHERE id_rol="+id;
                 }
+                
                 String resultado= registrar.Elimina(ssql);
                 JOptionPane.showMessageDialog(null, resultado);
 
@@ -1824,11 +1835,32 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_txtbusquedapKeyReleased
 
     private void jtproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtproductosMouseClicked
-         int row= jtproductos.getSelectedRow();
-       // Catalogo dato=(Catalogo) jtproductos.getValueAt(row, 1);
+         
+        btnelimina1.setEnabled(true);
+        btnguardar1.setEnabled(true);
+        
+        if(hacer3.equals("Mostrar")){
+        int row= jtproductos.getSelectedRow();
+      Catalogo dato=(Catalogo)jtproductos.getValueAt(row, 0);
+       
+for (int i = 1; i < jCmarca.getModel().getSize(); i++) {
+            Catalogo object = (Catalogo)jCmarca.getItemAt(i);
+	if(object.getId()==dato.getId()){
+		jCmarca.setSelectedIndex(i);
+	}
+}
+
+for (int i = 1; i < jCtipop.getModel().getSize(); i++) {
+            Catalogo object = (Catalogo)jCtipop.getItemAt(i);
+	if(object.getId()==Integer.valueOf(dato.getDetalle())){
+		jCtipop.setSelectedIndex(i);
+	}
+}
+       
+       
        datosatributos();
        datosatributos2();
-        
+        }
     }//GEN-LAST:event_jtproductosMouseClicked
 
     private void jTabbedPane4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane4ComponentShown
@@ -2189,23 +2221,110 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
 
     private void btnnuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevo1ActionPerformed
         cargardatosproducto("","Nuevo");
+        hacer3="Nuevo";
+        modeloLista4.clear();
+        modeloLista5.clear();
     }//GEN-LAST:event_btnnuevo1ActionPerformed
 
     private void btnelimina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnelimina1ActionPerformed
-        // TODO add your handling code here:
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Eliminar El Dato Seleccionado?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+        
+        int row= jtproductos.getSelectedRow();
+        Registrar registrar=new Registrar();
+        
+        Catalogo id=(Catalogo) jtproductos.getValueAt(row, 0);
+        String ssql="DELETE FROM `producto` WHERE id_producto="+id.getNombre();
+        String resultado= registrar.Elimina(ssql);
+        JOptionPane.showMessageDialog(null, resultado);
+        cargardatosproducto("","Mostrar");
+        btnelimina1.setEnabled(false);
+        btnguardar1.setEnabled(false);
+        } 
+        
     }//GEN-LAST:event_btnelimina1ActionPerformed
 
     private void btnguardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardar1ActionPerformed
-        // TODO add your handling code here:
+       int reply = JOptionPane.showConfirmDialog(null, "Desea Realizar los Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+        Registrar registrar=new Registrar();
+        String resultado="";
+        String ssql=null;
+        int row= jtproductos.getSelectedRow();
+       
+        String nombre= (String)jtproductos.getValueAt(row, 1);
+        String desc=(String) jtproductos.getValueAt(row, 2); 
+        String nump=(String) jtproductos.getValueAt(row, 3);
+        String textp=(String) jtproductos.getValueAt(row, 4);
+        String codigoi=(String) jtproductos.getValueAt(row, 5);
+        String activo=(String) jtproductos.getValueAt(row, 6);
+        Catalogo tipo=(Catalogo) jCtipop.getSelectedItem();
+        Catalogo marca=(Catalogo) jCmarca.getSelectedItem();
+        
+        if(hacer3.equals("Nuevo")){
+                                 
+        ssql="INSERT INTO `producto`( `id_marcar`, `id_tipo_producto`, `nombre_producto`, `descripcion_producto`, `num_producto`, `text_producto`,  `codigo_producto`, `producto_activo`) VALUES ('"+marca.getId()+"','"+tipo.getId()+"','"+nombre+"','"+desc+"','"+nump+"','"+textp+"','"+codigoi+"','"+activo+"')";
+       resultado= registrar.R_Categoria(ssql);
+        
+        }
+        
+        if(hacer3.equals("Mostrar")){
+        Catalogo id=(Catalogo) jtproductos.getValueAt(row, 0);
+        ssql="UPDATE `producto` SET `id_marcar`='"+marca.getId()+"',`id_tipo_producto`='"+tipo.getId()+"',`nombre_producto`='"+nombre+"',`descripcion_producto`='"+desc+"',`num_producto`='"+nump+"',`text_producto`='"+textp+"',`codigo_producto`='"+codigoi+"',`producto_activo`='"+activo+"' WHERE producto.id_producto="+id.getNombre();
+        resultado=registrar.Modificando(ssql);
+        }
+        
+        if(hacer3.equals("Atributo")){
+        
+        
+        }
+        JOptionPane.showMessageDialog(null, resultado);
+        cargardatosproducto("","Mostrar");
+        modeloLista4.clear();
+        modeloLista5.clear();
+        
+        
+        }
+        btnelimina1.setEnabled(false);
+        btnguardar1.setEnabled(false);
     }//GEN-LAST:event_btnguardar1ActionPerformed
 
+    
+    
+    
+    
+    
     private void btncancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelar1ActionPerformed
-        // TODO add your handling code here:
+       
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Canselar La Operacion?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+        
+        cargardatosproducto("","Mostrar");
+        jCtipop.setSelectedIndex(0);
+        jCmarca.setSelectedIndex(0);
+        modeloLista4.clear();
+        modeloLista5.clear();
+        hacer3="Mostrar";
+        
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_btncancelar1ActionPerformed
 
     private void btnsalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalir1ActionPerformed
-        // TODO add your handling code here:
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+        this.dispose();
+        btnelimina1.setEnabled(false);
+        btnguardar1.setEnabled(false);
+        }
     }//GEN-LAST:event_btnsalir1ActionPerformed
+
+    private void jLsaborrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLsaborrMouseClicked
+        hacer3="Atributos";
+    }//GEN-LAST:event_jLsaborrMouseClicked
 
     
     private void llamada(String opcion,String busqueda,String M){
@@ -2563,7 +2682,9 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
        
        try {
            while(rs.next()){
-          modelotablap.addRow(new Object[]{rs.getString("id_producto"),rs.getString("nombre_producto"),rs.getString("descripcion_producto"),rs.getString("num_producto"),rs.getString("text_producto"),rs.getString("codigo_producto"),rs.getString("producto_activo"),""});
+               
+               Catalogo ids=new Catalogo(rs.getInt("marca.id_marcar"),rs.getString("id_producto"),rs.getString("tipo_producto.id_tipo_producto"));
+          modelotablap.addRow(new Object[]{ids,rs.getString("nombre_producto"),rs.getString("descripcion_producto"),rs.getString("num_producto"),rs.getString("text_producto"),rs.getString("codigo_producto"),rs.getString("producto_activo"),""});
         
       
            }
@@ -2771,7 +2892,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
         //despliegue de datos en la tabla de productos
         Registrar a = new Registrar();
         String ssql;
-       
+       JCheckBox cb1;
        ssql="SELECT * FROM atributo where num_atributo=1";
        ResultSet rs=a.mostrardetalle(ssql);
         modeloLista4.clear();
@@ -2780,7 +2901,8 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
        try {
            while(rs.next()){
                Productos po= new Productos(rs.getInt("id_atributo"),rs.getString("descripcion_atributo"));
-               
+               cb1= new JCheckBox(rs.getString("descripcion_atributo"));
+              
                modeloLista4.addElement(po);       
            }
            

@@ -19,6 +19,7 @@ public class Productos {
         this.id=id;
         this.nombre=nombre;
         
+        
     }
     
     public String toString()
