@@ -1966,7 +1966,7 @@ public class MENU extends javax.swing.JFrame {
        
         btnguardar1.setEnabled(true);
         
-        if(hacer3.equals("Mostrar")){
+        if(hacer3.equals("Mostrar")|| hacer3.equals("Atributo")){
              btnelimina1.setEnabled(true);
         int row= jtproductos.getSelectedRow();
       Catalogo dato=(Catalogo)jtproductos.getValueAt(row, 0);
