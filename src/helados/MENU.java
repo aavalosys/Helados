@@ -107,7 +107,6 @@ public class MENU extends javax.swing.JFrame {
         btnguardar1.setEnabled(false);
         datosatributos();
         datosatributos2();
-      
         
         
        
@@ -1833,7 +1832,8 @@ public class MENU extends javax.swing.JFrame {
 
         }
         
-       
+        datosatributos();
+        datosatributos2();
         JOptionPane.showMessageDialog(null, resultado);
         llamada(tipoProducto.getSelectedItem().toString(),"","Mostrar");
         jButton5.setEnabled(false);
@@ -2382,6 +2382,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private void btnguardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardar1ActionPerformed
        int reply = JOptionPane.showConfirmDialog(null, "Desea Realizar los Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
+            
         Registrar registrar=new Registrar();
         String resultado="";
         String ssql=null;
@@ -2686,6 +2687,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
      
      
      public void datosAtri(String opcion,String busqueda,String M){
+        
         String ssql=null;
        jTable2.removeAll();
         //despliegue de datos en la tabla de productos
@@ -2727,9 +2729,9 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
        }
        
-       
-       
         }
+       
+        
     
    
     }
@@ -3086,12 +3088,16 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
       
       public void datosatributos(){
         
-           
+          m=(DefaultTableModel) jTsabor.getModel();
+        for (int i = 0; i < jTsabor.getRowCount(); i++) {
+           m.removeRow(i);
+           i-=1;
+       } 
         int cuantos=jTsabor.getRowCount();
         if(cuantos==0){
         String ssql=null;
-        m=(DefaultTableModel) jTsabor.getModel();
-        jTsabor.removeAll();
+        
+        
         jTsabor.setModel(m);  
         
        
@@ -3115,12 +3121,13 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
          }
       
       public void datosatributos2(){
-        
-           
-        int cuantos=jTtamano.getRowCount();
-        if(cuantos==0){
+         m=(DefaultTableModel) jTtamano.getModel();
+        for (int i = 0; i < jTtamano.getRowCount(); i++) {
+           m.removeRow(i);
+           i-=1;
+       }
         String ssql=null;
-        m=(DefaultTableModel) jTtamano.getModel();
+       
         
         jTtamano.setModel(m);  
         
@@ -3140,7 +3147,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
        } catch (SQLException ex) {
            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
        }
-        }
+        
         
          }
       
