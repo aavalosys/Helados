@@ -2008,8 +2008,8 @@
                               <Component id="jCmarca" max="32767" attributes="0"/>
                               <Component id="jCtipop" pref="316" max="32767" attributes="0"/>
                               <Component id="jCclase" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jCclase1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jCclase2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jCpresentacion" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jCatributo" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -2023,9 +2023,9 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jCclase" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jCclase2" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jCatributo" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jCclase1" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jCpresentacion" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -2059,7 +2059,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jCclase1">
+                <Component class="javax.swing.JComboBox" name="jCpresentacion">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -2068,10 +2068,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCclase1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCpresentacionActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jCclase2">
+                <Component class="javax.swing.JComboBox" name="jCatributo">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -2080,7 +2080,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCclase2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCatributoActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

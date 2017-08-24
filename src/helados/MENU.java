@@ -45,7 +45,7 @@ public class MENU extends javax.swing.JFrame {
     int p;
     
    private List<Catalogo> catalogo;
-   private CatalogoTabla modelo;
+  
    public static int valor=0;
     public DefaultTableModel modelotablav = new DefaultTableModel(){
     public boolean isCellEditable(int rowIndex,int columnIndex){
@@ -82,11 +82,14 @@ public class MENU extends javax.swing.JFrame {
       //  btneliminarp.setEnabled(false);
         btnguardar.setEnabled(false);
       //  btnguardarp.setEnabled(false);
+      
        cargardatosproducto("","Mostrar");
        recibirdatos();
        Lmarca();
        Ltipo();
        Lclase();
+       Latributo();
+       Lpresentacion();
        cerrar();
        
         modeloLista = new DefaultListModel();
@@ -127,7 +130,6 @@ public class MENU extends javax.swing.JFrame {
     
     }
 };
-        
         jTpedido.setModel(modelotablav);  
         modelotablav.addColumn("Cantidad");
         modelotablav.addColumn("Descripcion");
@@ -234,15 +236,47 @@ public class MENU extends javax.swing.JFrame {
     
     public void Lclase(){
         
-    
-        
-               String ssql="SELECT * FROM `clase`";
+    String ssql="SELECT * FROM `clase`";
                 Registrar registrar= new Registrar();
                 ResultSet rs= registrar.mostrardetalle(ssql);
         try {
             while(rs.next()){
                 Catalogo cata2=new Catalogo(rs.getInt("id_clase"),rs.getString("descripción_clase"),rs.getString("clase"));
                 jCclase.addItem(cata2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+           
+          }
+    
+     public void Latributo(){
+        
+    String ssql="SELECT * FROM `atributo`";
+                Registrar registrar= new Registrar();
+                ResultSet rs= registrar.mostrardetalle(ssql);
+        try {
+            while(rs.next()){
+                Catalogo cata2=new Catalogo(rs.getInt("id_atributo"),rs.getString("nombre_atributo"),"");
+                jCatributo.addItem(cata2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+           
+          }
+    
+     public void Lpresentacion(){
+        
+    String ssql="SELECT * FROM `presentacion`";
+                Registrar registrar= new Registrar();
+                ResultSet rs= registrar.mostrardetalle(ssql);
+        try {
+            while(rs.next()){
+                Catalogo cata2=new Catalogo(rs.getInt("id_presentacion"),rs.getString("presentacion"),"");
+                jCpresentacion.addItem(cata2);
             }
         } catch (SQLException ex) {
             Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
@@ -344,7 +378,7 @@ public class MENU extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        tipoProducto = new javax.swing.JComboBox<String>();
+        tipoProducto = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         txtbusqueda = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -378,8 +412,8 @@ public class MENU extends javax.swing.JFrame {
         jCmarca = new javax.swing.JComboBox();
         jCtipop = new javax.swing.JComboBox();
         jCclase = new javax.swing.JComboBox();
-        jCclase1 = new javax.swing.JComboBox();
-        jCclase2 = new javax.swing.JComboBox();
+        jCpresentacion = new javax.swing.JComboBox();
+        jCatributo = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -1219,7 +1253,7 @@ public class MENU extends javax.swing.JFrame {
 
         tipoProducto.setBackground(new java.awt.Color(240, 240, 240));
         tipoProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tipoProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo" }));
+        tipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo" }));
         tipoProducto.setToolTipText("");
         tipoProducto.setAutoscrolls(true);
         tipoProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1675,17 +1709,17 @@ public class MENU extends javax.swing.JFrame {
 
         jCclase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Clase" }));
 
-        jCclase1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Presentacion" }));
-        jCclase1.addActionListener(new java.awt.event.ActionListener() {
+        jCpresentacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Presentacion" }));
+        jCpresentacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCclase1ActionPerformed(evt);
+                jCpresentacionActionPerformed(evt);
             }
         });
 
-        jCclase2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Atributo" }));
-        jCclase2.addActionListener(new java.awt.event.ActionListener() {
+        jCatributo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Atributo" }));
+        jCatributo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCclase2ActionPerformed(evt);
+                jCatributoActionPerformed(evt);
             }
         });
 
@@ -1699,8 +1733,8 @@ public class MENU extends javax.swing.JFrame {
                     .addComponent(jCmarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCtipop, 0, 316, Short.MAX_VALUE)
                     .addComponent(jCclase, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCclase1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCclase2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jCpresentacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCatributo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1711,9 +1745,9 @@ public class MENU extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jCclase, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCclase2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCatributo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCclase1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCpresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2201,8 +2235,8 @@ for (int i = 1; i < jCtipop.getModel().getSize(); i++) {
         Rproductos dato=(Rproductos) listaproducto.getSelectedValue();
         listasabor.setEnabled(true);
         listatamano.setEnabled(true);
-        buscardatos2(String.valueOf(dato.getId()),"vacio");
-        buscardatos3(String.valueOf(dato.getId()),"vacio");
+        buscardatos2("vacio");
+       
         txttodo.setText(listaproducto.getSelectedValue().toString());
         c=true;
         c2=true;
@@ -2269,15 +2303,18 @@ for (int i = 1; i < jCtipop.getModel().getSize(); i++) {
     private void listasaborMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listasaborMouseClicked
 
         //seleccion de sabor y envio al campo de texto correspondiente
+        
         if(c){
             txttodo.setText(txttodo.getText()+"   "+listasabor.getSelectedValue().toString());
             listasabor.setEnabled(false);}
+        buscardatos3("vacio");
         c=false;
+         
     }//GEN-LAST:event_listasaborMouseClicked
 
     private void listasaborKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listasaborKeyPressed
         // TODO add your handling code here:
-
+   
     }//GEN-LAST:event_listasaborKeyPressed
 
     private void texto_saborMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_texto_saborMouseClicked
@@ -2286,7 +2323,7 @@ for (int i = 1; i < jCtipop.getModel().getSize(); i++) {
         texto_sabor.setText("");
         cajadetexto=2;
         Rproductos dato=(Rproductos) listaproducto.getSelectedValue();
-        buscardatos2(String.valueOf(dato.getId()),"vacio");
+        buscardatos2("vacio");
 
     }//GEN-LAST:event_texto_saborMouseClicked
 
@@ -2347,10 +2384,10 @@ for (int i = 1; i < jCtipop.getModel().getSize(); i++) {
     private void btnaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaceptarActionPerformed
 
         
-         Rproductos dato=(Rproductos) listasabor.getSelectedValue();
+        Rproductos dato=(Rproductos) listatamano.getSelectedValue();
         m= (DefaultTableModel)jTpedido.getModel();
         float subtt=dato.getPrecio()*Float.valueOf(varbolas.getText());
-        String datos2[]={varbolas.getText(),dato.getProducto()+" "+dato.getAtributo(),String.valueOf(dato.getPrecio()),String.valueOf(subtt)};
+        String datos2[]={varbolas.getText(),dato.getAtributo()+"-"+dato.getProducto(),String.valueOf(dato.getPrecio()),String.valueOf(subtt)};
         m.addRow(datos2);
         int filas=jTpedido.getRowCount();
         filas-=1;
@@ -2362,9 +2399,7 @@ for (int i = 1; i < jCtipop.getModel().getSize(); i++) {
         
         for(int i=0;i<=filas;i++){
              double sumatoria= Double.parseDouble(String.valueOf(jTpedido.getValueAt(i,3)));
-             
-             
-       sumatoria1=sumatoria1+sumatoria;
+            sumatoria1=sumatoria1+sumatoria;
         }
         lblsubt.setText("Q. "+sumatoria1);
         lbldes.setText("Q. 0.00");
@@ -2479,8 +2514,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
         for(int i=0;i<contar;i++){
         jTsabor.setValueAt(false, i, 0);
         }
-        jTsabor.setEnabled(false);
-        jTtamano.setEnabled(false);
+        
         modeloLista4.clear();
         modeloLista5.clear();
         btnelimina1.setEnabled(false);
@@ -2519,13 +2553,37 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
         String textp=(String) jtproductos.getValueAt(row, 4);
         String codigoi=(String) jtproductos.getValueAt(row, 5);
         String activo=(String) jtproductos.getValueAt(row, 6);
+        String rate=(String) jtproductos.getValueAt(row, 7);
+        String existencia=(String) jtproductos.getValueAt(row, 8);
+        String precio=(String) jtproductos.getValueAt(row, 9);
+        String fecha=(String) jtproductos.getValueAt(row, 10);
+        String codigob=(String) jtproductos.getValueAt(row, 11);
         Catalogo tipo=(Catalogo) jCtipop.getSelectedItem();
         Catalogo marca=(Catalogo) jCmarca.getSelectedItem();
+        Catalogo clases= (Catalogo) jCclase.getSelectedItem();
+        Catalogo Atri= (Catalogo) jCatributo.getSelectedItem();
+        Catalogo presentacion= (Catalogo) jCpresentacion.getSelectedItem();
         
         if(hacer3.equals("Nuevo")){
-                                 
-        ssql="INSERT INTO `producto`( `id_marcar`, `id_tipo_producto`, `nombre_producto`, `descripcion_producto`, `num_producto`, `text_producto`,  `codigo_producto`, `producto_activo`) VALUES ('"+marca.getId()+"','"+tipo.getId()+"','"+nombre+"','"+desc+"','"+nump+"','"+textp+"','"+codigoi+"','"+activo+"')";
-       resultado= registrar.R_Categoria(ssql);
+           int contador=jTsabor.getRowCount();
+           int contador2=jTtamano.getRowCount();
+           Atributos tamano;
+           Atributos sabor;
+             for(int i=0;i<contador2;i++){
+        boolean atributo=(boolean) jTtamano.getValueAt(i, 0);
+        if(atributo){
+        tamano= (Atributos) jTsabor.getValueAt(i, 1);
+        for(int j=0;j<contador;j++){
+         boolean  atributo2=(boolean) jTsabor.getValueAt(j, 0);
+          if(atributo2){
+              sabor= (Atributos) jTsabor.getValueAt(j, 1);
+              ssql="INSERT INTO `producto`(`id_marcar`, `id_tipo_producto`, `id_sabor`, `id_clase`, `id_presentacion`, `id_atributo`, `id_tamano`, `nombre_producto`, `descripcion_producto`, `num_producto`, `text_producto`, `imagen_producto`, `codigo_producto`, `producto_activo`, `rate`, `existencia_producto`, `precio_venta`, `fecha_creacion`, `codigo_barras`) VALUES ('"+marca.getId()+"','"+tipo.getId()+"','"+sabor.getId()+"','"+clases.getId()+"','"+presentacion.getId()+"','"+Atri.getId()+"','"+tamano.getId()+"','"+nombre+"','"+desc+"','"+nump+"','"+textp+"','null','"+codigoi+"','"+activo+"','"+rate+"','"+existencia+"','"+precio+"','"+fecha+"','"+codigob+"')";
+              resultado=registrar.R_Categoria(ssql);
+          }  
+        }}
+        
+        
+        }
         jTsabor.setEnabled(true);
         jTtamano.setEnabled(true);
         }
@@ -2536,40 +2594,12 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
         resultado=registrar.Modificando(ssql);
         }
         
-       
-        if(hacer3.equals("Atributo")){
-            Catalogo id=(Catalogo) jtproductos.getValueAt(row, 0);
-            Productos a;
-            Catalogo clase=(Catalogo) jCclase.getSelectedItem();
-        int contador=jTsabor.getRowCount();
-        
-        
-        for(int i=0;i<contador;i++){
-        boolean atributo=(boolean) jTsabor.getValueAt(i, 0);
-        if(atributo){
-        a=(Productos) jTsabor.getValueAt(i, 1);
-        ssql="INSERT INTO `registro_producto`(`id_atributo`, `rate`, `existencia_producto`, `id_clase`, `precio_manual`, `fecha_registro`, `id_producto`) VALUES ('"+a.getId()+"','0','0','"+clase.getId()+"','0','"+registrar.guardarfecha()+"','"+id.getNombre()+"')";
-        resultado=registrar.R_Categoria(ssql);
-        
-        }
-        }
-        int contador2=jTtamano.getRowCount();
-        for(int i=0;i<contador2;i++){
-        boolean atributo=(boolean) jTtamano.getValueAt(i, 0);
-        if(atributo){
-        a=(Productos) jTtamano.getValueAt(i, 1);
-        ssql="INSERT INTO `registro_producto`(`id_atributo`, `rate`, `existencia_producto`, `id_clase`, `precio_manual`, `fecha_registro`, `id_producto`) VALUES ('"+a.getId()+"','0','0','"+clase.getId()+"','0','"+registrar.guardarfecha()+"','"+id.getNombre()+"')";
-        resultado=registrar.R_Categoria(ssql);
-        
-        }
-        }
-        
-        
-        }
         JOptionPane.showMessageDialog(null, resultado);
         cargardatosproducto("","Mostrar");
         
         }
+        
+        //desmarca todas los checkbox de sabores y tamano 
           int contar=jTsabor.getRowCount();
         for(int i=0;i<contar;i++){
         jTsabor.setValueAt(false, i, 0);
@@ -2628,13 +2658,11 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jTsaborMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTsaborMouseClicked
-            hacer3="Atributo";
+           
     }//GEN-LAST:event_jTsaborMouseClicked
 
     private void jTtamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTtamanoMouseClicked
-        // TODO add your handling code here:
-        hacer3="Atributo";
-        
+     
         
     }//GEN-LAST:event_jTtamanoMouseClicked
 
@@ -2648,13 +2676,13 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
         }
     }//GEN-LAST:event_btnsalir1ActionPerformed
 
-    private void jCclase1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCclase1ActionPerformed
+    private void jCpresentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCpresentacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCclase1ActionPerformed
+    }//GEN-LAST:event_jCpresentacionActionPerformed
 
-    private void jCclase2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCclase2ActionPerformed
+    private void jCatributoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCatributoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCclase2ActionPerformed
+    }//GEN-LAST:event_jCatributoActionPerformed
 
     
     private void llamada(String opcion,String busqueda,String M){
@@ -3198,14 +3226,12 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
         
          String ssql=null;
         jtproductos.removeAll();
-        //despliegue de datos en la tabla de productos
+        //despliegue de datos en la tabla de productos en la pestana productos 
         
           DefaultTableModel modelotablap = new DefaultTableModel(){
     public boolean isCellEditable(int rowIndex,int columnIndex){
         return columnIndex!=0;
-    
-    
-    }
+     }
 };
         jtproductos.setModel(modelotablap);  
         modelotablap.addColumn("Codigo");
@@ -3215,30 +3241,25 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
         modelotablap.addColumn("TextP");
         modelotablap.addColumn("Codigo Interno");
         modelotablap.addColumn("Activo/Bloqueado");
-        TableColumnModel columnModelp = jtproductos.getColumnModel();
         
-
-        columnModelp.getColumn(0).setPreferredWidth(50);
-        columnModelp.getColumn(1).setPreferredWidth(250);
-        columnModelp.getColumn(2).setPreferredWidth(350);
-        columnModelp.getColumn(3).setPreferredWidth(100);
-        columnModelp.getColumn(4).setPreferredWidth(100);
-        columnModelp.getColumn(5).setPreferredWidth(100);
-        columnModelp.getColumn(6).setPreferredWidth(100);
+        modelotablap.addColumn("Rate");
+        modelotablap.addColumn("Existencia");
+        modelotablap.addColumn("precio");
+        modelotablap.addColumn("Fecha");
+        modelotablap.addColumn("Codigo de barras");
+        
         if(N.equals("Nuevo")){
-        modelotablap.addRow(new Object[]{"","","","","","",""});
+        modelotablap.addRow(new Object[]{"","","","","","","","","","","",""});
         }
-        ssql="SELECT producto.id_producto,producto.nombre_producto, producto.descripcion_producto, producto.num_producto, producto.text_producto,producto.codigo_producto, producto.producto_activo,tipo_producto.id_tipo_producto, tipo_producto.nombre_producto, marca.nombre_marca, marca.id_marcar FROM producto, tipo_producto, marca WHERE producto.id_tipo_producto=tipo_producto.id_tipo_producto AND marca.id_marcar=producto.id_marcar and producto.nombre_producto LIKE '"+busqueda+"%' order by producto.id_producto DESC  ";
+        ssql="select * from venta_helados.producto where nombre_producto LIKE '"+busqueda+"%' order by id_producto DESC";
         Registrar a = new Registrar();
         ResultSet rs=a.mostrardetalle(ssql);
        
        try {
            while(rs.next()){
                
-               Catalogo ids=new Catalogo(rs.getInt("marca.id_marcar"),rs.getString("id_producto"),rs.getString("tipo_producto.id_tipo_producto"));
-          modelotablap.addRow(new Object[]{ids,rs.getString("nombre_producto"),rs.getString("descripcion_producto"),rs.getString("num_producto"),rs.getString("text_producto"),rs.getString("codigo_producto"),rs.getString("producto_activo"),""});
-        
-      
+          Productos ids=new Productos(rs.getInt("id_producto"),rs.getString("nombre_producto"),rs.getInt("id_sabor"),rs.getInt("id_tamano"),rs.getInt("id_tipo_producto"),rs.getInt("id_marcar"),rs.getInt("id_clase"),rs.getInt("id_presentacion"),rs.getInt("id_atributo"));
+          modelotablap.addRow(new Object[]{ids,rs.getString("nombre_producto"),rs.getString("descripcion_producto"),rs.getString("num_producto"),rs.getString("text_producto"),rs.getString("codigo_producto"),rs.getString("producto_activo"),rs.getString("rate"),rs.getString("existencia_producto"),rs.getString("precio_venta"),rs.getString("fecha_creacion"),rs.getString("codigo_barras")});
            }
           
            
@@ -3317,16 +3338,16 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
   
     
     
-    
+   
      public void buscardatos1(String id2,int va){
     
         //despliegue de datos en la tabla de productos
         Registrar a = new Registrar();
         String ssql;
         if(id2.equals("vacio")){
-       ssql="SELECT * FROM `registro_producto`,producto WHERE registro_producto.id_producto=producto.id_producto AND producto.id_tipo_producto="+va+" GROUP BY producto.id_producto";}
+       ssql="SELECT producto.nombre_producto, producto.id_producto FROM `producto` WHERE producto.id_tipo_producto='"+va+"' GROUP BY nombre_producto";}
         else{
-         ssql="SELECT * FROM `registro_producto`,producto WHERE registro_producto.id_producto=producto.id_producto AND producto.id_tipo_producto="+va+" and producto.id_producto="+id2+" GROUP BY producto.id_producto";
+         ssql="SELECT producto.nombre_producto, producto.id_producto FROM `producto` WHERE producto.id_tipo_producto='"+va+"' and id_producto='"+id2+"' GROUP BY nombre_producto";
         }
         ResultSet rs=a.mostrardetalle(ssql);
         modeloLista.clear();
@@ -3335,8 +3356,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
        try {
            while(rs.next()){
                Rproductos datos= new Rproductos(rs.getInt("id_producto"),rs.getString("producto.nombre_producto"),0,0,0,"");
-             
-               modeloLista.addElement(datos);       
+             modeloLista.addElement(datos);       
            }
            
        } catch (SQLException ex) {
@@ -3344,76 +3364,72 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
        }
          
     }
+     
         
-  public void buscardatos2(String id,String idt){
+  public void buscardatos2(String idb){
           //busqueda y despliegue de datos sobre  jlist sabores
         String ssql;
         Registrar a = new Registrar();
-        ssql="select * from venta_helados.registro_producto where id_producto="+id;
+        
         Rproductos dato=(Rproductos) listaproducto.getSelectedValue();
-        String p= dato.getProducto();
+        if(idb.equals("vacio")){
+        ssql="SELECT * FROM `producto`,sabor WHERE nombre_producto='"+dato.getProducto()+"' AND producto.id_sabor=sabor.id_sabor";
+        }else{
+        ssql="SELECT * FROM `producto`,sabor WHERE nombre_producto='"+dato.getProducto()+"' AND producto.id_sabor=sabor.id_sabor and id_producto LIKE '"+idb+"%'";
+        }
+        
         ResultSet rs=a.mostrardetalle(ssql);
-        ResultSet rs2;
         modeloLista2.clear();
         try {
             String ssql2;
             
            while(rs.next()){
-               
-               
-               
-              if(idt.equals("vacio")){
-               ssql2="select * from atributo where num_atributo=1 and id_atributo="+rs.getInt("id_atributo");
-              }else{
-              ssql2="select * from atributo where num_atributo=1 and id_atributo="+rs.getInt("id_atributo")+" and id_atributo="+idt;
-              }
-               rs2=a.mostrardetalle(ssql2);
-               if(rs2.next()){
+             
               
-              Rproductos datos= new Rproductos(rs.getInt("id_producto"),p,rs.getInt("id_registro_at"),rs.getFloat("precio_manual"),rs2.getInt("id_atributo"),rs2.getString("descripcion_atributo"));
+              Rproductos datos= new Rproductos(rs.getInt("id_sabor"),rs.getString("sabor"),0,0,0,"");
               modeloLista2.addElement(datos); 
                
-               
-               }       
-           }
+           } 
+            
        } catch (SQLException ex) {
            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
        }
 
     }
-      
-      
-      public void buscardatos3(String id,String idt){
+  
+   public void buscardatos3(String idb){
           //busqueda y despliegue de datos sobre  jlist sabores
         String ssql;
         Registrar a = new Registrar();
-        ssql="select * from venta_helados.registro_producto where id_producto="+id;
+        
         Rproductos dato=(Rproductos) listaproducto.getSelectedValue();
-        String p= dato.getProducto();
+        Rproductos dato2=(Rproductos) listasabor.getSelectedValue();
+        if(idb.equals("vacio")){
+        ssql="SELECT * FROM `producto`,tamano WHERE nombre_producto='"+dato.getProducto()+"' AND producto.id_tamano=tamano.id_tamano and id_sabor='"+dato2.getId()+"'";
+        }else{
+        ssql="SELECT * FROM `producto`,tamano WHERE nombre_producto='"+dato.getProducto()+"' AND producto.id_tamano=tamano.id_tamano and  id_sabor='"+dato2.getId()+"' and id_producto LIKE '"+idb+"%'";
+        }
+        
         ResultSet rs=a.mostrardetalle(ssql);
-        ResultSet rs2;
         modeloLista3.clear();
         try {
             String ssql2;
             
            while(rs.next()){
-              if(idt.equals("vacio")){
-               ssql2="select * from atributo where num_atributo=2 and id_atributo="+rs.getInt("id_atributo");
-              }else{
-              ssql2="select * from atributo where num_atributo=2 and id_atributo="+rs.getInt("id_atributo")+" and id_atributo="+idt;
-              }
-               rs2=a.mostrardetalle(ssql2);
-               if(rs2.next()){
-              Rproductos datos= new Rproductos(rs.getInt("id_producto"),p,rs.getInt("id_registro_at"),rs.getFloat("precio_manual"),rs2.getInt("id_atributo"),rs2.getString("descripcion_atributo"));
+             
+              
+              Rproductos datos= new Rproductos(rs.getInt("id_tamano"),rs.getString("tamaño"),0,rs.getFloat("precio_venta"),rs.getInt("id_producto"),rs.getString("nombre_producto")+"-"+dato2.getProducto());
               modeloLista3.addElement(datos); 
                
-               }       
-           }
+           } 
+            
        } catch (SQLException ex) {
            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
        }
 
     }
+      
+     
       
       
       private void capturardatos(String valor){
@@ -3425,15 +3441,13 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
         }
         if(cajadetexto==2){
          texto_sabor.setText(texto_sabor.getText()+valor);
-         Rproductos dato=(Rproductos) listaproducto.getSelectedValue();
-      
-        buscardatos2(String.valueOf(dato.getId()),texto_sabor.getText());
+        buscardatos2(texto_sabor.getText());
         
         }
         if(cajadetexto==3){
          texto_tamano.setText(texto_tamano.getText()+valor);
-         Rproductos dato=(Rproductos) listaproducto.getSelectedValue();
-         buscardatos3(String.valueOf(dato.getId()),texto_tamano.getText());
+       
+         buscardatos3(texto_tamano.getText());
          
         }
       
@@ -3456,7 +3470,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
         jTsabor.setModel(m);  
         
        
-        ssql="SELECT * FROM atributo where num_atributo=1";
+        ssql="SELECT * FROM Sabor";
         Registrar a = new Registrar();
         ResultSet rs=a.mostrardetalle(ssql);
         
@@ -3464,7 +3478,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
        
        try {
            while(rs.next()){
-                Productos po= new Productos(rs.getInt("id_atributo"),rs.getString("descripcion_atributo"));
+                Atributos po= new Atributos(rs.getInt("id_sabor"),rs.getString("sabor"));
                m.addRow(new Object[]{false,po});
            }
            
@@ -3476,26 +3490,20 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
          }
       
       public void datosatributos2(){
+          //en este metodo se carga la tabla se jTtamano que se encuentra en la pestana de productos
          m=(DefaultTableModel) jTtamano.getModel();
         for (int i = 0; i < jTtamano.getRowCount(); i++) {
            m.removeRow(i);
            i-=1;
        }
         String ssql=null;
-       
-        
-        jTtamano.setModel(m);  
-        
-       
-        ssql="SELECT * FROM atributo where num_atributo=2";
+       jTtamano.setModel(m);  
+        ssql="SELECT * FROM tamano";
         Registrar a = new Registrar();
         ResultSet rs=a.mostrardetalle(ssql);
-        
-        
-       
-       try {
+        try {
            while(rs.next()){
-                Productos po= new Productos(rs.getInt("id_atributo"),rs.getString("descripcion_atributo"));
+                Atributos po= new Atributos(rs.getInt("id_tamano"),rs.getString("tamaño"));
                m.addRow(new Object[]{false,po});
            }
            
@@ -3588,10 +3596,10 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox jCatributo;
     private javax.swing.JComboBox jCclase;
-    private javax.swing.JComboBox jCclase1;
-    private javax.swing.JComboBox jCclase2;
     private javax.swing.JComboBox jCmarca;
+    private javax.swing.JComboBox jCpresentacion;
     private javax.swing.JComboBox jCtipop;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;

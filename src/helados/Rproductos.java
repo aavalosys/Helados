@@ -60,18 +60,9 @@ public class Rproductos {
     
      public String toString()
     {
-        
-        
-      if(idt==0){  
+     
      return id+" - "+producto;
-      }else{
-      
-      return idt+" - "+Atributo;
-      }
-     
-     
-     
-    }  
+     }  
 
     /**
      * @return the idR
