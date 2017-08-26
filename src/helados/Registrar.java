@@ -47,7 +47,7 @@ public class Registrar {
  
         public String obfecha(){
             Date date = new Date();
-            DateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss ");
+            DateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy");
             System.out.println("Hora y fecha: "+hourdateFormat.format(date));
             String fecha=null;
             fecha=String.valueOf(hourdateFormat.format(date));
@@ -57,7 +57,8 @@ public class Registrar {
         
          public String guardarfecha(){
              Date date = new Date();
-            DateFormat hourdateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+           // DateFormat hourdateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+           DateFormat hourdateFormat = new SimpleDateFormat("yyyy-MM-dd");
             System.out.println("Hora y fecha: "+hourdateFormat.format(date));
             String fecha=null;
             fecha=String.valueOf(hourdateFormat.format(date));
