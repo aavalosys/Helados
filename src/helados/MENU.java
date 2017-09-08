@@ -382,11 +382,10 @@ public class MENU extends javax.swing.JFrame {
         jLayeredPane3 = new javax.swing.JLayeredPane();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        tipoProducto = new javax.swing.JComboBox<>();
+        tipoProducto = new javax.swing.JComboBox<String>();
         jPanel5 = new javax.swing.JPanel();
         txtbusqueda = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -424,6 +423,42 @@ public class MENU extends javax.swing.JFrame {
         jCatributo = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jPanel19 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jPanel20 = new javax.swing.JPanel();
+        txtbusqueda1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel21 = new javax.swing.JPanel();
+        btnguardar2 = new javax.swing.JButton();
+        btncancelar2 = new javax.swing.JButton();
+        btnsalir2 = new javax.swing.JButton();
+        btnnuevo3 = new javax.swing.JButton();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        btnnuevo2 = new javax.swing.JButton();
+        jPanel23 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
 
         texto_producto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         texto_producto.setText("CODIGO DEL PRODUCTO");
@@ -1221,23 +1256,6 @@ public class MENU extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("VENTAS", jPanel1);
 
-        jTabbedPane4.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                jTabbedPane4ComponentAdded(evt);
-            }
-        });
-        jTabbedPane4.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTabbedPane4FocusGained(evt);
-            }
-        });
-        jTabbedPane4.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                jTabbedPane4ComponentShown(evt);
-            }
-        });
-        jTabbedPane5.addTab("BODEGA", jTabbedPane4);
-
         jTable2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1261,7 +1279,7 @@ public class MENU extends javax.swing.JFrame {
 
         tipoProducto.setBackground(new java.awt.Color(240, 240, 240));
         tipoProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo" }));
+        tipoProducto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo" }));
         tipoProducto.setToolTipText("");
         tipoProducto.setAutoscrolls(true);
         tipoProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1771,10 +1789,7 @@ public class MENU extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1790,7 +1805,12 @@ public class MENU extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 19, Short.MAX_VALUE))))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(948, 948, 948)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1803,20 +1823,392 @@ public class MENU extends javax.swing.JFrame {
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54))
         );
 
         jPanel11.getAccessibleContext().setAccessibleDescription("");
 
         jTabbedPane5.addTab("PRODUCTOS", jPanel3);
+
+        jTable3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable3.setRowHeight(26);
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTable3);
+
+        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Busquedas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+
+        txtbusqueda1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtbusqueda1.setText("... INGRESE PRODUCTO A BUSCAR ....");
+        txtbusqueda1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtbusqueda1FocusGained(evt);
+            }
+        });
+        txtbusqueda1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtbusqueda1MouseClicked(evt);
+            }
+        });
+        txtbusqueda1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbusqueda1ActionPerformed(evt);
+            }
+        });
+        txtbusqueda1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbusqueda1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbusqueda1KeyReleased(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("Elemento a Buscar:");
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtbusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtbusqueda1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+
+        btnguardar2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnguardar2.setText("Guardar");
+        btnguardar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardar2ActionPerformed(evt);
+            }
+        });
+
+        btncancelar2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btncancelar2.setText("Cancelar");
+        btncancelar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncancelar2ActionPerformed(evt);
+            }
+        });
+
+        btnsalir2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnsalir2.setText("Salir");
+        btnsalir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalir2ActionPerformed(evt);
+            }
+        });
+
+        btnnuevo3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnnuevo3.setText("Factura");
+        btnnuevo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnuevo3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(btnguardar2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(btncancelar2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnsalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel21Layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(btnnuevo3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(491, Short.MAX_VALUE)))
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnsalir2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btncancelar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnguardar2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel21Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(btnnuevo3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar Productos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setText("Código:");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setText("Cantidad:");
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setText("Precio Compra: Q. ");
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setText("Código:");
+
+        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField2.setText("jTextField1");
+
+        jTextField3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField3.setText("jTextField1");
+
+        jTextField4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField4.setText("jTextField1");
+
+        jTextField5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField5.setText("jTextField1");
+
+        btnnuevo2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnnuevo2.setText("Siguiente");
+        btnnuevo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnuevo2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField5)
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnnuevo2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(btnnuevo2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar Productos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setText("No. Factura:");
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel17.setText("Nit. Proveedor:");
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel18.setText("Proveedor:");
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel20.setText("Fecha Factura:");
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel21.setText("Direccion / Telefono: ");
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel22.setText("Total Factura:");
+
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField1.setText("jTextField1");
+
+        jTextField6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField6.setText("jTextField1");
+
+        jTextField7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField7.setText("jTextField1");
+
+        jTextField8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField8.setText("jTextField1");
+
+        jTextField9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField9.setText("jTextField1");
+
+        jTextField10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField10.setText("jTextField1");
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel20)
+                    .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel21)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField6)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        jLabel19.setText("Usuario Logueado");
+
+        jLabel23.setText("Fecha - Hora - Sistema");
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(455, 455, 455)
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62))
+                    .addComponent(jScrollPane4)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(125, 125, 125))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
+        );
+
+        jPanel22.getAccessibleContext().setAccessibleName("Busqueda");
+        jPanel22.getAccessibleContext().setAccessibleDescription("");
+
+        jTabbedPane5.addTab("BODEGA", jPanel19);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1836,252 +2228,10 @@ public class MENU extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoProductoActionPerformed
-        // TODO add your andling code here:
-    }//GEN-LAST:event_tipoProductoActionPerformed
-
-    private void tipoProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipoProductoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tipoProductoMouseClicked
-
-    private void tipoProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tipoProductoItemStateChanged
-
-    }//GEN-LAST:event_tipoProductoItemStateChanged
-
-    private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
-        txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
-        llamada(tipoProducto.getSelectedItem().toString(),"","Mostrar");
-        jButton5.setEnabled(false);
-        btnguardar.setEnabled(false);
-        btnnuevo.setEnabled(true);
-        hacer="Modificar";
-    }//GEN-LAST:event_btncancelarActionPerformed
-
-    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-        // TODO add your handling code here:
-        String resultado = null;
-        int reply = JOptionPane.showConfirmDialog(null, "Desea Guardar Los Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-            Registrar registrar= new Registrar();
-            String ssql=null;
-            int row=0;
-            if(hacer.equals("Modificar")){
-                row=jTable2.getSelectedRow();}else{
-                row=0;
-            }
-
-            String campo1=(String) jTable2.getValueAt(row, 0);
-            String campo2=(String) jTable2.getValueAt(row, 1);
-            String campo3=(String) jTable2.getValueAt(row, 2);
-            String campo4 = null;
-            if(tipoProducto.getSelectedItem().toString().equals("Marca")){
-            }else{
-            campo4=(String) jTable2.getValueAt(row, 3);}
-            
-            String campo5=(String) jTable2.getValueAt(row, 4);
-            
-            if(hacer.equals("Modificar")){
-                if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
-                    String campo6=(String) jTable2.getValueAt(row, 5);
-                    ssql="UPDATE `tipo_producto` SET `nombre_producto`='"+campo2+"',`descripcion_producto`='"+campo3+"',`vartext_producto`='"+campo4+"',`varnum_producto`='"+campo5+"',`tag_producto`='"+campo6+"' WHERE id_tipo_producto="+campo1;}
-                if(tipoProducto.getSelectedItem().toString().equals("Marca")){
-                   Catalogo datos2= (Catalogo) jTable2.getValueAt(row, 3);
-                   String campo6=(String) jTable2.getValueAt(row, 5);
-                   
-                    ssql="UPDATE `marca` SET `nombre_marca`='"+campo2+"',`descripcion_marca`='"+campo3+"',id_registro_prov='"+datos2.getId()+"',`vartex_marca`='"+campo5+"',`varnum_marca`='"+campo6+"' WHERE id_marcar="+campo1; 
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Roll")){
-                    String campo6=(String) jTable2.getValueAt(row, 5);
-                    ssql="UPDATE `roll` SET `descripcion_rol`='"+campo2+"',`text_rol`='"+campo3+"',`textdos_rol`='"+campo4+"',`num_text`='"+campo5+"',`tag_rol`='"+campo6+"' WHERE id_rol="+campo1;
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Atributos")){
-                    ssql="UPDATE `atributo` SET `nombre_atributo`='"+campo2+"',`descripcion_atributo`='"+campo3+"',`texto_atributo`='"+campo4+"',`num_atributo`='"+campo5+"' WHERE id_atributo="+campo1;
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Tipo Documento")){
-                    String campo6=(String) jTable2.getValueAt(row, 5);
-                    ssql="UPDATE `tipo` SET `tipo`='"+campo2+"',`describe_tipo`='"+campo3+"',`tag_tipo`='"+campo4+"',`text_tipo`='"+campo5+"',`num_tipo`='"+campo6+"' WHERE id_tipo="+campo1;
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Clases")){
-                    ssql="UPDATE `clase` SET `descripción_clase`='"+campo2+"',`clase`='"+campo3+"',`porciento_clase`='"+campo4+"',`tag_clase`='"+campo5+"' WHERE id_clase="+campo1;
-                }
-                //aqui comense de nuevo
-                
-                 if(tipoProducto.getSelectedItem().toString().equals("Proveedores")){
-                     String campo6=(String) jTable2.getValueAt(row, 5);
-                    ssql="UPDATE `marca_proveedor` SET `nombre`='"+campo2+"',`descripcion`='"+campo3+"',`telefono`='"+campo4+"',`text_marca`='"+campo5+"',`nume_marca`='"+campo6+"' WHERE id_registro_prov="+campo1;
-                }
-                 if(tipoProducto.getSelectedItem().toString().equals("Sabores")){
-                     String campo6=(String) jTable2.getValueAt(row, 5);
-                     
-                    ssql="UPDATE `sabor` SET `descripcion_sabor`='"+campo2+"',`sabor`='"+campo3+"',`descripcion`='"+campo4+"',`texto_sabor`='"+campo5+"',`numero_sabor`='"+campo6+"' WHERE id_sabor="+campo1;
-                }
-                  if(tipoProducto.getSelectedItem().toString().equals("Tamaño")){
-                    ssql="UPDATE `tamano` SET `tamaño`='"+campo2+"',`descripcion`='"+campo3+"',`numero_tamano`='"+campo5+"',`texto_tamano`='"+campo4+"' WHERE id_tamano="+campo1;
-                }
-                
-                 if(tipoProducto.getSelectedItem().toString().equals("Presentacion")){
-                    ssql="UPDATE `presentacion` SET `presentacion`='"+campo2+"',`descripcion_presenta`='"+campo3+"',`numero_pres`='"+campo5+"',`texto_pres`='"+campo4+"' WHERE id_presentacion="+campo1;
-                }
-                
-                resultado=registrar.Modificando(ssql);
-            }
-            else{
-
-                if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
-                    String campo6=(String) jTable2.getValueAt(row, 5);
-                    ssql="INSERT INTO `tipo_producto`(`nombre_producto`, `descripcion_producto`, `vartext_producto`, `varnum_producto`, `tag_producto`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"','"+campo6+"')";
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Marca")){
-                    Catalogo datos2= (Catalogo) jTable2.getValueAt(row, 3);
-                    String campo6=(String) jTable2.getValueAt(row, 5);
-                    ssql="INSERT INTO `marca`(`nombre_marca`, `descripcion_marca`,id_registro_prov, `vartex_marca`, `varnum_marca`) VALUES ('"+campo2+"','"+campo3+"','"+datos2.getId()+"','"+campo5+"','"+campo6+"')";
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Roll")){
-                   String campo6=(String) jTable2.getValueAt(row, 5);
-                    ssql="INSERT INTO `roll`(`descripcion_rol`, `text_rol`, `textdos_rol`, `num_text`, `tag_rol`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"','"+campo6+"')";
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Atributos")){
-                   ssql="INSERT INTO `atributo`(`nombre_atributo`, `descripcion_atributo`, `texto_atributo`, `num_atributo`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"')";
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Tipo Documento")){
-                    String campo6=(String) jTable2.getValueAt(row, 5);
-                    ssql="INSERT INTO `tipo`(`tipo`, `describe_tipo`, `tag_tipo`, `text_tipo`, `num_tipo`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"','"+campo6+"')";
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Clases")){
-                    
-                    ssql="INSERT INTO `clase`(`descripción_clase`, `clase`, `porciento_clase`, `tag_clase`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"')";
-                }
-                //aqui comence de nuevo 
-                
-                
-                if(tipoProducto.getSelectedItem().toString().equals("Proveedores")){
-                     String campo6=(String) jTable2.getValueAt(row, 5);
-                    ssql="INSERT INTO `marca_proveedor`(`Nombre`, `descripcion`, `telefono`, `text_marca`, `num_marca`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"','"+campo6+"')";
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Sabores")){
-                     String campo6=(String) jTable2.getValueAt(row, 5);
-                     
-                    ssql="INSERT INTO `sabor`(`descripcion_sabor`, `sabor`, `descripcion`, `texto_sabor`, `numero_sabor`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"','"+campo6+"')";
-                }
-                
-                if(tipoProducto.getSelectedItem().toString().equals("Tamaño")){
-                    ssql="INSERT INTO `tamano`(`tamaño`, `descripcion`, `numero_tamano`, `texto_tamano`) VALUES ('"+campo2+"','"+campo3+"','"+campo5+"','"+campo4+"')";
-                }
-                
-                 if(tipoProducto.getSelectedItem().toString().equals("Presentacion")){
-                    ssql="INSERT INTO `presentacion`(`presentacion`, `descripcion_presenta`, `numero_pres`, `texto_pres`) VALUES ('"+campo2+"','"+campo3+"','"+campo5+"','"+campo4+"')";
-                }
-                resultado=registrar.R_Categoria(ssql);
-                hacer="Modificar";
-            }
-
-        }
-        
-        datosatributos();
-        datosatributos2();
-        JOptionPane.showMessageDialog(null, resultado);
-        llamada(tipoProducto.getSelectedItem().toString(),"","Mostrar");
-        jButton5.setEnabled(false);
-        btnguardar.setEnabled(false);
-        btnnuevo.setEnabled(true);
-    }//GEN-LAST:event_btnguardarActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
-        int row=jTable2.getSelectedRow();
-        String id=(String) jTable2.getValueAt(row, 0);
-        String ssql=null;
-        int reply = JOptionPane.showConfirmDialog(null, "Desea Eliminar El dato Seleccionado?", "Advertencia", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-            if(id!=null){
-                Registrar registrar= new Registrar();
-                if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
-                    ssql="DELETE FROM tipo_producto WHERE id_tipo_producto="+id;}
-                if(tipoProducto.getSelectedItem().toString().equals("Marca")){
-                    ssql="DELETE FROM `marca` WHERE id_marcar="+id;
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Clases")){
-                    ssql="DELETE FROM `clase` WHERE id_clase="+id;
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Tipo Documento")){
-                    ssql="DELETE FROM `tipo` WHERE id_tipo="+id;
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Atributos")){
-                    ssql="DELETE FROM `atributo` WHERE id_atributo="+id;
-                }
-                if(tipoProducto.getSelectedItem().toString().equals("Roll")){
-                    ssql="DELETE FROM `roll` WHERE id_rol="+id;
-                }
-                
-                //aqui comence de nuevo 
-                 if(tipoProducto.getSelectedItem().toString().equals("Proveedores")){
-                    ssql="DELETE FROM `proveedor` WHERE id_provee="+id;
-                }
-                  if(tipoProducto.getSelectedItem().toString().equals("Sabores")){
-                    ssql="DELETE FROM `sabor` WHERE id_sabor="+id;
-                }
-                   if(tipoProducto.getSelectedItem().toString().equals("Tamaño")){
-                    ssql="DELETE FROM `tamano` WHERE id_tamano="+id;
-                }
-                   
-                    if(tipoProducto.getSelectedItem().toString().equals("Presentacion")){
-                    ssql="DELETE FROM `presentacion` WHERE id_presentacion="+id;
-                }
-                   
-                  
-                
-                
-                String resultado= registrar.Elimina(ssql);
-                JOptionPane.showMessageDialog(null, resultado);
-
-                llamada(tipoProducto.getSelectedItem().toString(),"","Mostrar");
-                txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
-                jButton5.setEnabled(false);
-                btnguardar.setEnabled(false);
-
-            }
-
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     
     
     
     
-    private void txtbusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyReleased
-        // TODO add your handling code here:
-        llamada(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText(),"Mostrar");
-    }//GEN-LAST:event_txtbusquedaKeyReleased
-
-    private void txtbusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyPressed
-
-    }//GEN-LAST:event_txtbusquedaKeyPressed
-
-    private void txtbusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbusquedaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbusquedaActionPerformed
-
-    private void txtbusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusquedaMouseClicked
-
-    }//GEN-LAST:event_txtbusquedaMouseClicked
-
-    private void txtbusquedaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbusquedaFocusGained
-
-        txtbusqueda.setText("");
-    }//GEN-LAST:event_txtbusquedaFocusGained
-
-    private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
-       llamada(tipoProducto.getSelectedItem().toString(),"","Nuevo");
-        hacer="Nuevo";
-        jButton5.setEnabled(false);
-        btnnuevo.setEnabled(false);
-    }//GEN-LAST:event_btnnuevoActionPerformed
-
-    private void btnconosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconosActionPerformed
-        // TODO add your handling code here:
-        this.setEnabled(true);
-    }//GEN-LAST:event_btnconosActionPerformed
-
     
     public void jpanel1(boolean a){
     
@@ -2089,160 +2239,9 @@ public class MENU extends javax.swing.JFrame {
     
     }
     
-    private void btnpaletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpaletasActionPerformed
-       valor=1;
-       p=1;
-       buscardatos1("vacio",1);
-       jpanel1(false);
-       jDialog1.setSize(1300,725);
-       
-       jDialog1.setVisible(true);
-       
-       
-    }//GEN-LAST:event_btnpaletasActionPerformed
-
-    private void txtbusquedapFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbusquedapFocusGained
-        txtbusquedap.setText("");
-    }//GEN-LAST:event_txtbusquedapFocusGained
-
-    private void txtbusquedapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusquedapMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbusquedapMouseClicked
-
-    private void txtbusquedapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbusquedapActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbusquedapActionPerformed
-
-    private void txtbusquedapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedapKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbusquedapKeyPressed
-
-    private void txtbusquedapKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedapKeyReleased
-       cargardatosproducto(txtbusquedap.getText(),"Mostrar");
-    }//GEN-LAST:event_txtbusquedapKeyReleased
-
     
     
     
-    private void jtproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtproductosMouseClicked
-         
-       
-        btnguardar1.setEnabled(true);
-        
-        if(hacer3.equals("Mostrar")|| hacer3.equals("Atributo")){
-             btnelimina1.setEnabled(true);
-        int row= jtproductos.getSelectedRow();
-      Productos dato=(Productos)jtproductos.getValueAt(row, 0);
-       
-for (int i = 1; i < jCmarca.getModel().getSize(); i++) {
-           Catalogo object = (Catalogo)jCmarca.getItemAt(i);
-	if(object.getId()==dato.getMarca()){
-		jCmarca.setSelectedIndex(i);
-	}
-}
-
-for (int i = 1; i < jCtipop.getModel().getSize(); i++) {
-            Catalogo object = (Catalogo)jCtipop.getItemAt(i);
-	if(object.getId()==dato.getTipo()){
-		jCtipop.setSelectedIndex(i);
-	} 
-}
-
-for (int i = 1; i < jCclase.getModel().getSize(); i++) {
-            Catalogo object = (Catalogo)jCclase.getItemAt(i);
-	if(object.getId()==dato.getClase()){
-		jCclase.setSelectedIndex(i);
-	} 
-}
-
-for (int i = 1; i < jCpresentacion.getModel().getSize(); i++) {
-            Catalogo object = (Catalogo)jCpresentacion.getItemAt(i);
-	if(object.getId()==dato.getPresentacion()){
-		jCpresentacion.setSelectedIndex(i);
-	} 
-}
-       
-       for (int i = 1; i < jCatributo.getModel().getSize(); i++) {
-            Catalogo object = (Catalogo)jCatributo.getItemAt(i);
-	if(object.getId()==dato.getAtributo()){
-		jCatributo.setSelectedIndex(i);
-	} 
-}
-       
-     
-        jCclase.setEnabled(true);
-        jCpresentacion.setEnabled(true);
-        jCatributo.setEnabled(true);
-        jCtipop.setEnabled(true);
-        jCmarca.setEnabled(true);
-       
-        }
-    }//GEN-LAST:event_jtproductosMouseClicked
-
-    private void jTabbedPane4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane4ComponentShown
-            // TODO add your handling code here:
-            
-    }//GEN-LAST:event_jTabbedPane4ComponentShown
-
-    private void jTabbedPane4ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTabbedPane4ComponentAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPane4ComponentAdded
-
-    private void jTabbedPane4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane4FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPane4FocusGained
-
-    private void btnpastelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpastelesActionPerformed
-        valor=2;
-       p=2;
-       buscardatos1("vacio",2);
-       jpanel1(false);
-       jDialog1.setSize(1300,725);
-      
-       jDialog1.setVisible(true);
-    }//GEN-LAST:event_btnpastelesActionPerformed
-
-    private void btncasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncasaActionPerformed
-       valor=3;
-       p=3;
-       buscardatos1("vacio",3);
-       jpanel1(false);
-       jDialog1.setSize(1300,725);
-       
-       jDialog1.setVisible(true);
-    }//GEN-LAST:event_btncasaActionPerformed
-
-    private void btnbebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbebidasActionPerformed
-        valor=5;
-       p=5;
-       buscardatos1("vacio",5);
-       jpanel1(false);
-       jDialog1.setSize(1300,725);
-       
-       jDialog1.setVisible(true);
-    }//GEN-LAST:event_btnbebidasActionPerformed
-
-    private void btnenvasadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenvasadosActionPerformed
-      valor=4;
-       p=4;
-       buscardatos1("vacio",4);
-       jpanel1(false);
-       
-       jDialog1.setSize(1300,725);
-       
-       jDialog1.setVisible(true);
-    }//GEN-LAST:event_btnenvasadosActionPerformed
-
-    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-       
-    }//GEN-LAST:event_jButton30ActionPerformed
-
-    private void jPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseMoved
-        // TODO add your handling code here:
-        
-      
-    }//GEN-LAST:event_jPanel1MouseMoved
-
     private void texto_productoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_texto_productoFocusGained
         texto_producto.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_texto_productoFocusGained
@@ -2469,251 +2468,53 @@ for (int i = 1; i < jCpresentacion.getModel().getSize(); i++) {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton22ActionPerformed
 
-    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+    private void btnsalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalir2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton31ActionPerformed
+    }//GEN-LAST:event_btnsalir2ActionPerformed
 
-    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Advertencia", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-        this.dispose();
-        }        
-        
-        
-    }//GEN-LAST:event_btnsalirActionPerformed
-
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        // TODO add your handling code here
-        int reply = JOptionPane.showConfirmDialog(null, "Desea Salir Sin Guardar Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-        
-        int row= jTpedido.getSelectedRow();
-        
-        float desc=0;
-        float sub=0;
-        float total = 0;
-        int canti=Integer.valueOf(jTpedido.getValueAt(row, 0).toString());
-        float precios=Float.valueOf(jTpedido.getValueAt(row, 2).toString());
-        float t=canti*precios;
-        double sumatoria1=0.0;
-        DefaultTableModel  x= (DefaultTableModel) jTpedido.getModel();
-       
-        x.removeRow(row);
-        int filas=jTpedido.getRowCount();
-        filas-=1;
-        for(int i=0;i<=filas;i++){
-             double sumatoria= Double.parseDouble(String.valueOf(jTpedido.getValueAt(i,3)));
-             sumatoria1=sumatoria1+sumatoria;
-        }
-        sumatoria1=sumatoria1-total;
-        lblsubt.setText("Q. "+sumatoria1);
-        lbldes.setText("Q. "+desc);
-        total=(float) (sumatoria1-desc);
-        lbltotal.setText("Q. "+sumatoria1);
-        
-      jButton20.setEnabled(false);
-        } 
-    }//GEN-LAST:event_jButton20ActionPerformed
-
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    private void btncancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelar2ActionPerformed
         // TODO add your handling code here:
-        recibirdatos();
-        lblsubt.setText("Q. 0.00");
-        lbltotal.setText("Q. 0.00");
-        lbldes.setText("Q. 0.00");
-    }//GEN-LAST:event_jButton18ActionPerformed
+    }//GEN-LAST:event_btncancelar2ActionPerformed
 
-    private void jTpedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTpedidoMouseClicked
+    private void btnguardar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardar2ActionPerformed
         // TODO add your handling code here:
-        
-        
-        jButton20.setEnabled(true);
-    }//GEN-LAST:event_jTpedidoMouseClicked
+    }//GEN-LAST:event_btnguardar2ActionPerformed
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-       int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Advertencia", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-        this.dispose();
-        } 
-    }//GEN-LAST:event_jButton23ActionPerformed
+    private void btnnuevo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnnuevo2ActionPerformed
 
-    private void btnnuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevo1ActionPerformed
-        nuevop();
-        hacer3="Nuevo";
-         int contar=jTsabor.getRowCount();
-        for(int i=0;i<contar;i++){
-        jTsabor.setValueAt(false, i, 0);
-        }
-        
-        jTsabor.setEnabled(true);
-        jTtamano.setEnabled(true);
-        jCclase.setEnabled(true);
-        jCpresentacion.setEnabled(true);
-        jCatributo.setEnabled(true);
-        jCtipop.setEnabled(true);
-        jCmarca.setEnabled(true);
-        
-        modeloLista4.clear();
-        modeloLista5.clear();
-        btnelimina1.setEnabled(false);
-    }//GEN-LAST:event_btnnuevo1ActionPerformed
+    private void txtbusqueda1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusqueda1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusqueda1KeyReleased
 
-    private void btnelimina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnelimina1ActionPerformed
-        int reply = JOptionPane.showConfirmDialog(null, "Desea Eliminar El Dato Seleccionado?", "Advertencia", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-        
-        int row= jtproductos.getSelectedRow();
-        Registrar registrar=new Registrar();
-        
-        Catalogo id=(Catalogo) jtproductos.getValueAt(row, 0);
-        String ssql="DELETE FROM `producto` WHERE id_producto="+id.getNombre();
-        String resultado= registrar.Elimina(ssql);
-        JOptionPane.showMessageDialog(null, resultado);
-        cargardatosproducto("","Mostrar");
-        btnelimina1.setEnabled(false);
-        btnguardar1.setEnabled(false);
-        } 
-        
-    }//GEN-LAST:event_btnelimina1ActionPerformed
+    private void txtbusqueda1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusqueda1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusqueda1KeyPressed
 
-    private void btnguardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardar1ActionPerformed
-       int reply = JOptionPane.showConfirmDialog(null, "Desea Realizar los Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-            
-        Registrar registrar=new Registrar();
-        String resultado="";
-        String ssql=null;
-        int row= jtproductos.getSelectedRow();
-       
-        String nombre= (String)jtproductos.getValueAt(row, 1);
-        String desc=(String) jtproductos.getValueAt(row, 2); 
-        String sabor2=(String) jtproductos.getValueAt(row, 3);
-        String tamano2=(String) jtproductos.getValueAt(row, 4);
-        String codigoi=(String) jtproductos.getValueAt(row, 5);
-        String activo=(String) jtproductos.getValueAt(row, 6);
-        String rate=(String) jtproductos.getValueAt(row, 7);
-        String existencia=(String) jtproductos.getValueAt(row, 8);
-        String precio=(String) jtproductos.getValueAt(row, 9);
-        String fecha=(String) jtproductos.getValueAt(row, 10);
-        Catalogo tipo=(Catalogo) jCtipop.getSelectedItem();
-        Catalogo marca=(Catalogo) jCmarca.getSelectedItem();
-        Catalogo clases= (Catalogo) jCclase.getSelectedItem();
-        Catalogo Atri= (Catalogo) jCatributo.getSelectedItem();
-        Catalogo presentacion= (Catalogo) jCpresentacion.getSelectedItem();
-        
-        if(hacer3.equals("Nuevo")){
-           int contador=jTsabor.getRowCount();
-           int contador2=jTtamano.getRowCount();
-           Atributos tamano;
-           Atributos sabor;
-             for(int i=0;i<contador2;i++){
-        boolean atributo=(boolean) jTtamano.getValueAt(i, 0);
-        if(atributo){
-        tamano= (Atributos) jTsabor.getValueAt(i, 1);
-        for(int j=0;j<contador;j++){
-         boolean  atributo2=(boolean) jTsabor.getValueAt(j, 0);
-          if(atributo2){
-              sabor= (Atributos) jTsabor.getValueAt(j, 1);
-              ssql="INSERT INTO `producto`(`id_marcar`, `id_tipo_producto`, `id_sabor`, `id_clase`, `id_presentacion`, `id_atributo`, `id_tamano`, `nombre_producto`, `descripcion_producto`, `num_producto`, `text_producto`, `imagen_producto`, `codigo_producto`, `producto_activo`, `rate`, `existencia_producto`, `precio_venta`, `fecha_creacion`, `codigo_barras`) VALUES ('"+marca.getId()+"','"+tipo.getId()+"','"+sabor.getId()+"','"+clases.getId()+"','"+presentacion.getId()+"','"+Atri.getId()+"','"+tamano.getId()+"','"+nombre+"','"+desc+"','0','0','null','"+codigoi+"','"+activo+"','"+rate+"','"+existencia+"','"+precio+"','"+registrar.guardarfecha()+"','0')";
-              resultado=registrar.R_Categoria(ssql);
-          }  
-        }}
-        
-        
-        }
-        
-        }
-        
-        if(hacer3.equals("Mostrar")){
-        Productos id=(Productos) jtproductos.getValueAt(row, 0);
-        ssql="UPDATE `producto` SET `id_marcar`='"+marca.getId()+"' ,`id_tipo_producto`='"+tipo.getId()+"', `id_clase`='"+clases.getId()+"', `id_presentacion`='"+presentacion.getId()+"', `id_atributo`='"+Atri.getId()+"', `nombre_producto`='"+nombre+"', `descripcion_producto`='"+desc+"' ,`codigo_producto`='"+codigoi+"', `producto_activo`='"+activo+"', `rate`='"+rate+"', `existencia_producto`='"+existencia+"', `precio_venta`='"+precio+"' WHERE id_producto="+id.getId();
-        resultado=registrar.Modificando(ssql);
-        }
-        
-        JOptionPane.showMessageDialog(null, resultado);
-        cargardatosproducto("","Mostrar");
-        
-        }
-        
-        //desmarca todas los checkbox de sabores y tamano 
-          int contar=jTsabor.getRowCount();
-        for(int i=0;i<contar;i++){
-        jTsabor.setValueAt(false, i, 0);
-        }
-        int contar2=jTtamano.getRowCount();
-        for(int i=0;i<contar2;i++){
-        jTtamano.setValueAt(false, i, 0);
-        }
-        jTtamano.setEnabled(false);
-        jTsabor.setEnabled(false);
-        btnelimina1.setEnabled(false);
-        btnguardar1.setEnabled(false);
-    }//GEN-LAST:event_btnguardar1ActionPerformed
+    private void txtbusqueda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbusqueda1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusqueda1ActionPerformed
 
-    
-    
-    
-    
-    
-    private void btncancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelar1ActionPerformed
-       
-        int reply = JOptionPane.showConfirmDialog(null, "Desea Canselar La Operacion?", "Advertencia", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-        
-        cargardatosproducto("","Mostrar");
-        jCtipop.setSelectedIndex(0);
-        jCmarca.setSelectedIndex(0);
-        jCclase.setSelectedIndex(0);
-        jCatributo.setSelectedIndex(0);
-        jCpresentacion.setSelectedIndex(0);
-        
-        modeloLista4.clear();
-        modeloLista5.clear();
-        hacer3="Mostrar";
-        
-        int contar=jTsabor.getRowCount();
-        for(int i=0;i<contar;i++){
-        jTsabor.setValueAt(false, i, 0);
-        }
-        int contar2=jTtamano.getRowCount();
-        for(int i=0;i<contar2;i++){
-        jTtamano.setValueAt(false, i, 0);
-        }
-        
-        
-        jTsabor.setEnabled(false);
-        jTtamano.setEnabled(false);
-        jCclase.setEnabled(false);
-        jCpresentacion.setEnabled(false);
-        jCatributo.setEnabled(false);
-        jCtipop.setEnabled(false);
-        jCmarca.setEnabled(false);
-        
-        }
-        
-        
-        
-        
-    }//GEN-LAST:event_btncancelar1ActionPerformed
+    private void txtbusqueda1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusqueda1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusqueda1MouseClicked
 
+    private void txtbusqueda1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbusqueda1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusqueda1FocusGained
 
-    
-    
-    
-    
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        jButton5.setEnabled(true);
-        btnguardar.setEnabled(true);
-    }//GEN-LAST:event_jTable2MouseClicked
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable3MouseClicked
 
-    private void jTsaborMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTsaborMouseClicked
-           
-    }//GEN-LAST:event_jTsaborMouseClicked
+    private void jCatributoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCatributoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCatributoActionPerformed
 
-    private void jTtamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTtamanoMouseClicked
-     
-        
-    }//GEN-LAST:event_jTtamanoMouseClicked
+    private void jCpresentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCpresentacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCpresentacionActionPerformed
 
     private void btnsalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalir1ActionPerformed
         int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Advertencia", JOptionPane.YES_NO_OPTION);
@@ -2725,14 +2526,620 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
         }
     }//GEN-LAST:event_btnsalir1ActionPerformed
 
-    private void jCpresentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCpresentacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCpresentacionActionPerformed
+    private void btncancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelar1ActionPerformed
 
-    private void jCatributoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCatributoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCatributoActionPerformed
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Canselar La Operacion?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
 
+            cargardatosproducto("","Mostrar");
+            jCtipop.setSelectedIndex(0);
+            jCmarca.setSelectedIndex(0);
+            jCclase.setSelectedIndex(0);
+            jCatributo.setSelectedIndex(0);
+            jCpresentacion.setSelectedIndex(0);
+
+            modeloLista4.clear();
+            modeloLista5.clear();
+            hacer3="Mostrar";
+
+            int contar=jTsabor.getRowCount();
+            for(int i=0;i<contar;i++){
+                jTsabor.setValueAt(false, i, 0);
+            }
+            int contar2=jTtamano.getRowCount();
+            for(int i=0;i<contar2;i++){
+                jTtamano.setValueAt(false, i, 0);
+            }
+
+            jTsabor.setEnabled(false);
+            jTtamano.setEnabled(false);
+            jCclase.setEnabled(false);
+            jCpresentacion.setEnabled(false);
+            jCatributo.setEnabled(false);
+            jCtipop.setEnabled(false);
+            jCmarca.setEnabled(false);
+
+        }
+
+    }//GEN-LAST:event_btncancelar1ActionPerformed
+
+    private void btnguardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardar1ActionPerformed
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Realizar los Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+
+            Registrar registrar=new Registrar();
+            String resultado="";
+            String ssql=null;
+            int row= jtproductos.getSelectedRow();
+
+            String nombre= (String)jtproductos.getValueAt(row, 1);
+            String desc=(String) jtproductos.getValueAt(row, 2);
+            String sabor2=(String) jtproductos.getValueAt(row, 3);
+            String tamano2=(String) jtproductos.getValueAt(row, 4);
+            String codigoi=(String) jtproductos.getValueAt(row, 5);
+            String activo=(String) jtproductos.getValueAt(row, 6);
+            String rate=(String) jtproductos.getValueAt(row, 7);
+            String existencia=(String) jtproductos.getValueAt(row, 8);
+            String precio=(String) jtproductos.getValueAt(row, 9);
+            String fecha=(String) jtproductos.getValueAt(row, 10);
+            Catalogo tipo=(Catalogo) jCtipop.getSelectedItem();
+            Catalogo marca=(Catalogo) jCmarca.getSelectedItem();
+            Catalogo clases= (Catalogo) jCclase.getSelectedItem();
+            Catalogo Atri= (Catalogo) jCatributo.getSelectedItem();
+            Catalogo presentacion= (Catalogo) jCpresentacion.getSelectedItem();
+
+            if(hacer3.equals("Nuevo")){
+                int contador=jTsabor.getRowCount();
+                int contador2=jTtamano.getRowCount();
+                Atributos tamano;
+                Atributos sabor;
+                for(int i=0;i<contador2;i++){
+                    boolean atributo=(boolean) jTtamano.getValueAt(i, 0);
+                    if(atributo){
+                        tamano= (Atributos) jTsabor.getValueAt(i, 1);
+                        for(int j=0;j<contador;j++){
+                            boolean  atributo2=(boolean) jTsabor.getValueAt(j, 0);
+                            if(atributo2){
+                                sabor= (Atributos) jTsabor.getValueAt(j, 1);
+                                ssql="INSERT INTO `producto`(`id_marcar`, `id_tipo_producto`, `id_sabor`, `id_clase`, `id_presentacion`, `id_atributo`, `id_tamano`, `nombre_producto`, `descripcion_producto`, `num_producto`, `text_producto`, `imagen_producto`, `codigo_producto`, `producto_activo`, `rate`, `existencia_producto`, `precio_venta`, `fecha_creacion`, `codigo_barras`) VALUES ('"+marca.getId()+"','"+tipo.getId()+"','"+sabor.getId()+"','"+clases.getId()+"','"+presentacion.getId()+"','"+Atri.getId()+"','"+tamano.getId()+"','"+nombre+"','"+desc+"','0','0','null','"+codigoi+"','"+activo+"','"+rate+"','"+existencia+"','"+precio+"','"+registrar.guardarfecha()+"','0')";
+                                resultado=registrar.R_Categoria(ssql);
+                            }
+                        }}
+
+                    }
+
+                }
+
+                if(hacer3.equals("Mostrar")){
+                    Productos id=(Productos) jtproductos.getValueAt(row, 0);
+                    ssql="UPDATE `producto` SET `id_marcar`='"+marca.getId()+"' ,`id_tipo_producto`='"+tipo.getId()+"', `id_clase`='"+clases.getId()+"', `id_presentacion`='"+presentacion.getId()+"', `id_atributo`='"+Atri.getId()+"', `nombre_producto`='"+nombre+"', `descripcion_producto`='"+desc+"' ,`codigo_producto`='"+codigoi+"', `producto_activo`='"+activo+"', `rate`='"+rate+"', `existencia_producto`='"+existencia+"', `precio_venta`='"+precio+"' WHERE id_producto="+id.getId();
+                    resultado=registrar.Modificando(ssql);
+                }
+
+                JOptionPane.showMessageDialog(null, resultado);
+                cargardatosproducto("","Mostrar");
+
+            }
+
+            //desmarca todas los checkbox de sabores y tamano
+            int contar=jTsabor.getRowCount();
+            for(int i=0;i<contar;i++){
+                jTsabor.setValueAt(false, i, 0);
+            }
+            int contar2=jTtamano.getRowCount();
+            for(int i=0;i<contar2;i++){
+                jTtamano.setValueAt(false, i, 0);
+            }
+            jTtamano.setEnabled(false);
+            jTsabor.setEnabled(false);
+            btnelimina1.setEnabled(false);
+            btnguardar1.setEnabled(false);
+    }//GEN-LAST:event_btnguardar1ActionPerformed
+
+    private void btnelimina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnelimina1ActionPerformed
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Eliminar El Dato Seleccionado?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+
+            int row= jtproductos.getSelectedRow();
+            Registrar registrar=new Registrar();
+
+            Catalogo id=(Catalogo) jtproductos.getValueAt(row, 0);
+            String ssql="DELETE FROM `producto` WHERE id_producto="+id.getNombre();
+            String resultado= registrar.Elimina(ssql);
+            JOptionPane.showMessageDialog(null, resultado);
+            cargardatosproducto("","Mostrar");
+            btnelimina1.setEnabled(false);
+            btnguardar1.setEnabled(false);
+        }
+
+    }//GEN-LAST:event_btnelimina1ActionPerformed
+
+    private void btnnuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevo1ActionPerformed
+        nuevop();
+        hacer3="Nuevo";
+        int contar=jTsabor.getRowCount();
+        for(int i=0;i<contar;i++){
+            jTsabor.setValueAt(false, i, 0);
+        }
+
+        jTsabor.setEnabled(true);
+        jTtamano.setEnabled(true);
+        jCclase.setEnabled(true);
+        jCpresentacion.setEnabled(true);
+        jCatributo.setEnabled(true);
+        jCtipop.setEnabled(true);
+        jCmarca.setEnabled(true);
+
+        modeloLista4.clear();
+        modeloLista5.clear();
+        btnelimina1.setEnabled(false);
+    }//GEN-LAST:event_btnnuevo1ActionPerformed
+
+    private void txtbusquedapKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedapKeyReleased
+        cargardatosproducto(txtbusquedap.getText(),"Mostrar");
+    }//GEN-LAST:event_txtbusquedapKeyReleased
+
+    private void txtbusquedapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedapKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusquedapKeyPressed
+
+    private void txtbusquedapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbusquedapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusquedapActionPerformed
+
+    private void txtbusquedapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusquedapMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusquedapMouseClicked
+
+    private void txtbusquedapFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbusquedapFocusGained
+        txtbusquedap.setText("");
+    }//GEN-LAST:event_txtbusquedapFocusGained
+
+    private void jTsaborMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTsaborMouseClicked
+
+    }//GEN-LAST:event_jTsaborMouseClicked
+
+    private void jTtamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTtamanoMouseClicked
+
+    }//GEN-LAST:event_jTtamanoMouseClicked
+
+    private void jtproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtproductosMouseClicked
+
+        btnguardar1.setEnabled(true);
+
+        if(hacer3.equals("Mostrar")|| hacer3.equals("Atributo")){
+            btnelimina1.setEnabled(true);
+            int row= jtproductos.getSelectedRow();
+            Productos dato=(Productos)jtproductos.getValueAt(row, 0);
+
+            for (int i = 1; i < jCmarca.getModel().getSize(); i++) {
+                Catalogo object = (Catalogo)jCmarca.getItemAt(i);
+                if(object.getId()==dato.getMarca()){
+                    jCmarca.setSelectedIndex(i);
+                }
+            }
+
+            for (int i = 1; i < jCtipop.getModel().getSize(); i++) {
+                Catalogo object = (Catalogo)jCtipop.getItemAt(i);
+                if(object.getId()==dato.getTipo()){
+                    jCtipop.setSelectedIndex(i);
+                }
+            }
+
+            for (int i = 1; i < jCclase.getModel().getSize(); i++) {
+                Catalogo object = (Catalogo)jCclase.getItemAt(i);
+                if(object.getId()==dato.getClase()){
+                    jCclase.setSelectedIndex(i);
+                }
+            }
+
+            for (int i = 1; i < jCpresentacion.getModel().getSize(); i++) {
+                Catalogo object = (Catalogo)jCpresentacion.getItemAt(i);
+                if(object.getId()==dato.getPresentacion()){
+                    jCpresentacion.setSelectedIndex(i);
+                }
+            }
+
+            for (int i = 1; i < jCatributo.getModel().getSize(); i++) {
+                Catalogo object = (Catalogo)jCatributo.getItemAt(i);
+                if(object.getId()==dato.getAtributo()){
+                    jCatributo.setSelectedIndex(i);
+                }
+            }
+
+            jCclase.setEnabled(true);
+            jCpresentacion.setEnabled(true);
+            jCatributo.setEnabled(true);
+            jCtipop.setEnabled(true);
+            jCmarca.setEnabled(true);
+
+        }
+    }//GEN-LAST:event_jtproductosMouseClicked
+
+    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_btnsalirActionPerformed
+
+    private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
+        txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
+        llamada(tipoProducto.getSelectedItem().toString(),"","Mostrar");
+        jButton5.setEnabled(false);
+        btnguardar.setEnabled(false);
+        btnnuevo.setEnabled(true);
+        hacer="Modificar";
+    }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+        // TODO add your handling code here:
+        String resultado = null;
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Guardar Los Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            Registrar registrar= new Registrar();
+            String ssql=null;
+            int row=0;
+            if(hacer.equals("Modificar")){
+                row=jTable2.getSelectedRow();}else{
+                row=0;
+            }
+
+            String campo1=(String) jTable2.getValueAt(row, 0);
+            String campo2=(String) jTable2.getValueAt(row, 1);
+            String campo3=(String) jTable2.getValueAt(row, 2);
+            String campo4 = null;
+            if(tipoProducto.getSelectedItem().toString().equals("Marca")){
+            }else{
+                campo4=(String) jTable2.getValueAt(row, 3);}
+
+            String campo5=(String) jTable2.getValueAt(row, 4);
+
+            if(hacer.equals("Modificar")){
+                if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+                    ssql="UPDATE `tipo_producto` SET `nombre_producto`='"+campo2+"',`descripcion_producto`='"+campo3+"',`vartext_producto`='"+campo4+"',`varnum_producto`='"+campo5+"',`tag_producto`='"+campo6+"' WHERE id_tipo_producto="+campo1;}
+                if(tipoProducto.getSelectedItem().toString().equals("Marca")){
+                    Catalogo datos2= (Catalogo) jTable2.getValueAt(row, 3);
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+
+                    ssql="UPDATE `marca` SET `nombre_marca`='"+campo2+"',`descripcion_marca`='"+campo3+"',id_registro_prov='"+datos2.getId()+"',`vartex_marca`='"+campo5+"',`varnum_marca`='"+campo6+"' WHERE id_marcar="+campo1;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Roll")){
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+                    ssql="UPDATE `roll` SET `descripcion_rol`='"+campo2+"',`text_rol`='"+campo3+"',`textdos_rol`='"+campo4+"',`num_text`='"+campo5+"',`tag_rol`='"+campo6+"' WHERE id_rol="+campo1;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Atributos")){
+                    ssql="UPDATE `atributo` SET `nombre_atributo`='"+campo2+"',`descripcion_atributo`='"+campo3+"',`texto_atributo`='"+campo4+"',`num_atributo`='"+campo5+"' WHERE id_atributo="+campo1;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Tipo Documento")){
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+                    ssql="UPDATE `tipo` SET `tipo`='"+campo2+"',`describe_tipo`='"+campo3+"',`tag_tipo`='"+campo4+"',`text_tipo`='"+campo5+"',`num_tipo`='"+campo6+"' WHERE id_tipo="+campo1;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Clases")){
+                    ssql="UPDATE `clase` SET `descripción_clase`='"+campo2+"',`clase`='"+campo3+"',`porciento_clase`='"+campo4+"',`tag_clase`='"+campo5+"' WHERE id_clase="+campo1;
+                }
+                //aqui comense de nuevo
+
+                if(tipoProducto.getSelectedItem().toString().equals("Proveedores")){
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+                    ssql="UPDATE `marca_proveedor` SET `nombre`='"+campo2+"',`descripcion`='"+campo3+"',`telefono`='"+campo4+"',`text_marca`='"+campo5+"',`nume_marca`='"+campo6+"' WHERE id_registro_prov="+campo1;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Sabores")){
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+
+                    ssql="UPDATE `sabor` SET `descripcion_sabor`='"+campo2+"',`sabor`='"+campo3+"',`descripcion`='"+campo4+"',`texto_sabor`='"+campo5+"',`numero_sabor`='"+campo6+"' WHERE id_sabor="+campo1;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Tamaño")){
+                    ssql="UPDATE `tamano` SET `tamaño`='"+campo2+"',`descripcion`='"+campo3+"',`numero_tamano`='"+campo5+"',`texto_tamano`='"+campo4+"' WHERE id_tamano="+campo1;
+                }
+
+                if(tipoProducto.getSelectedItem().toString().equals("Presentacion")){
+                    ssql="UPDATE `presentacion` SET `presentacion`='"+campo2+"',`descripcion_presenta`='"+campo3+"',`numero_pres`='"+campo5+"',`texto_pres`='"+campo4+"' WHERE id_presentacion="+campo1;
+                }
+
+                resultado=registrar.Modificando(ssql);
+            }
+            else{
+
+                if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+                    ssql="INSERT INTO `tipo_producto`(`nombre_producto`, `descripcion_producto`, `vartext_producto`, `varnum_producto`, `tag_producto`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"','"+campo6+"')";
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Marca")){
+                    Catalogo datos2= (Catalogo) jTable2.getValueAt(row, 3);
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+                    ssql="INSERT INTO `marca`(`nombre_marca`, `descripcion_marca`,id_registro_prov, `vartex_marca`, `varnum_marca`) VALUES ('"+campo2+"','"+campo3+"','"+datos2.getId()+"','"+campo5+"','"+campo6+"')";
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Roll")){
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+                    ssql="INSERT INTO `roll`(`descripcion_rol`, `text_rol`, `textdos_rol`, `num_text`, `tag_rol`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"','"+campo6+"')";
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Atributos")){
+                    ssql="INSERT INTO `atributo`(`nombre_atributo`, `descripcion_atributo`, `texto_atributo`, `num_atributo`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"')";
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Tipo Documento")){
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+                    ssql="INSERT INTO `tipo`(`tipo`, `describe_tipo`, `tag_tipo`, `text_tipo`, `num_tipo`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"','"+campo6+"')";
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Clases")){
+
+                    ssql="INSERT INTO `clase`(`descripción_clase`, `clase`, `porciento_clase`, `tag_clase`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"')";
+                }
+                //aqui comence de nuevo
+
+                if(tipoProducto.getSelectedItem().toString().equals("Proveedores")){
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+                    ssql="INSERT INTO `marca_proveedor`(`Nombre`, `descripcion`, `telefono`, `text_marca`, `num_marca`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"','"+campo6+"')";
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Sabores")){
+                    String campo6=(String) jTable2.getValueAt(row, 5);
+
+                    ssql="INSERT INTO `sabor`(`descripcion_sabor`, `sabor`, `descripcion`, `texto_sabor`, `numero_sabor`) VALUES ('"+campo2+"','"+campo3+"','"+campo4+"','"+campo5+"','"+campo6+"')";
+                }
+
+                if(tipoProducto.getSelectedItem().toString().equals("Tamaño")){
+                    ssql="INSERT INTO `tamano`(`tamaño`, `descripcion`, `numero_tamano`, `texto_tamano`) VALUES ('"+campo2+"','"+campo3+"','"+campo5+"','"+campo4+"')";
+                }
+
+                if(tipoProducto.getSelectedItem().toString().equals("Presentacion")){
+                    ssql="INSERT INTO `presentacion`(`presentacion`, `descripcion_presenta`, `numero_pres`, `texto_pres`) VALUES ('"+campo2+"','"+campo3+"','"+campo5+"','"+campo4+"')";
+                }
+                resultado=registrar.R_Categoria(ssql);
+                hacer="Modificar";
+            }
+
+        }
+
+        datosatributos();
+        datosatributos2();
+        JOptionPane.showMessageDialog(null, resultado);
+        llamada(tipoProducto.getSelectedItem().toString(),"","Mostrar");
+        jButton5.setEnabled(false);
+        btnguardar.setEnabled(false);
+        btnnuevo.setEnabled(true);
+    }//GEN-LAST:event_btnguardarActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+        int row=jTable2.getSelectedRow();
+        String id=(String) jTable2.getValueAt(row, 0);
+        String ssql=null;
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Eliminar El dato Seleccionado?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            if(id!=null){
+                Registrar registrar= new Registrar();
+                if(tipoProducto.getSelectedItem().toString().equals("Tipo Producto")){
+                    ssql="DELETE FROM tipo_producto WHERE id_tipo_producto="+id;}
+                if(tipoProducto.getSelectedItem().toString().equals("Marca")){
+                    ssql="DELETE FROM `marca` WHERE id_marcar="+id;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Clases")){
+                    ssql="DELETE FROM `clase` WHERE id_clase="+id;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Tipo Documento")){
+                    ssql="DELETE FROM `tipo` WHERE id_tipo="+id;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Atributos")){
+                    ssql="DELETE FROM `atributo` WHERE id_atributo="+id;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Roll")){
+                    ssql="DELETE FROM `roll` WHERE id_rol="+id;
+                }
+
+                //aqui comence de nuevo
+                if(tipoProducto.getSelectedItem().toString().equals("Proveedores")){
+                    ssql="DELETE FROM `proveedor` WHERE id_provee="+id;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Sabores")){
+                    ssql="DELETE FROM `sabor` WHERE id_sabor="+id;
+                }
+                if(tipoProducto.getSelectedItem().toString().equals("Tamaño")){
+                    ssql="DELETE FROM `tamano` WHERE id_tamano="+id;
+                }
+
+                if(tipoProducto.getSelectedItem().toString().equals("Presentacion")){
+                    ssql="DELETE FROM `presentacion` WHERE id_presentacion="+id;
+                }
+
+                String resultado= registrar.Elimina(ssql);
+                JOptionPane.showMessageDialog(null, resultado);
+
+                llamada(tipoProducto.getSelectedItem().toString(),"","Mostrar");
+                txtbusqueda.setText("... INGRESE PRODUCTO A BUSCAR ....");
+                jButton5.setEnabled(false);
+                btnguardar.setEnabled(false);
+
+            }
+
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
+        llamada(tipoProducto.getSelectedItem().toString(),"","Nuevo");
+        hacer="Nuevo";
+        jButton5.setEnabled(false);
+        btnnuevo.setEnabled(false);
+    }//GEN-LAST:event_btnnuevoActionPerformed
+
+    private void txtbusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyReleased
+        // TODO add your handling code here:
+        llamada(tipoProducto.getSelectedItem().toString(),txtbusqueda.getText(),"Mostrar");
+    }//GEN-LAST:event_txtbusquedaKeyReleased
+
+    private void txtbusquedaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbusquedaKeyPressed
+
+    }//GEN-LAST:event_txtbusquedaKeyPressed
+
+    private void txtbusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbusquedaActionPerformed
+
+    private void txtbusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbusquedaMouseClicked
+
+    }//GEN-LAST:event_txtbusquedaMouseClicked
+
+    private void txtbusquedaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbusquedaFocusGained
+
+        txtbusqueda.setText("");
+    }//GEN-LAST:event_txtbusquedaFocusGained
+
+    private void tipoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoProductoActionPerformed
+        // TODO add your andling code here:
+    }//GEN-LAST:event_tipoProductoActionPerformed
+
+    private void tipoProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tipoProductoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoProductoMouseClicked
+
+    private void tipoProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tipoProductoItemStateChanged
+
+    }//GEN-LAST:event_tipoProductoItemStateChanged
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        jButton5.setEnabled(true);
+        btnguardar.setEnabled(true);
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jPanel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseMoved
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jPanel1MouseMoved
+
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton31ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+        recibirdatos();
+        lblsubt.setText("Q. 0.00");
+        lbltotal.setText("Q. 0.00");
+        lbldes.setText("Q. 0.00");
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+
+    }//GEN-LAST:event_jButton30ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here
+        int reply = JOptionPane.showConfirmDialog(null, "Desea Salir Sin Guardar Cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+
+            int row= jTpedido.getSelectedRow();
+
+            float desc=0;
+            float sub=0;
+            float total = 0;
+            int canti=Integer.valueOf(jTpedido.getValueAt(row, 0).toString());
+            float precios=Float.valueOf(jTpedido.getValueAt(row, 2).toString());
+            float t=canti*precios;
+            double sumatoria1=0.0;
+            DefaultTableModel  x= (DefaultTableModel) jTpedido.getModel();
+
+            x.removeRow(row);
+            int filas=jTpedido.getRowCount();
+            filas-=1;
+            for(int i=0;i<=filas;i++){
+                double sumatoria= Double.parseDouble(String.valueOf(jTpedido.getValueAt(i,3)));
+                sumatoria1=sumatoria1+sumatoria;
+            }
+            sumatoria1=sumatoria1-total;
+            lblsubt.setText("Q. "+sumatoria1);
+            lbldes.setText("Q. "+desc);
+            total=(float) (sumatoria1-desc);
+            lbltotal.setText("Q. "+sumatoria1);
+
+            jButton20.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jTpedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTpedidoMouseClicked
+        // TODO add your handling code here:
+
+        jButton20.setEnabled(true);
+    }//GEN-LAST:event_jTpedidoMouseClicked
+
+    private void btnconosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconosActionPerformed
+        // TODO add your handling code here:
+        this.setEnabled(true);
+    }//GEN-LAST:event_btnconosActionPerformed
+
+    private void btnenvasadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenvasadosActionPerformed
+        valor=4;
+        p=4;
+        buscardatos1("vacio",4);
+        jpanel1(false);
+
+        jDialog1.setSize(1300,725);
+
+        jDialog1.setVisible(true);
+    }//GEN-LAST:event_btnenvasadosActionPerformed
+
+    private void btnpastelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpastelesActionPerformed
+        valor=2;
+        p=2;
+        buscardatos1("vacio",2);
+        jpanel1(false);
+        jDialog1.setSize(1300,725);
+
+        jDialog1.setVisible(true);
+    }//GEN-LAST:event_btnpastelesActionPerformed
+
+    private void btncasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncasaActionPerformed
+        valor=3;
+        p=3;
+        buscardatos1("vacio",3);
+        jpanel1(false);
+        jDialog1.setSize(1300,725);
+
+        jDialog1.setVisible(true);
+    }//GEN-LAST:event_btncasaActionPerformed
+
+    private void btnbebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbebidasActionPerformed
+        valor=5;
+        p=5;
+        buscardatos1("vacio",5);
+        jpanel1(false);
+        jDialog1.setSize(1300,725);
+
+        jDialog1.setVisible(true);
+    }//GEN-LAST:event_btnbebidasActionPerformed
+
+    private void btnpaletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpaletasActionPerformed
+        valor=1;
+        p=1;
+        buscardatos1("vacio",1);
+        jpanel1(false);
+        jDialog1.setSize(1300,725);
+
+        jDialog1.setVisible(true);
+
+    }//GEN-LAST:event_btnpaletasActionPerformed
+
+    private void btnnuevo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevo3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnnuevo3ActionPerformed
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
     
     private void llamada(String opcion,String busqueda,String M){
         datosTipoP(opcion,busqueda,M);
@@ -3637,18 +4044,23 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private javax.swing.JButton btncance;
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btncancelar1;
+    private javax.swing.JButton btncancelar2;
     private javax.swing.JButton btncasa;
     private javax.swing.JButton btnconos;
     private javax.swing.JButton btnelimina1;
     private javax.swing.JButton btnenvasados;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnguardar1;
+    private javax.swing.JButton btnguardar2;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnnuevo1;
+    private javax.swing.JButton btnnuevo2;
+    private javax.swing.JButton btnnuevo3;
     private javax.swing.JButton btnpaletas;
     private javax.swing.JButton btnpasteles;
     private javax.swing.JButton btnsalir;
     private javax.swing.JButton btnsalir1;
+    private javax.swing.JButton btnsalir2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -3680,19 +4092,32 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLayeredPane jLayeredPane3;
-    public javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -3702,7 +4127,12 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -3714,14 +4144,25 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTable jTable2;
-    public javax.swing.JTable jTpedido;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable jTpedido;
     private javax.swing.JTable jTsabor;
     private javax.swing.JTable jTtamano;
     private javax.swing.JTable jtproductos;
@@ -3736,6 +4177,7 @@ int reply = JOptionPane.showConfirmDialog(null, "Desea Cerrar El Programa?", "Ad
     private javax.swing.JTextField texto_tamano;
     private javax.swing.JComboBox<String> tipoProducto;
     private javax.swing.JTextField txtbusqueda;
+    private javax.swing.JTextField txtbusqueda1;
     private javax.swing.JTextField txtbusquedap;
     private javax.swing.JTextArea txttodo;
     private javax.swing.JTextField varbolas;
