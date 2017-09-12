@@ -17,9 +17,10 @@ public class Registrar {
     java.sql.Statement consulta = null;
     coneccion con = new coneccion();
 
-    public Registrar() {
-
-        conex = con.conectar();
+    public Registrar() {}
+ 
+     /* 
+        //conex = con.conectar();
         try {
             consulta = conex.createStatement();
           
@@ -29,7 +30,7 @@ public class Registrar {
     }
     
     public String R_Categoria(String Insertar){
-        con.conectar();
+       con.conectar();
         String error = null; 
         try{
                consulta.executeUpdate(Insertar);
@@ -44,7 +45,7 @@ public class Registrar {
         return error;
          
     }
- 
+    */
         public String obfecha(){
             Date date = new Date();
             DateFormat hourdateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -80,7 +81,7 @@ public class Registrar {
        }
          
         
-         
+       /*  
       
      public ResultSet mostrardetalle(String ssql){
     ResultSet rs=null;
@@ -115,8 +116,7 @@ public class Registrar {
       
       
       
-      
-       public String  Modificando (String SQL){
+      public String  Modificando (String SQL){
         con.conectar();
         String error = null;
       try {
@@ -130,7 +130,7 @@ public class Registrar {
       }
       return error;
         
-    }
+    }/*
      
    
        
@@ -148,4 +148,5 @@ public class Registrar {
         return nombre;
     }*/
 }
+
    

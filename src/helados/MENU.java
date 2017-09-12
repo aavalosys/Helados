@@ -18,6 +18,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import static java.rmi.Naming.list;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import static java.util.Collections.list;
 import java.util.List;
 import javax.swing.DefaultCellEditor;
@@ -226,11 +229,18 @@ public class MENU extends javax.swing.JFrame {
 
     public void Lmarca(){
         // se Agregagon los Tipos de productos al ComboBox y aplica el evento itemstatechanged para cargar datos cada vez que se tena un cambio 
-                
-                String ssql="SELECT * FROM `marca`";
-                Registrar registrar= new Registrar();
-                ResultSet rs= registrar.mostrardetalle(ssql);
+                PreparedStatement ps= null;
+                Connection con = null;
+                ResultSet rs =null;
+                 
         try {
+            
+        con = coneccion.obtener();
+        String query ="SELECT * FROM `marca`";
+        ps = con.prepareStatement(query);
+      
+        rs=ps.executeQuery();
+            
             
             while(rs.next()){
                 Catalogo cata=new Catalogo(rs.getInt("id_marcar"),rs.getString("nombre_marca"),rs.getString("descripcion_marca"));
@@ -238,21 +248,34 @@ public class MENU extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
         }
            
           }
     
     public void Lclase(){
+        PreparedStatement ps= null;
+        Connection con = null;
+        ResultSet rs =null;
         
-    String ssql="SELECT * FROM `clase`";
-                Registrar registrar= new Registrar();
-                ResultSet rs= registrar.mostrardetalle(ssql);
+   
+              //  Registrar registrar= new Registrar();
+                //ResultSet rs= registrar.mostrardetalle(ssql);
         try {
+        con = coneccion.obtener();
+        String query = "SELECT * FROM `clase`";
+        ps = con.prepareStatement(query);
+        rs=ps.executeQuery();
+            
+            
             while(rs.next()){
                 Catalogo cata2=new Catalogo(rs.getInt("id_clase"),rs.getString("descripción_clase"),rs.getString("clase"));
                 jCclase.addItem(cata2);
             }
         } catch (SQLException ex) {
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
@@ -260,27 +283,82 @@ public class MENU extends javax.swing.JFrame {
           }
     
      public void Latributo(){
-        
-    String ssql="SELECT * FROM `atributo`";
-                Registrar registrar= new Registrar();
-                ResultSet rs= registrar.mostrardetalle(ssql);
+        PreparedStatement ps= null;
+        Connection con = null;
+        ResultSet rs =null;
+                //String ssql="SELECT * FROM `atributo`";
+                //Registrar registrar= new Registrar();
+                //ResultSet rs= registrar.mostrardetalle(ssql);
         try {
+            con = coneccion.obtener();
+        String query = "SELECT * FROM `atributo`";
+        ps = con.prepareStatement(query);
+        rs=ps.executeQuery();
             while(rs.next()){
+        
                 Catalogo cata2=new Catalogo(rs.getInt("id_atributo"),rs.getString("nombre_atributo"),"");
                 jCatributo.addItem(cata2);
             }
         } catch (SQLException ex) {
             Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
            
           }
+     
+     
+     public ResultSet sqlmostrardatos(String query){
+       ResultSet rs2 =null;
+         try {
+            PreparedStatement ps= null;
+            Connection con = null;
+            ResultSet rs =null;
+            con = coneccion.obtener();
+            ps = con.prepareStatement(query);
+            rs=ps.executeQuery();
+            rs2=rs;
+            
+           } catch (SQLException ex) {
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+          return rs2;
+          
+     }
+     
+     
+     public String sqlinsertardatos(String query){
+     String error=null;
+         
+        try {
+            
+            Connection con = null;
+            Statement consulta = null;
+            con = coneccion.obtener();
+            consulta= con.createStatement();
+           consulta.executeUpdate(query);
+           error="Datos Insertados Correctamente";
+           
+           } catch (SQLException ex) {
+            error="error al insertar datos";
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            error="error al insertar datos";
+            Logger.getLogger(MENU.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return error;
+     }
     
      public void Lpresentacion(){
-        
-    String ssql="SELECT * FROM `presentacion`";
-                Registrar registrar= new Registrar();
-                ResultSet rs= registrar.mostrardetalle(ssql);
+                 
+                 String ssql="SELECT * FROM `presentacion`";
+                ResultSet rs=sqlmostrardatos(ssql);
+                 //Registrar registrar= new Registrar();
+                //ResultSet rs= registrar.mostrardetalle(ssql);
         try {
             while(rs.next()){
                 Catalogo cata2=new Catalogo(rs.getInt("id_presentacion"),rs.getString("presentacion"),"");
@@ -298,8 +376,9 @@ public class MENU extends javax.swing.JFrame {
        
         
                  String ssql="SELECT * FROM `tipo_producto`";
-                Registrar registrar= new Registrar();
-                ResultSet rs= registrar.mostrardetalle(ssql);
+                  ResultSet rs=sqlmostrardatos(ssql);
+                 // Registrar registrar= new Registrar();
+                //ResultSet rs= registrar.mostrardetalle(ssql);
         try {
             while(rs.next()){
                 Catalogo cata2=new Catalogo(rs.getInt("id_tipo_producto"),rs.getString("nombre_producto"),"");
@@ -2602,7 +2681,8 @@ public class MENU extends javax.swing.JFrame {
                             if(atributo2){
                                 sabor= (Atributos) jTsabor.getValueAt(j, 1);
                                 ssql="INSERT INTO `producto`(`id_marcar`, `id_tipo_producto`, `id_sabor`, `id_clase`, `id_presentacion`, `id_atributo`, `id_tamano`, `nombre_producto`, `descripcion_producto`, `num_producto`, `text_producto`, `imagen_producto`, `codigo_producto`, `producto_activo`, `rate`, `existencia_producto`, `precio_venta`, `fecha_creacion`, `codigo_barras`) VALUES ('"+marca.getId()+"','"+tipo.getId()+"','"+sabor.getId()+"','"+clases.getId()+"','"+presentacion.getId()+"','"+Atri.getId()+"','"+tamano.getId()+"','"+nombre+"','"+desc+"','0','0','null','"+codigoi+"','"+activo+"','"+rate+"','"+existencia+"','"+precio+"','"+registrar.guardarfecha()+"','0')";
-                                resultado=registrar.R_Categoria(ssql);
+                                sqlinsertardatos(ssql);
+                                //resultado=registrar.R_Categoria(ssql);
                             }
                         }}
 
@@ -2613,7 +2693,8 @@ public class MENU extends javax.swing.JFrame {
                 if(hacer3.equals("Mostrar")){
                     Productos id=(Productos) jtproductos.getValueAt(row, 0);
                     ssql="UPDATE `producto` SET `id_marcar`='"+marca.getId()+"' ,`id_tipo_producto`='"+tipo.getId()+"', `id_clase`='"+clases.getId()+"', `id_presentacion`='"+presentacion.getId()+"', `id_atributo`='"+Atri.getId()+"', `nombre_producto`='"+nombre+"', `descripcion_producto`='"+desc+"' ,`codigo_producto`='"+codigoi+"', `producto_activo`='"+activo+"', `rate`='"+rate+"', `existencia_producto`='"+existencia+"', `precio_venta`='"+precio+"' WHERE id_producto="+id.getId();
-                    resultado=registrar.Modificando(ssql);
+                    //resultado=registrar.Modificando(ssql);
+                    sqlinsertardatos(ssql);
                 }
 
                 JOptionPane.showMessageDialog(null, resultado);
@@ -2645,7 +2726,8 @@ public class MENU extends javax.swing.JFrame {
 
             Catalogo id=(Catalogo) jtproductos.getValueAt(row, 0);
             String ssql="DELETE FROM `producto` WHERE id_producto="+id.getNombre();
-            String resultado= registrar.Elimina(ssql);
+            //String resultado= registrar.Elimina(ssql);
+           String resultado= sqlinsertardatos(ssql);
             JOptionPane.showMessageDialog(null, resultado);
             cargardatosproducto("","Mostrar");
             btnelimina1.setEnabled(false);
@@ -2839,7 +2921,8 @@ public class MENU extends javax.swing.JFrame {
                     ssql="UPDATE `presentacion` SET `presentacion`='"+campo2+"',`descripcion_presenta`='"+campo3+"',`numero_pres`='"+campo5+"',`texto_pres`='"+campo4+"' WHERE id_presentacion="+campo1;
                 }
 
-                resultado=registrar.Modificando(ssql);
+                //resultado=registrar.Modificando(ssql);
+                resultado=sqlinsertardatos(ssql);
             }
             else{
 
@@ -2886,7 +2969,8 @@ public class MENU extends javax.swing.JFrame {
                 if(tipoProducto.getSelectedItem().toString().equals("Presentacion")){
                     ssql="INSERT INTO `presentacion`(`presentacion`, `descripcion_presenta`, `numero_pres`, `texto_pres`) VALUES ('"+campo2+"','"+campo3+"','"+campo5+"','"+campo4+"')";
                 }
-                resultado=registrar.R_Categoria(ssql);
+                //resultado=registrar.R_Categoria(ssql);
+                resultado= sqlinsertardatos(ssql);
                 hacer="Modificar";
             }
 
@@ -2943,7 +3027,8 @@ public class MENU extends javax.swing.JFrame {
                     ssql="DELETE FROM `presentacion` WHERE id_presentacion="+id;
                 }
 
-                String resultado= registrar.Elimina(ssql);
+                //String resultado= registrar.Elimina(ssql);
+                String resultado=sqlinsertardatos(ssql);
                 JOptionPane.showMessageDialog(null, resultado);
 
                 llamada(tipoProducto.getSelectedItem().toString(),"","Mostrar");
@@ -3185,7 +3270,8 @@ public class MENU extends javax.swing.JFrame {
         columnModel.getColumn(5).setPreferredWidth(100);
         ssql="select * from venta_helados.marca, marca_proveedor where nombre_marca LIKE '"+busqueda+"%' and marca.id_registro_prov=marca_proveedor.id_registro_prov order by id_marcar DESC ";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
       if(M.equals("Nuevo")){
         modelotabla.addRow(new Object[]{"","","","","",""});}
        try {
@@ -3239,7 +3325,8 @@ public class MENU extends javax.swing.JFrame {
 
         ssql="select * from venta_helados.clase where tag_clase LIKE '"+busqueda+"%' order by id_clase DESC ";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
       if(M.equals("Nuevo")){
         modelotabla.addRow(new Object[]{"","","","",""});}
        try {
@@ -3290,7 +3377,8 @@ public class MENU extends javax.swing.JFrame {
 
         ssql="select * from venta_helados.tamano where tamaño LIKE '"+busqueda+"%' order by id_tamano DESC ";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
       if(M.equals("Nuevo")){
         modelotabla.addRow(new Object[]{"","","","",""});}
        try {
@@ -3341,7 +3429,8 @@ public class MENU extends javax.swing.JFrame {
 
         ssql="select * from venta_helados.presentacion where presentacion LIKE '"+busqueda+"%' order by id_presentacion DESC ";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
       if(M.equals("Nuevo")){
         modelotabla.addRow(new Object[]{"","","","",""});}
        try {
@@ -3395,7 +3484,8 @@ public class MENU extends javax.swing.JFrame {
 
         ssql="select * from venta_helados.marca_proveedor where nombre LIKE '"+busqueda+"%' order by id_registro_prov DESC ";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
       if(M.equals("Nuevo")){
         modelotabla.addRow(new Object[]{"","","","","",""});}
        try {
@@ -3445,7 +3535,8 @@ public class MENU extends javax.swing.JFrame {
         columnModel.getColumn(5).setPreferredWidth(100);
         ssql="select * from venta_helados.tipo where tag_tipo LIKE '"+busqueda+"%' order by id_tipo DESC ";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
       if(M.equals("Nuevo")){
         modelotabla.addRow(new Object[]{"","","","","",""});}
        try {
@@ -3497,7 +3588,8 @@ public class MENU extends javax.swing.JFrame {
         
         ssql="select * from venta_helados.atributo where nombre_atributo LIKE '"+busqueda+"%'  order by id_atributo DESC ";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
       if(M.equals("Nuevo")){
         modelotabla.addRow(new Object[]{"","","","",""});}
        try {
@@ -3550,7 +3642,8 @@ public class MENU extends javax.swing.JFrame {
         columnModel.getColumn(5).setPreferredWidth(120);
         ssql="select * from venta_helados.sabor where sabor LIKE '"+busqueda+"%'  order by id_sabor DESC ";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
       if(M.equals("Nuevo")){
         modelotabla.addRow(new Object[]{"","","","","",""});}
        try {
@@ -3600,7 +3693,8 @@ public class MENU extends javax.swing.JFrame {
         columnModel.getColumn(5).setPreferredWidth(100);
         ssql="select * from venta_helados.roll where tag_rol LIKE '"+busqueda+"%' order by id_rol DESC ";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
       if(M.equals("Nuevo")){
         modelotabla.addRow(new Object[]{"","","","","",""});}
        try {
@@ -3656,7 +3750,8 @@ public class MENU extends javax.swing.JFrame {
         columnModel.getColumn(5).setPreferredWidth(100);
         ssql="select * from venta_helados.tipo_producto where nombre_producto LIKE '"+busqueda+"%' order by id_tipo_producto DESC  ";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
          if(M.equals("Nuevo")){
         modelotabla.addRow(new Object[]{"","","","","",""});}
        
@@ -3736,7 +3831,8 @@ public class MENU extends javax.swing.JFrame {
         
         ssql="select * from venta_helados.producto, sabor, tamano where nombre_producto LIKE '"+busqueda+"%' and producto.id_tamano=tamano.id_tamano and producto.id_sabor=sabor.id_sabor order by id_producto DESC";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
        
        try {
            while(rs.next()){
@@ -3764,7 +3860,8 @@ public class MENU extends javax.swing.JFrame {
      {
          String ssql="select * from tipo_producto";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
         bx=new JComboBox();
          while(rs.next()){
              Catalogo datos= new Catalogo(rs.getInt("id_tipo_producto"),rs.getString("nombre_producto"),"");
@@ -3788,7 +3885,8 @@ public class MENU extends javax.swing.JFrame {
      {
          String ssql="select * from marca_proveedor";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
         bx=new JComboBox();
          while(rs.next()){
              Catalogo datos= new Catalogo(rs.getInt("id_registro_prov"),rs.getString("nombre"),"");
@@ -3832,7 +3930,8 @@ public class MENU extends javax.swing.JFrame {
         else{
          ssql="SELECT producto.nombre_producto, producto.id_producto FROM `producto` WHERE producto.id_tipo_producto='"+va+"' and id_producto='"+id2+"' GROUP BY nombre_producto";
         }
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
         modeloLista.clear();
         String producto;
         int id;
@@ -3861,7 +3960,8 @@ public class MENU extends javax.swing.JFrame {
         ssql="SELECT * FROM `producto`,sabor WHERE nombre_producto='"+dato.getProducto()+"' AND producto.id_sabor=sabor.id_sabor and id_producto LIKE '"+idb+"%'";
         }
         
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
         modeloLista2.clear();
         try {
             String ssql2;
@@ -3893,7 +3993,8 @@ public class MENU extends javax.swing.JFrame {
         ssql="SELECT * FROM `producto`,tamano WHERE nombre_producto='"+dato.getProducto()+"' AND producto.id_tamano=tamano.id_tamano and  id_sabor='"+dato2.getId()+"' and id_producto LIKE '"+idb+"%'";
         }
         
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
         modeloLista3.clear();
         try {
             String ssql2;
@@ -3955,7 +4056,8 @@ public class MENU extends javax.swing.JFrame {
        
         ssql="SELECT * FROM Sabor";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
         
         
        
@@ -3983,7 +4085,8 @@ public class MENU extends javax.swing.JFrame {
        jTtamano.setModel(m);  
         ssql="SELECT * FROM tamano";
         Registrar a = new Registrar();
-        ResultSet rs=a.mostrardetalle(ssql);
+        //ResultSet rs=a.mostrardetalle(ssql);
+        ResultSet rs=sqlmostrardatos(ssql);
         try {
            while(rs.next()){
                 Atributos po= new Atributos(rs.getInt("id_tamano"),rs.getString("tamaño"));

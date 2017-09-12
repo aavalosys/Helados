@@ -1,58 +1,39 @@
 
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package helados;
 
-import java.sql.*;
-import javax.swing.JOptionPane;
-import javax.swing.JOptionPane.*;
-public class coneccion {
-public Connection con;
-public Statement stmt;
-public String servername="localhost";
-public String puerto = "3306";
-public String nombreBD="VENTA_HELADOS";
-public String usuario ="root";
-public String contra ="";
-public String Url="jdbc:mysql://localhost:3306/"+nombreBD;
-   
-   
-   public String errString;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-   public coneccion(){
-       
-   }
-   public String getconeccionUrl(){
-       return Url;
-       
-   }
-   public Connection conectar(){
-       con=null;
-       try{
-           Class.forName("org.gjt.mm.mysql.Driver");
-           con=DriverManager.getConnection(getconeccionUrl(), usuario, contra);
-           stmt=con.createStatement();
-           if(con!=null){
-            
-           } 
-           }catch (Exception e){
-                  errString="Error mientras se conectaba a la Base de Datos";
-                
-                  return null;
-           }
-       return con;
-       
-   }
-   public void Desconectar(){
-        try{
-              stmt.close();
-              con.close();
-        }catch(SQLException e){
-                 errString="Error mientras se conectaba a la Base de Datos";
-                  
-                }
-  }
+public class coneccion {
+   private static Connection cnx = null;
    
-   public Statement getSmtm(){
-       return this.stmt;
+   public static Connection obtener() throws SQLException, ClassNotFoundException {
+      if (cnx == null) {
+         try {
+            Class.forName("com.mysql.jdbc.Driver");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost/venta_helados", "root", "");
+         } catch (SQLException ex) {
+            throw new SQLException(ex);
+         } catch (ClassNotFoundException ex) {
+            throw new ClassCastException(ex.getMessage());
+         }
+      }
+      return cnx;
+   }
+   
+   public static void cerrar() throws SQLException {
+     if (cnx != null) {
+            try {
+                cnx.close();
+            } catch (SQLException ex) {
+                System.out.println("ConnectDB " + ex.getMessage());
+            }
+        }
    }
 }
    
